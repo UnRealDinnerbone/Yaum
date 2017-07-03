@@ -1,0 +1,16 @@
+[
+{
+  "modid": "yaum",
+  "name": "Yet Another Util Mod",
+  "description": "",
+  "version": "1.0.0",
+  "mcversion": "1.12",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["UnRealDinnerbone"],
+  "credits": "",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]

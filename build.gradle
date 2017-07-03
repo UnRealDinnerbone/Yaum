@@ -1,0 +1,59 @@
+buildscript
+        {
+            repositories
+                    {
+                        repositories {
+                            jcenter()
+                            maven { url = "http://files.minecraftforge.net/maven" }
+                        }
+                        maven
+                                {
+                                    url "https://plugins.gradle.org/m2/"
+                                }
+                    }
+            dependencies
+                    {
+                        classpath 'net.minecraftforge.gradle:ForgeGradle:2.3-SNAPSHOT'
+                        classpath "gradle.plugin.com.matthewprenger:CurseGradle:1.0.8"
+                    }
+        }
+
+apply plugin: 'maven'
+apply plugin: "com.matthewprenger.cursegradle"
+apply plugin: 'net.minecraftforge.gradle.forge'
+
+version = "${minecraft_version}-${mod_verison}"
+group= "com.unrealdinnerbone.${mod_name}"
+archivesBaseName = "${mod_name}"
+
+sourceCompatibility = JavaVersion.VERSION_1_8
+targetCompatibility = JavaVersion.VERSION_1_8
+
+minecraft {
+    version = "${minecraft_version}-${forge_version}"
+    runDir = "run"
+    mappings = "${forge_mappings}"
+    useDepAts = true
+}
+
+processResources {
+            inputs.property "version", project.version
+            inputs.property "mcversion", project.minecraft.version
+            from(sourceSets.main.resources.srcDirs)
+                    {
+                        include 'mcmod.info'
+                        expand 'version':project.version, 'mcversion':project.minecraft.version
+                    }
+            from(sourceSets.main.resources.srcDirs)
+                    {
+                        exclude 'mcmod.info'
+                    }
+
+            rename '(.+_at.cfg)', 'META-INF/$1'
+        }
+
+jar {
+    manifest {
+        attributes 'FMLAT': '${mod_name}_at.cfg'
+    }
+}
