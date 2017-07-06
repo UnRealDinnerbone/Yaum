@@ -2,6 +2,7 @@ package com.unrealdinnerbone.yaum.perks;
 
 import com.google.gson.stream.JsonReader;
 import com.unrealdinnerbone.yaum.util.LogHelper;
+import com.unrealdinnerbone.yaum.util.Reference;
 import com.unrealdinnerbone.yaum.yaum;
 import net.minecraft.entity.player.EntityPlayer;
 
@@ -19,13 +20,12 @@ public class StatsGetter
 {
 
     private static final List<Supporter> SUPPORTERS = new ArrayList<>();
-    private static final String SUPPORTER_URL = "https://raw.githubusercontent.com/UnRealDinnerbone/Yarm/1.10.2/Files/People/newPeople.json";
 
     public static void ReadPepsData() {
 
         try {
 
-            final HttpURLConnection connection = (HttpURLConnection) new URL(SUPPORTER_URL).openConnection();
+            final HttpURLConnection connection = (HttpURLConnection) new URL(Reference.SUPPORTER_DATA_JSON).openConnection();
             final JsonReader reader = new JsonReader(new InputStreamReader((InputStream) connection.getContent()));
 
             reader.beginObject();
@@ -36,7 +36,7 @@ public class StatsGetter
                 UUID playerID = null;
                 boolean cape = false;
                 boolean elytra = false;
-                String type = "Cool Person";
+                boolean fancyChat = false;
                 String elytraTexture = null;
                 String capeTexture = null;
                 reader.beginObject();
@@ -45,28 +45,23 @@ public class StatsGetter
 
                     final String name = reader.nextName();
 
-                    if (name.equals("playerID"))
+                    if (name.equals("playerID")) {
                         playerID = UUID.fromString(reader.nextString());
-
-                    else if (name.equals("type"))
-                        type = reader.nextString();
-
-                    else if (name.equals("cape"))
+                    } else if (name.equals("cape")) {
                         cape = reader.nextBoolean();
-
-                    else if (name.equals("elytra"))
+                    } else if (name.equals("elytra")) {
                         elytra = reader.nextBoolean();
-
-                    else if (name.equals("elytraTexture"))
+                    } else if (name.equals("elytraTexture")) {
                         elytraTexture = reader.nextString();
-
-                    else if (name.equals("capeTexture"))
+                    } else if (name.equals("capeTexture")) {
                         capeTexture = reader.nextString();
-                    else
+                    } else if (name.equals("fancyChat")) {
+                        fancyChat = reader.nextBoolean();
+                    } else
                         reader.skipValue();
                 }
 
-                SUPPORTERS.add(new Supporter(playerID, cape, elytra, type, elytraTexture, capeTexture));
+                SUPPORTERS.add(new Supporter(playerID, cape, elytra, elytraTexture, capeTexture, fancyChat));
                 reader.endObject();
             }
 
@@ -75,11 +70,11 @@ public class StatsGetter
         }
         catch (final MalformedURLException e)
         {
-            yaum.getLogHelper().warn(e.getCause());
+            yaum.getLogHelper().info(e.getCause());
         }
         catch (final IOException e)
         {
-            yaum.getLogHelper().warn(e.getCause());
+            yaum.getLogHelper().info(e.getCause());
         }
     }
 

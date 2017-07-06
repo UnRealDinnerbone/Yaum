@@ -1,28 +1,29 @@
 buildscript
-        {
-            repositories
-                    {
-                        repositories {
-                            jcenter()
-                            maven { url = "http://files.minecraftforge.net/maven" }
-                        }
-                        maven
-                                {
-                                    url "https://plugins.gradle.org/m2/"
-                                }
-                    }
-            dependencies
-                    {
-                        classpath 'net.minecraftforge.gradle:ForgeGradle:2.3-SNAPSHOT'
-                        classpath "gradle.plugin.com.matthewprenger:CurseGradle:1.0.8"
-                    }
-        }
+{
+	repositories
+    {
+		jcenter()
+        maven 
+		{ 
+				url = "http://files.minecraftforge.net/maven" 
+		}
+        maven
+		{
+			url "https://plugins.gradle.org/m2/"
+		}
+	}
+	dependencies
+	{
+		classpath 'net.minecraftforge.gradle:ForgeGradle:2.3-SNAPSHOT'
+        classpath "gradle.plugin.com.matthewprenger:CurseGradle:1.0.9"
+	}
+}
 
 apply plugin: 'maven'
 apply plugin: "com.matthewprenger.cursegradle"
 apply plugin: 'net.minecraftforge.gradle.forge'
 
-version = "${minecraft_version}-${mod_verison}"
+version = "${minecraft_version}-${mod_verison}-universal"
 group= "com.unrealdinnerbone.${mod_name}"
 archivesBaseName = "${mod_name}"
 
@@ -36,24 +37,42 @@ minecraft {
     useDepAts = true
 }
 
-processResources {
-            inputs.property "version", project.version
-            inputs.property "mcversion", project.minecraft.version
-            from(sourceSets.main.resources.srcDirs)
-                    {
-                        include 'mcmod.info'
-                        expand 'version':project.version, 'mcversion':project.minecraft.version
-                    }
-            from(sourceSets.main.resources.srcDirs)
-                    {
-                        exclude 'mcmod.info'
-                    }
+processResources
+{
+	inputs.property "version", project.version
+	inputs.property "mcversion", project.minecraft.version
 
-            rename '(.+_at.cfg)', 'META-INF/$1'
+	from(sourceSets.main.resources.srcDirs)
+	{
+		include 'mcmod.info'
+		expand 'version':project.version, 'mcversion':project.minecraft.version
+	}
+	from(sourceSets.main.resources.srcDirs)
+	{
+		exclude 'mcmod.info'
+	}
+	rename '(.+_at.cfg)', 'META-INF/$1'
+}
+
+jar 
+{
+	manifest 
+	{
+		attributes 'FMLAT': '${mod_name}_at.cfg'
+	}
+}
+curseforge 
+{
+    apiKey = project.curse_api_key
+    project 
+	{
+		id = project.curse_project_id
+		changelogType = "markdown"
+		changelog = file('changelog.md')
+		releaseType = project.release_type
+		mainArtifact(jar) 
+		{
+            displayName = "${mod_name}-${minecraft_version}-${mod_verison}-universal"
         }
-
-jar {
-    manifest {
-        attributes 'FMLAT': '${mod_name}_at.cfg'
     }
 }

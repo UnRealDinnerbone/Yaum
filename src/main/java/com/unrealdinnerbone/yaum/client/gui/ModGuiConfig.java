@@ -23,9 +23,8 @@ public class ModGuiConfig extends GuiConfig {
 
         List<IConfigElement> list = new ArrayList<>();
 
-//        list.add(categoryElement(ConfigManger.getClientConfig(), "perks", LangHelper.CONFIG.translateMessage("clientPerks"), LangHelper.TOOLTIP.translateMessage("client.perks")));
-        list.add(categoryElement(ConfigManger.getGeneralConfig(), "loggers", LangHelper.CONFIG.translateMessage("loggers"), LangHelper.TOOLTIP.translateMessage("loggers.info")));
-        //        list.add(new DummyCategoryElement("New Config thing", "Yarm.config.stuff", YarmConfigs.ClientConfig.class));
+        list.add(categoryElement(ConfigManger.getClientConfig(), "perks", LangHelper.CONFIG.translateMessage("clientPerks"), LangHelper.TOOLTIP.translateMessage("client.perks")));
+        list.add(categoryElement(ConfigManger.getGeneralConfig(), "perks", LangHelper.CONFIG.translateMessage("generalPerks"), LangHelper.TOOLTIP.translateMessage("general.perks")));
         return list;
     }
 

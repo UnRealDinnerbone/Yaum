@@ -1,8 +1,8 @@
 package com.unrealdinnerbone.yaum.events.registeies;
 
-import com.unrealdinnerbone.yaum.item.YaumItem;
-import com.unrealdinnerbone.yaum.registeies.YaumRegistry;
-import com.unrealdinnerbone.yaum.block.YaumBlock;
+import com.unrealdinnerbone.yaum.api.IYaumBlock;
+import com.unrealdinnerbone.yaum.api.IYaumItem;
+import com.unrealdinnerbone.yaum.api.YaumRegistry;
 import com.unrealdinnerbone.yaum.yaum;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
@@ -27,17 +27,19 @@ public class EventItemRegister
 
     @SubscribeEvent
     public void registerItems(RegistryEvent.Register<Item> event) {
-        YaumRegistry yaumRegistry = YaumRegistry.getBlockRegistries().get(MOD_ID);
+        YaumRegistry yaumRegistry = YaumRegistry.getModRegistry(MOD_ID);
         yaum.getLogHelper().info("Starting ItemBlock registering for " + MOD_ID + "...");
-        for (YaumBlock block : yaumRegistry.getRegisteredBlocks()) {
-            yaum.getLogHelper().debug("Registering ItemBlock... " + block.getBlockName());
-            event.getRegistry().register(new ItemBlock(block).setRegistryName(block.getRegistryName()));
+        for (IYaumBlock iYaumBlock : yaumRegistry.getRegisteredBlocks()) {
+            yaum.getLogHelper().debug("Registering ItemBlock... " + iYaumBlock.getBlockName());
+            event.getRegistry().register(new ItemBlock(iYaumBlock.getBlock()).setRegistryName(MOD_ID, iYaumBlock.getBlockName()));
         }
         yaum.getLogHelper().info("Finished ItemBlock registering for " + MOD_ID);
         yaum.getLogHelper().info("Starting Item registering for " + MOD_ID + "...");
-        for (YaumItem item : yaumRegistry.getRegisteredItems()) {
-            yaum.getLogHelper().debug("Registering Item... " + item.getItemName());
-            event.getRegistry().register(item.setRegistryName(MOD_ID, item.getItemName()));
+        for (IYaumItem iYaumItem : yaumRegistry.getRegisteredItems()) {
+            iYaumItem.getItem().setRegistryName(MOD_ID, iYaumItem.getItemName());
+            iYaumItem.getItem().setUnlocalizedName(MOD_ID + "." + iYaumItem.getItemName().toLowerCase());
+            yaum.getLogHelper().debug("Registering Item... " + iYaumItem.getItemName());
+            event.getRegistry().register(iYaumItem.getItem());
         }
         yaum.getLogHelper().info("Finished Item registering for " + MOD_ID);
     }

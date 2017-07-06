@@ -8,65 +8,49 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.UUID;
 
-public class Supporter
-{
-    private static final ResourceLocation MISSING_CAPE = new ResourceLocation(Reference.MOD_ID, "textures/entity/player/cape_error.png");
-    private static final ResourceLocation MISSING_ELYTRA = new ResourceLocation(Reference.MOD_ID, "textures/entity/player/elytra_error.png");
+public class Supporter {
 
+    private final UUID PLAYER_UUID;
+    private final boolean CAPE;
+    private final boolean ELYTRA;
+    private final String ELYTRA_TEXTURE;
+    private final String CAPE_TEXTURE;
+    private final Boolean FANCY_CHAT;
 
-        private final UUID PLAYER_UUID;
-        private final String TYPE;
-        private final boolean cape;
-        private final boolean elytra;
-        private final String ELYTRA_TEXTURE;
-        private final String CAPE_TEXTURE;
+    public Supporter(UUID playerID, boolean cape, boolean elytra, String elytraTexture, String capeTexture, boolean fancyChat) {
+        this.PLAYER_UUID = playerID;
+        this.CAPE = cape;
+        this.ELYTRA = elytra;
+        this.ELYTRA_TEXTURE = elytraTexture;
+        this.CAPE_TEXTURE = capeTexture;
+        this.FANCY_CHAT = fancyChat;
+    }
 
-        protected Supporter(UUID playerID, boolean cape, boolean elytra, String type, String elytraTexture, String capeTexture) {
+    public UUID getPlayerID() {
 
-            this.PLAYER_UUID = playerID;
-            this.TYPE = type;
-            this.cape = cape;
-            this.elytra = elytra;
-            this.ELYTRA_TEXTURE = elytraTexture;
-            this.CAPE_TEXTURE = capeTexture;
-        }
+        return this.PLAYER_UUID;
+    }
 
-        public UUID getPlayerID() {
+    @SideOnly(Side.CLIENT)
+    public ResourceLocation getCapeTexture() {
+        return this.CAPE_TEXTURE != null && !this.CAPE_TEXTURE.isEmpty() ? DownloadHelper.downloadResourceLocation(this.CAPE_TEXTURE, new ResourceLocation(Reference.MOD_ID, "cape/" + this.PLAYER_UUID.toString()), Reference.MISSING_CAPE) : null;
+    }
 
-            return this.PLAYER_UUID;
-        }
+    @SideOnly(Side.CLIENT)
+    public ResourceLocation getElytraTexture() {
 
-        public String getCapeTextureURL() {
+        return this.ELYTRA_TEXTURE != null && !this.ELYTRA_TEXTURE.isEmpty() ? DownloadHelper.downloadResourceLocation(this.ELYTRA_TEXTURE, new ResourceLocation(Reference.MOD_ID, "elytra/" + this.getPlayerID().toString()), Reference.MISSING_ELYTRA) : null;
+    }
 
-            return this.CAPE_TEXTURE;
-        }
+    public boolean hasCape() {
+        return CAPE;
+    }
 
-        public String getElytraTextureURL() {
+    public boolean hasElytra() {
+        return ELYTRA;
+    }
 
-            return this.ELYTRA_TEXTURE;
-        }
-
-        @SideOnly(Side.CLIENT)
-        public ResourceLocation getCapeTexture() {
-            return this.CAPE_TEXTURE != null && !this.CAPE_TEXTURE.isEmpty() ? DownloadHelper.downloadResourceLocation(this.CAPE_TEXTURE, new ResourceLocation(Reference.MOD_ID, "cape/" + this.PLAYER_UUID.toString()), MISSING_CAPE, null) : null;
-        }
-
-        @SideOnly(Side.CLIENT)
-        public ResourceLocation getElytraTexture() {
-
-            return this.ELYTRA_TEXTURE != null && !this.ELYTRA_TEXTURE.isEmpty() ? DownloadHelper.downloadResourceLocation(this.ELYTRA_TEXTURE, new ResourceLocation(Reference.MOD_ID, "elytra/" + this.getPlayerID().toString()), MISSING_ELYTRA, null) : null;
-        }
-
-        public String getType() {
-
-            return this.TYPE;
-        }
-        public boolean getsCape()
-        {
-            return cape;
-        }
-        public boolean getElytra()
-        {
-            return elytra;
-        }
+    public boolean isFancyChat() {
+        return FANCY_CHAT;
+    }
 }

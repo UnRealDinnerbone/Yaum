@@ -39,7 +39,7 @@ public class PlayerUtils {
     }
 
     @SideOnly(Side.CLIENT)
-    public static boolean changePlayerTexture(Type type, EntityPlayer player, ResourceLocation texture) {
+    public static void changePlayerTexture(Type type, EntityPlayer player, ResourceLocation texture) {
         NetworkPlayerInfo networkPlayer = Minecraft.getMinecraft().getConnection().getPlayerInfo(player.getUniqueID());
         if (networkPlayer != null) {
             if (texture != null) {
@@ -52,9 +52,9 @@ public class PlayerUtils {
                     yaum.getLogHelper().warn(e.getMessage());
                 }
             }
-            return true;
+            return;
         }
-        return false;
+        return;
     }
 }
 //    Field field = Minecraft.getMinecraft().getConnection().getPlayerInfo(player.getUniqueID()).getClass().getField("playerTextures");

@@ -13,17 +13,17 @@ import java.awt.font.TextMeasurer;
 public class DownloadHelper {
 
     @SideOnly(Side.CLIENT)
-    public static ResourceLocation downloadResourceLocation(String url, ResourceLocation outputResourceLocation, ResourceLocation errorResourceLocation, IImageBuffer buffer) {
-        downloadResource(url, outputResourceLocation, errorResourceLocation, buffer);
+    public static ResourceLocation downloadResourceLocation(String url, ResourceLocation outputResourceLocation, ResourceLocation errorResourceLocation) {
+        downloadResource(url, outputResourceLocation, errorResourceLocation);
         return outputResourceLocation;
     }
 
     @SideOnly(Side.CLIENT)
-    public static ThreadDownloadImageData downloadResource(String url, ResourceLocation outputResourceLocation, ResourceLocation errorResourceLocation, IImageBuffer buffer) {
+    public static ThreadDownloadImageData downloadResource(String url, ResourceLocation outputResourceLocation, ResourceLocation errorResourceLocation) {
         final TextureManager textureManager = Minecraft.getMinecraft().getTextureManager();
         ThreadDownloadImageData imageData = (ThreadDownloadImageData) textureManager.getTexture(outputResourceLocation);
         if (imageData == null) {
-            imageData = new ThreadDownloadImageData(null, url, errorResourceLocation, buffer);
+            imageData = new ThreadDownloadImageData(null, url, errorResourceLocation, null);
             textureManager.loadTexture(outputResourceLocation, imageData);
         }
         return imageData;

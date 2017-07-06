@@ -10,7 +10,6 @@ public class ClientConfig
 
     public static void loadClientConfig() {
         clientConfig = ConfigManger.getClientConfig();
-        clientConfig.setCategoryLanguageKey("perks", "config.perks");
         capesEnabled = clientConfig.getBoolean("capesEnabled", "perks", true, "Enable Supporter custom capes", "perks");
         elytraEnabled = clientConfig.getBoolean("elytraEnabled", "perks", true, "Enable Supporter custom elytra", "perks");
 

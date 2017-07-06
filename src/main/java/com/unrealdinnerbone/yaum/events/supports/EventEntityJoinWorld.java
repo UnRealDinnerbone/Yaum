@@ -1,4 +1,4 @@
-package com.unrealdinnerbone.yaum.events;
+package com.unrealdinnerbone.yaum.events.supports;
 
 import com.mojang.authlib.minecraft.MinecraftProfileTexture;
 import com.unrealdinnerbone.yaum.config.ClientConfig;
@@ -14,9 +14,6 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class EventEntityJoinWorld
 {
-    public static void init() {
-        MinecraftForge.EVENT_BUS.register(new EventEntityJoinWorld());
-    }
 
     @SideOnly(Side.CLIENT)
     @SubscribeEvent
@@ -25,11 +22,11 @@ public class EventEntityJoinWorld
             final AbstractClientPlayer player = (AbstractClientPlayer) event.getEntity();
             final Supporter data = StatsGetter.getSupporterData(player);
             if (data != null) {
-                if (data.getsCape() && data.getElytra() && ClientConfig.elytraEnabled && ClientConfig.capesEnabled) {
+                if (data.hasCape() && data.hasElytra() && ClientConfig.elytraEnabled && ClientConfig.capesEnabled) {
                     PlayerUtils.makePlayerFancy(player, data.getCapeTexture(), data.getElytraTexture());
-                } else if (data.getsCape() && ClientConfig.capesEnabled) {
+                } else if (data.hasCape() && ClientConfig.capesEnabled) {
                     PlayerUtils.changePlayerTexture(MinecraftProfileTexture.Type.CAPE, player, data.getCapeTexture());
-                } else if (data.getElytra() && ClientConfig.elytraEnabled) {
+                } else if (data.hasElytra() && ClientConfig.elytraEnabled) {
                     PlayerUtils.changePlayerTexture(MinecraftProfileTexture.Type.ELYTRA, player, data.getElytraTexture());
                 }
             }

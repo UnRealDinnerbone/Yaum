@@ -1,8 +1,8 @@
 package com.unrealdinnerbone.yaum.events.registeies;
 
-import com.unrealdinnerbone.yaum.item.YaumItem;
-import com.unrealdinnerbone.yaum.registeies.YaumRegistry;
-import com.unrealdinnerbone.yaum.block.YaumBlock;
+import com.unrealdinnerbone.yaum.api.IYaumBlock;
+import com.unrealdinnerbone.yaum.api.IYaumItem;
+import com.unrealdinnerbone.yaum.api.YaumRegistry;
 import com.unrealdinnerbone.yaum.yaum;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
@@ -33,19 +33,19 @@ public class EventModelRender
     @SubscribeEvent
     public void renderModels(ModelRegistryEvent event)
     {
-        YaumRegistry yaumRegistry = YaumRegistry.getBlockRegistries().get(MOD_ID);
+        YaumRegistry yaumRegistry = YaumRegistry.getModRegistry(MOD_ID);
         yaum.getLogHelper().info("Starting Block rendering for " + MOD_ID + "...");
-        for (YaumBlock block : yaumRegistry.getRegisteredBlocks()) {
-            yaum.getLogHelper().debug("Rendering Block... " + block.getBlockName());
-            ResourceLocation rl = block.getRegistryName();
-            ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(block), 0, new ModelResourceLocation(rl, "inventory"));
+        for (IYaumBlock iYaumBlock: yaumRegistry.getRegisteredBlocks()) {
+            yaum.getLogHelper().debug("Rendering Block... " + iYaumBlock.getBlockName());
+            ResourceLocation rl = iYaumBlock.getBlock().getRegistryName();
+            ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(iYaumBlock.getBlock()), 0, new ModelResourceLocation(rl, "inventory"));
         }
         yaum.getLogHelper().info("Finished Block rendering for " + MOD_ID + "...");
         yaum.getLogHelper().info("Starting Item rendering for " + MOD_ID + "...");
-        for (YaumItem item : yaumRegistry.getRegisteredItems()) {
-            yaum.getLogHelper().debug("Rendering Item... " + item.getItemName());
-            ResourceLocation rl = item.getRegistryName();
-            ModelLoader.setCustomModelResourceLocation(item, 0, new ModelResourceLocation(rl, "inventory"));
+        for (IYaumItem iYaumItem: yaumRegistry.getRegisteredItems()) {
+            yaum.getLogHelper().debug("Rendering Item... " + iYaumItem.getItemName());
+            ResourceLocation rl = iYaumItem.getItem().getRegistryName();
+            ModelLoader.setCustomModelResourceLocation(iYaumItem.getItem(), 0, new ModelResourceLocation(rl, "inventory"));
         }
         yaum.getLogHelper().info("Finished Block rendering for " + MOD_ID + "...");
     }
