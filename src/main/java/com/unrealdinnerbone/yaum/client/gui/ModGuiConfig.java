@@ -3,6 +3,7 @@ package com.unrealdinnerbone.yaum.client.gui;
 import com.unrealdinnerbone.yaum.config.ConfigManger;
 import com.unrealdinnerbone.yaum.util.LangHelper;
 import com.unrealdinnerbone.yaum.util.Reference;
+import com.unrealdinnerbone.yaum.yaum;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraftforge.common.config.ConfigElement;
 import net.minecraftforge.common.config.Configuration;
@@ -23,8 +24,8 @@ public class ModGuiConfig extends GuiConfig {
 
         List<IConfigElement> list = new ArrayList<>();
 
-        list.add(categoryElement(ConfigManger.getClientConfig(), "perks", LangHelper.CONFIG.translateMessage("clientPerks"), LangHelper.TOOLTIP.translateMessage("client.perks")));
-        list.add(categoryElement(ConfigManger.getGeneralConfig(), "perks", LangHelper.CONFIG.translateMessage("generalPerks"), LangHelper.TOOLTIP.translateMessage("general.perks")));
+        list.add(categoryElement(ConfigManger.getClientConfig(), "perks", yaum.getYaumRegistry().getLangHelper().translateMessage(LangHelper.Type.CONFIG, "clientPerks"), yaum.getYaumRegistry().getLangHelper().translateMessage(LangHelper.Type.TOOLTIP, "clientPerks")));
+        list.add(categoryElement(ConfigManger.getGeneralConfig(), "perks", yaum.getYaumRegistry().getLangHelper().translateMessage(LangHelper.Type.CONFIG, "generalPerks"), yaum.getYaumRegistry().getLangHelper().translateMessage(LangHelper.Type.TOOLTIP, "generalPerks")));
         return list;
     }
 

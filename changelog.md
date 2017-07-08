@@ -1,4 +1,8 @@
 #1.12.0
+* ## 1.2.0
+   * Added Enchament Util
+   * Added Commend Registry Helper
+   * Fixed LangHelper to be per mod not for yaum only
 * ## 1.1.1
    * Added Forge Upate Cheacker
    * Moved Registry Classs to API package

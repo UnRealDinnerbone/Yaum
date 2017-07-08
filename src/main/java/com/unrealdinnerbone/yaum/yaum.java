@@ -1,5 +1,6 @@
 package com.unrealdinnerbone.yaum;
 
+import com.unrealdinnerbone.yaum.api.YurmCMD;
 import com.unrealdinnerbone.yaum.proxy.IProxy;
 import com.unrealdinnerbone.yaum.api.YaumRegistry;
 import com.unrealdinnerbone.yaum.util.LogHelper;
@@ -9,6 +10,7 @@ import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 
 @Mod
     (
@@ -48,6 +50,16 @@ public class yaum {
   public void onPostInt(FMLPostInitializationEvent event)
   {
     proxy.onPostInt(event);
+  }
+
+  @Mod.EventHandler
+  public void onServerStart(FMLServerStartingEvent event) {
+    //Todo move to proxie
+    for (YaumRegistry yaumRegistry : YaumRegistry.getRegistries().values()) {
+      if (yaumRegistry.getYarmCommands().size() > 0) {
+        event.registerServerCommand(new YurmCMD(yaumRegistry.getModID(), yaumRegistry.getYarmCommands()));
+      }
+    }
   }
 
 

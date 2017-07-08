@@ -11,6 +11,7 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 
 import java.io.File;
 
@@ -39,6 +40,11 @@ public abstract class CommonProxy implements IProxy
 
     @Override
     public void onPostInt(FMLPostInitializationEvent event) {
+
+    }
+
+    @Override
+    public void onServerStart(FMLServerStartingEvent event) {
 
     }
 }
