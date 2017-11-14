@@ -8,7 +8,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 
-public class GuiFactory implements IModGuiFactory
+public class ModConfigGUI implements IModGuiFactory
 {
   @Override
   public void initialize(Minecraft minecraftInstance) {

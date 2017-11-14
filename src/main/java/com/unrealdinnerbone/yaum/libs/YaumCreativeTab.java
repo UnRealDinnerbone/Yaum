@@ -1,5 +1,6 @@
-package com.unrealdinnerbone.yaum.util;
+package com.unrealdinnerbone.yaum.libs;
 
+import com.unrealdinnerbone.yaum.libs.helpers.LangHelper;
 import com.unrealdinnerbone.yaum.yaum;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Items;
@@ -8,7 +9,7 @@ import net.minecraft.item.ItemStack;
 public class YaumCreativeTab extends CreativeTabs {
 
     public YaumCreativeTab(String unlocalLisedName) {
-        super(yaum.getYaumRegistry().getLangHelper().translateMessage(LangHelper.Type.TAB, unlocalLisedName));
+        super(yaum.getRegistry().getLangHelper().translateMessage(LangHelper.Type.TAB, unlocalLisedName));
     }
 
     @Override

@@ -8,7 +8,4 @@ public interface IYaumBlock {
 
     String getBlockName();
 
-    @Deprecated
-    default void onRegister() {}
-
 }

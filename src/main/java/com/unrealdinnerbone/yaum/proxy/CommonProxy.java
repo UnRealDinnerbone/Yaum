@@ -1,50 +1,22 @@
 package com.unrealdinnerbone.yaum.proxy;
 
-import com.unrealdinnerbone.yaum.block.YaumTestBlock;
-import com.unrealdinnerbone.yaum.config.ConfigManger;
-import com.unrealdinnerbone.yaum.events.supports.EventChat;
-import com.unrealdinnerbone.yaum.events.supports.EventEntityJoinWorld;
-import com.unrealdinnerbone.yaum.item.YaumTestItem;
+import com.unrealdinnerbone.yaum.api.YaumRegistry;
+import com.unrealdinnerbone.yaum.compact.CompactManager;
+import com.unrealdinnerbone.yaum.libs.Reference;
+import com.unrealdinnerbone.yaum.libs.helpers.LogHelper;
 import com.unrealdinnerbone.yaum.perks.StatsGetter;
-import com.unrealdinnerbone.yaum.util.HolidayUtils;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.fml.common.event.FMLInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
+import com.unrealdinnerbone.yaum.libs.utils.DateUtils;
+import com.unrealdinnerbone.yaum.yaum;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 
-import java.io.File;
-
-public abstract class CommonProxy implements IProxy
+public class CommonProxy implements IProxy
 {
     @Override
     public void onPreInt(FMLPreInitializationEvent event) {
-        MinecraftForge.EVENT_BUS.register(new EventChat());
+        CompactManager.init();
+        yaum.logHelper = new LogHelper(Reference.MOD_ID);
+        yaum.yaumRegistry = new YaumRegistry(Reference.MOD_ID, event);
+        DateUtils.checkDates();
         StatsGetter.ReadPepsData();
-        new YaumTestBlock();
-        new YaumTestItem();
-        HolidayUtils.checkDates();
-        final File folder = new File(event.getModConfigurationDirectory(), "yaum");
-        if (!folder.exists()) {
-            folder.mkdir();
-        }
-        ConfigManger.init();
-        ConfigManger.clientConfig(new File(folder, "client.cfg"));
-        ConfigManger.generalConfig(new File(folder, "general.cfg"));
-    }
-
-    @Override
-    public void onInt(FMLInitializationEvent event) {
-
-    }
-
-    @Override
-    public void onPostInt(FMLPostInitializationEvent event) {
-
-    }
-
-    @Override
-    public void onServerStart(FMLServerStartingEvent event) {
-
     }
 }

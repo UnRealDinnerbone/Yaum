@@ -1,4 +1,4 @@
-package com.unrealdinnerbone.yaum.util;
+package com.unrealdinnerbone.yaum.util.utils;
 
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;

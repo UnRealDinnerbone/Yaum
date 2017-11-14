@@ -1,7 +1,7 @@
 package com.unrealdinnerbone.yaum.perks;
 
-import com.unrealdinnerbone.yaum.util.DownloadHelper;
-import com.unrealdinnerbone.yaum.util.Reference;
+import com.unrealdinnerbone.yaum.libs.helpers.DownloadHelper;
+import com.unrealdinnerbone.yaum.libs.Reference;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;

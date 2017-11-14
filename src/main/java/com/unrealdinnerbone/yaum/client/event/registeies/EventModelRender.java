@@ -1,4 +1,4 @@
-package com.unrealdinnerbone.yaum.events.registeies;
+package com.unrealdinnerbone.yaum.client.event.registeies;
 
 import com.unrealdinnerbone.yaum.api.IYaumBlock;
 import com.unrealdinnerbone.yaum.api.IYaumItem;

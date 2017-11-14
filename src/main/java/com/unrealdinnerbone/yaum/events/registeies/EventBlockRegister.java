@@ -29,7 +29,6 @@ public class EventBlockRegister
         yaum.getLogHelper().info("Starting Block registering for " + MOD_ID + "...");
         for (IYaumBlock iYaumBlock : yaumRegistry.getRegisteredBlocks()) {
             iYaumBlock.getBlock().setUnlocalizedName(iYaumBlock.getBlockName().toLowerCase());
-            iYaumBlock.onRegister();
             iYaumBlock.getBlock().setRegistryName(MOD_ID, iYaumBlock.getBlockName());
             yaum.getLogHelper().debug("Registering Block... " + iYaumBlock.getBlockName());
             event.getRegistry().registerAll(iYaumBlock.getBlock());

@@ -1,10 +1,11 @@
-package com.unrealdinnerbone.yaum.util;
+package com.unrealdinnerbone.yaum.libs.utils;
 
 import com.unrealdinnerbone.yaum.yaum;
 
 import java.util.Calendar;
 
 public class HolidayUtils {
+
     public static Boolean isNewYears = false;
     public static Boolean isAprilFirst = false;
     public static Boolean isHalloween = false;
@@ -27,10 +28,19 @@ public class HolidayUtils {
 
     }
 
-    public static void dateChecker() {
 
+    public static boolean isToday()
+    {
         Calendar calendar = Calendar.getInstance();
         calendar.setTimeInMillis(System.currentTimeMillis());
+        if(calendar.get(2))
+    }
+
+
+
+    public static void dateChecker() {
+
+
 
         switch (calendar.get(2)) {
             case 0: {

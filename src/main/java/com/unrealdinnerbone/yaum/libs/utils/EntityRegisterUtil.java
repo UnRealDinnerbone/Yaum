@@ -1,4 +1,4 @@
-package com.unrealdinnerbone.yaum.util;
+package com.unrealdinnerbone.yaum.util.utils;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;

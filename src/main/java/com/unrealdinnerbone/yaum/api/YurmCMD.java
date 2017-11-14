@@ -1,6 +1,6 @@
 package com.unrealdinnerbone.yaum.api;
 
-import com.unrealdinnerbone.yaum.util.LangHelper;
+import com.unrealdinnerbone.yaum.libs.helpers.LangHelper;
 import net.minecraft.command.ICommandSender;
 import net.minecraft.server.MinecraftServer;
 import net.minecraftforge.server.command.CommandTreeBase;
@@ -18,8 +18,7 @@ public class YurmCMD extends CommandTreeBase {
     public YurmCMD(String ModId, List<YarmCommandBase> baseList) {
         this.ModID = ModId;
         yurmCMDs.put(ModId, this);
-        for(YarmCommandBase base: baseList)
-        {
+        for(YarmCommandBase base: baseList) {
             addSubcommand(base);
         }
     }

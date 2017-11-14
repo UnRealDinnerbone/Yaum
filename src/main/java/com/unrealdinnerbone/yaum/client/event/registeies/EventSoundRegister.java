@@ -1,4 +1,4 @@
-package com.unrealdinnerbone.yaum.events.registeies;
+package com.unrealdinnerbone.yaum.client.event.registeies;
 
 import com.unrealdinnerbone.yaum.api.YaumRegistry;
 import com.unrealdinnerbone.yaum.yaum;
@@ -15,7 +15,6 @@ public class EventSoundRegister
 {
     private final static HashMap<String, EventSoundRegister> eventSoundRegistries = new HashMap<>();
 
-
     private final String MOD_ID;
 
     public EventSoundRegister(String ModID)
@@ -31,7 +30,7 @@ public class EventSoundRegister
     {
         YaumRegistry yaumRegistry = YaumRegistry.getModRegistry(MOD_ID);
         yaum.getLogHelper().info("Starting SoundEvent registering for " + MOD_ID + "...");
-        for (SoundEvent sound : yaumRegistry.getRegistereSounds()) {
+        for (SoundEvent sound : yaumRegistry.getResistedSounds()) {
             yaum.getLogHelper().debug("Registering Sound... " + sound.getSoundName());
             event.getRegistry().registerAll(sound);
         }

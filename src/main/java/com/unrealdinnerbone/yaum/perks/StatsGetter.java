@@ -1,25 +1,23 @@
 package com.unrealdinnerbone.yaum.perks;
 
 import com.google.gson.stream.JsonReader;
-import com.unrealdinnerbone.yaum.util.LogHelper;
-import com.unrealdinnerbone.yaum.util.Reference;
+import com.unrealdinnerbone.yaum.libs.Reference;
 import com.unrealdinnerbone.yaum.yaum;
 import net.minecraft.entity.player.EntityPlayer;
 
+import javax.annotation.Nullable;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
 import java.util.UUID;
 
 public class StatsGetter
 {
 
-    private static final List<Supporter> SUPPORTERS = new ArrayList<>();
+    private static HashMap<UUID, Supporter> supporters = new HashMap<>();
 
     public static void ReadPepsData() {
 
@@ -61,37 +59,37 @@ public class StatsGetter
                         reader.skipValue();
                 }
 
-                SUPPORTERS.add(new Supporter(playerID, cape, elytra, elytraTexture, capeTexture, fancyChat));
+                Supporter supporter = new Supporter(playerID, cape, elytra, elytraTexture, capeTexture, fancyChat);
+                supporters.put(playerID, supporter);
                 reader.endObject();
             }
 
             reader.endObject();
             reader.close();
-        }
-        catch (final MalformedURLException e)
+        } catch (final IOException e)
         {
-            yaum.getLogHelper().info(e.getCause());
+            yaum.getLogHelper().error(e.getCause());
         }
-        catch (final IOException e)
-        {
-            yaum.getLogHelper().info(e.getCause());
-        }
+    }
+
+    public static boolean isSupporter(UUID uuid) {
+        return supporters.containsKey(uuid);
     }
 
     public static boolean isSupporter(EntityPlayer player) {
-
-        for (final Supporter supporter: SUPPORTERS)
-            if (supporter.getPlayerID().equals(player.getUniqueID()))
-                return true;
-        return false;
+        return isSupporter(player.getUniqueID());
     }
 
-    public static final Supporter getSupporterData(EntityPlayer player) {
-
-        for (final Supporter supporter: SUPPORTERS)
-            if (supporter.getPlayerID().equals(player.getUniqueID()))
-                return supporter;
-
-        return null;
+    @Nullable
+    public static Supporter getSupporter(EntityPlayer player) {
+        return getSupporter(player.getUniqueID());
+    }
+    @Nullable
+    public static Supporter getSupporter(UUID uuid) {
+        if(isSupporter(uuid)) {
+            return supporters.get(uuid);
+        }else {
+            return null;
+        }
     }
 }

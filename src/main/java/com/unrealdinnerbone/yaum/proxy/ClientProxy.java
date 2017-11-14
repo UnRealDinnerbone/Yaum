@@ -1,17 +1,17 @@
 package com.unrealdinnerbone.yaum.proxy;
 
-import com.unrealdinnerbone.yaum.events.supports.EventEntityJoinWorld;
-import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class ClientProxy extends CommonProxy
-{
+@SideOnly(Side.CLIENT)
+public class ClientProxy extends CommonProxy {
+
     @Override
     public void onPreInt(FMLPreInitializationEvent event) {
         super.onPreInt(event);
-        MinecraftForge.EVENT_BUS.register(new EventEntityJoinWorld());
     }
 
     @Override
@@ -23,4 +23,5 @@ public class ClientProxy extends CommonProxy
     public void onPostInt(FMLPostInitializationEvent event) {
         super.onPostInt(event);
     }
+
 }
