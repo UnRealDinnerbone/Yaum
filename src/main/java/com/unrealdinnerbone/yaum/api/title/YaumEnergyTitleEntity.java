@@ -1,32 +1,28 @@
 package com.unrealdinnerbone.yaum.api.title;
 
-import com.unrealdinnerbone.yaum.api.YaumFEStorge;
+import com.unrealdinnerbone.yaum.api.YaumFEStorage;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.energy.CapabilityEnergy;
 
 import javax.annotation.Nullable;
 
-public class YarmEnergyTitleEnity extends YaumTileEnity {
+public abstract class YaumEnergyTitleEntity extends TileEntity {
 
-    protected final YaumFEStorge feStorge;
+    protected final YaumFEStorage forgeEnergyStorage;
 
-    public YarmEnergyTitleEnity(String name, int capacity, int maxReceive, int maxExtract, int energy) {
-        super(name);
-        feStorge = new YaumFEStorge(capacity, maxReceive, maxExtract, energy);
+    public YaumEnergyTitleEntity(int capacity, int maxReceive, int maxExtract, int energy,  boolean canExtract, boolean canReceive) {
+        super();
+        forgeEnergyStorage = new YaumFEStorage(capacity, maxReceive, maxExtract, energy, canExtract, canReceive);
     }
-
-    public YaumFEStorge getFEStorge() {
-        return feStorge;
-    }
-
 
     @Nullable
     @Override
     public <T> T getCapability(Capability<T> capability, @Nullable EnumFacing facing) {
         if(capability == CapabilityEnergy.ENERGY) {
-            return CapabilityEnergy.ENERGY.cast(feStorge);
+            return CapabilityEnergy.ENERGY.cast(forgeEnergyStorage);
         } else {
             return super.getCapability(capability, facing);
         }
@@ -41,16 +37,16 @@ public class YarmEnergyTitleEnity extends YaumTileEnity {
     public NBTTagCompound writeToNBT(NBTTagCompound compound)
     {
         compound = super.writeToNBT(compound);
-        return feStorge.writeToNBT(compound);
+        return forgeEnergyStorage.writeToNBT(compound);
     }
 
     @Override
     public void readFromNBT(NBTTagCompound compound) {
         super.readFromNBT(compound);
-        feStorge.readFromNBT(compound);
+        forgeEnergyStorage.readFromNBT(compound);
     }
 
-    public YaumFEStorge getStorge() {
-        return feStorge;
+    public YaumFEStorage getFEStorage() {
+        return forgeEnergyStorage;
     }
 }

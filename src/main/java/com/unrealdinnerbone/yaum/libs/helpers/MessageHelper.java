@@ -1,5 +1,6 @@
-package com.unrealdinnerbone.yaum.util;
+package com.unrealdinnerbone.yaum.libs.helpers;
 
+import com.unrealdinnerbone.yaum.libs.utils.ServerUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiNewChat;
 import net.minecraft.command.ICommandSender;
@@ -29,7 +30,6 @@ public class MessageHelper {
 
     @SideOnly(Side.CLIENT)
     public static void sendSpamlessMessage(int messageID, TextComponentString message) {
-
         final GuiNewChat chat = Minecraft.getMinecraft().ingameGUI.getChatGUI();
         chat.printChatMessageWithOptionalDeletion(message, messageID);
     }

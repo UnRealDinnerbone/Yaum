@@ -1,11 +1,8 @@
-package com.unrealdinnerbone.yaum.util;
+package com.unrealdinnerbone.yaum.libs.helpers;
 
 import net.minecraft.util.text.translation.I18n;
 
 public class LangHelper {
-
-
-
 
     private String MOD_ID;
 

@@ -1,4 +1,4 @@
-package com.unrealdinnerbone.yaum.util;
+package com.unrealdinnerbone.yaum.libs.utils;
 
 import java.util.Random;
 

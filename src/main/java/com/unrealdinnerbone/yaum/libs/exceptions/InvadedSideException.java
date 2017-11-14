@@ -1,4 +1,4 @@
-package com.unrealdinnerbone.yaum.util;
+package com.unrealdinnerbone.yaum.libs.exceptions;
 
 public class InvadedSideException extends Exception
 {

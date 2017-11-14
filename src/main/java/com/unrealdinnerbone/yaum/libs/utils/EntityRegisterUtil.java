@@ -1,4 +1,4 @@
-package com.unrealdinnerbone.yaum.util.utils;
+package com.unrealdinnerbone.yaum.libs.utils;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
@@ -19,10 +19,10 @@ public class EntityRegisterUtil {
 
   public void registerEntity(ResourceLocation resourceLocation, Class<? extends Entity> entityClass,  IRenderFactory renderFactory, String entityName, int eggPrimary, int eggSecondary)
   {
-
     EntityRegistry.registerModEntity(resourceLocation, entityClass, entityName, id, this.mod, 64, 3, true, eggPrimary, eggSecondary);
 
     //Todo Move to client only sytem
+    if(ServerUtils.isClient())
     RenderingRegistry.registerEntityRenderingHandler(entityClass, renderFactory);
   }
 

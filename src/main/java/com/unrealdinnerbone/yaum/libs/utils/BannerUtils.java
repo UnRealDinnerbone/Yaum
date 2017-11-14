@@ -1,4 +1,4 @@
-package com.unrealdinnerbone.yaum.util;
+package com.unrealdinnerbone.yaum.libs.utils;
 
 import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.ItemBanner;

@@ -1,25 +1,24 @@
-package com.unrealdinnerbone.yaum.util;
+package com.unrealdinnerbone.yaum.libs.helpers;
 
-import net.minecraftforge.fml.common.FMLLog;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.util.ArrayList;
-import java.util.List;
 
 public class LogHelper {
 
     private String modId;
+    private Logger logger;
 
     public LogHelper(String modid)
     {
         modId = modid;
+        logger = LogManager.getLogger(modid);
     }
 
     private void log(Level logLevel, Object object) {
 
-        FMLLog.log(modId, logLevel, String.valueOf(object));
+        logger.log(logLevel, String.valueOf(object));
     }
 
     public void all(Object object) {
