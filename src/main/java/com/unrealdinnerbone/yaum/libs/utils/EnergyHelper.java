@@ -9,15 +9,6 @@ import javax.annotation.Nullable;
 
 public class EnergyHelper {
 
-    public static int getAmountOfEnergyStorgeLeft(TileEntity tileEntity, EnumFacing side) {
-        IEnergyStorage storage = getEnergyCapability(tileEntity, side);
-        if (storage == null) {
-            return -1;
-        } else {
-            return storage.getMaxEnergyStored() - storage.getEnergyStored();
-        }
-    }
-
     @Nullable
     public static IEnergyStorage getEnergyCapability(TileEntity tileEntity, EnumFacing side) {
         return hasEnergyCapability(tileEntity, side) ? tileEntity.getCapability(CapabilityEnergy.ENERGY, side) : null;
@@ -35,9 +26,9 @@ public class EnergyHelper {
             if(iESSender.getEnergyStored() < amount) {
                 energy -= iESSender.getEnergyStored();
             }
-            int powerLeft = amount - iESSender.getEnergyStored();
+            int powerLeft = iESSender.getEnergyStored() - amount;
             iESSender.extractEnergy(energy, false);
-            return powerLeft + iESReciver.receiveEnergy(energy, false);
+            return powerLeft - iESReciver.receiveEnergy(energy, false);
         }else {
             return -1;
         }
@@ -45,17 +36,17 @@ public class EnergyHelper {
 
 
 
-    public static void giveEnergyToAllSides(TileEntity tileEntitySender, int amount) {
+    public static void giveEnergyOutFormSides(TileEntity tileEntitySender, int amount, EnumFacing... sides) {
         if(tileEntitySender != null)
         {
-            for (EnumFacing side : EnumFacing.VALUES) {
+            for (EnumFacing side : sides) {
                 TileEntity tileEntityReciver = tileEntitySender.getWorld().getTileEntity(tileEntitySender.getPos().offset(side));
                 if (tileEntityReciver != null) {
                     IEnergyStorage iESSender = getEnergyCapability(tileEntitySender, side);
                     if(iESSender != null) {
-                        IEnergyStorage iEReciver = getEnergyCapability(tileEntityReciver, side);
+                        IEnergyStorage iEReciver = getEnergyCapability(tileEntityReciver, side.getOpposite());
                         if(iEReciver != null) {
-                            giveEnergyToTileEntity(iESSender, iEReciver, amount);
+                           giveEnergyToTileEntity(iESSender, iEReciver, amount);
                         }
                     }
                 }

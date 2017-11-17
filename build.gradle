@@ -1,21 +1,16 @@
-buildscript
-{
-	repositories
-    {
+buildscript {
+	repositories {
 		jcenter()
-        maven 
-		{ 
-				url = "http://files.minecraftforge.net/maven" 
+        maven {
+			url = "http://files.minecraftforge.net/maven"
 		}
-        maven
-		{
-			url "https://plugins.gradle.org/m2/"
+        maven {
+			url = "https://plugins.gradle.org/m2/"
 		}
 	}
-	dependencies
-	{
-		classpath 'net.minecraftforge.gradle:ForgeGradle:2.3-SNAPSHOT'
-        classpath "gradle.plugin.com.matthewprenger:CurseGradle:1.0.9"
+	dependencies {
+		classpath 'net.minecraftforge.gradle:ForgeGradle:+'
+        classpath "gradle.plugin.com.matthewprenger:CurseGradle:+"
 	}
 }
 
@@ -54,24 +49,55 @@ processResources
 	rename '(.+_at.cfg)', 'META-INF/$1'
 }
 
-jar 
-{
-	manifest 
-	{
+repositories {
+
+	maven {
+		name = "tterrag maven"
+		url = "http://maven.tterrag.com/"
+	}
+	maven {
+		name = "CoFH Maven"
+		url = "http://maven.covers1624.net"
+	}
+	maven {
+		name = "Class"
+		url = "https://oss.sonatype.org/content/groups/public/"
+	}
+
+}
+
+configurations {
+	shade
+	compile.extendsFrom shade
+}
+
+dependencies {
+	deobfCompile "mcjty.theoneprobe:TheOneProbe-1.12:+"
+	deobfCompile "cofh:RedstoneFlux:+:universal"
+	shade "io.github.lukehutch:fast-classpath-scanner:+"
+}
+
+
+jar {
+	configurations.shade.each { dep ->
+		from(project.zipTree(dep)){
+			exclude 'META-INF', 'META-INF/**'
+		}
+	}
+	manifest {
 		attributes 'FMLAT': '${mod_name}_at.cfg'
 	}
 }
-curseforge 
-{
+
+
+curseforge {
     apiKey = project.curse_api_key
-    project 
-	{
+    project {
 		id = project.curse_project_id
 		changelogType = "markdown"
 		changelog = file('changelog.md')
 		releaseType = project.release_type
-		mainArtifact(jar) 
-		{
+		mainArtifact(jar) {
             displayName = "${mod_name}-${minecraft_version}-${mod_verison}-universal"
         }
     }

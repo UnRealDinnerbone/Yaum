@@ -14,6 +14,10 @@ public class YaumFEStorage extends EnergyStorage {
         this.canReceive = canReceive;
     }
 
+    public void setEnergy(int level) {
+        this.energy = level;
+    }
+
 
     //Called for inside block use ignores energy max input
     public int generateEnergy(int amount) {
@@ -45,6 +49,8 @@ public class YaumFEStorage extends EnergyStorage {
     public void readFromNBT(NBTTagCompound compound) {
         energy = compound.getInteger("energy");
     }
+
+
 
 
     public int getMaxExtract() {
