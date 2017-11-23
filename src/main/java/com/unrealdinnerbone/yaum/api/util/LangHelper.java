@@ -1,4 +1,4 @@
-package com.unrealdinnerbone.yaum.libs.helpers;
+package com.unrealdinnerbone.yaum.api.util;
 
 import net.minecraft.util.text.translation.I18n;
 
@@ -33,9 +33,6 @@ public class LangHelper {
         }
 
         public String translateMessage(String ModId, String message) {
-            if (this.name == "")
-                return I18n.translateToLocal(message);
-
             return I18n.translateToLocal(ModId  + name + message + "");
         }
     }

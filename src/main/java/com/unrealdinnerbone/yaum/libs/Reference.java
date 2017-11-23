@@ -5,7 +5,7 @@ import net.minecraft.util.ResourceLocation;
 public class Reference
 {
   public static final String MOD_ID = "yaum";
-  public static final String MOD_NAME = "YAUM - (Yet Another Util Mod)";
+  public static final String MOD_NAME = "YAUM - (Yet Another util Mod)";
   public static final String VERSION = "1.3.0";
   public static final String MC_VERSION = "1.12";
   public static final String SERVER_SIDE = "com.unrealdinnerbone.yaum.proxy.ServerProxy";

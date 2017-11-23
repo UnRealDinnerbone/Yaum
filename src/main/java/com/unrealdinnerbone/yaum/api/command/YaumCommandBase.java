@@ -1,4 +1,4 @@
-package com.unrealdinnerbone.yaum.api;
+package com.unrealdinnerbone.yaum.api.command;
 
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.ICommandSender;
@@ -9,7 +9,7 @@ import javax.annotation.Nullable;
 import java.util.Collections;
 import java.util.List;
 
-public abstract class YarmCommandBase extends CommandBase {
+public abstract class YaumCommandBase extends CommandBase {
 
     @Override
     public int getRequiredPermissionLevel() {

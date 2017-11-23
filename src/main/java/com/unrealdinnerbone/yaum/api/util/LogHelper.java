@@ -1,4 +1,4 @@
-package com.unrealdinnerbone.yaum.libs.helpers;
+package com.unrealdinnerbone.yaum.api.util;
 
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;

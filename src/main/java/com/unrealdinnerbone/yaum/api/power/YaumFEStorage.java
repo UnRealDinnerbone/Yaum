@@ -1,4 +1,4 @@
-package com.unrealdinnerbone.yaum.api;
+package com.unrealdinnerbone.yaum.api.power;
 
 import net.minecraft.nbt.*;
 import net.minecraftforge.energy.EnergyStorage;

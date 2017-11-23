@@ -1,6 +1,6 @@
-package com.unrealdinnerbone.yaum.api.title;
+package com.unrealdinnerbone.yaum.api.power.title;
 
-import com.unrealdinnerbone.yaum.api.YaumFEStorage;
+import com.unrealdinnerbone.yaum.api.power.YaumFEStorage;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.play.server.SPacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;

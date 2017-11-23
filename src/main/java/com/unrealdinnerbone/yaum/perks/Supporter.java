@@ -50,7 +50,7 @@ public class Supporter {
         return ELYTRA;
     }
 
-    public boolean isFancyChat() {
+    public boolean hasFancyChat() {
         return FANCY_CHAT;
     }
 }

@@ -31,8 +31,8 @@ public class PlayerUtils {
             try {
                 Thread.sleep(100);
             } catch (final InterruptedException e) {
-                yaum.getLogHelper().warn("There was and error with the texture thread pool");
-                yaum.getLogHelper().warn(e.getMessage());
+                yaum.getRegistry().getLogHelper().warn("There was and error with the texture thread pool");
+                yaum.getRegistry().getLogHelper().warn(e.getMessage());
                 return;
             }
             Minecraft.getMinecraft().addScheduledTask(() -> {
@@ -52,18 +52,15 @@ public class PlayerUtils {
     @SideOnly(Side.CLIENT)
     public static void changePlayerTexture(Type type, UUID uuid, ResourceLocation texture) {
         NetworkPlayerInfo networkPlayer = Minecraft.getMinecraft().getConnection().getPlayerInfo(uuid);
-        if (networkPlayer != null) {
-            if (texture != null) {
-                try {
-                    Map<Type, ResourceLocation> maps;
-                    maps = Minecraft.getMinecraft().getConnection().getPlayerInfo(uuid).playerTextures;
-                    maps.put(type, texture);
-                } catch (Exception e) {
-                    yaum.getLogHelper().warn("There was and error while trying change a player texture");
-                    yaum.getLogHelper().warn(e.getMessage());
-                }
+        if (texture != null) {
+            try {
+                Map<Type, ResourceLocation> maps;
+                maps = Minecraft.getMinecraft().getConnection().getPlayerInfo(uuid).playerTextures;
+                maps.put(type, texture);
+            } catch (Exception e) {
+                yaum.getRegistry().getLogHelper().warn("There was and error while trying change a player texture");
+                yaum.getRegistry().getLogHelper().warn(e.getMessage());
             }
-            return;
         }
         return;
     }

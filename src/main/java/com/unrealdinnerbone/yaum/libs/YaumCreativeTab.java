@@ -1,6 +1,6 @@
 package com.unrealdinnerbone.yaum.libs;
 
-import com.unrealdinnerbone.yaum.libs.helpers.LangHelper;
+import com.unrealdinnerbone.yaum.api.util.LangHelper;
 import com.unrealdinnerbone.yaum.yaum;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Items;

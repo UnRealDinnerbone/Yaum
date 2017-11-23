@@ -1,31 +1,30 @@
-package com.unrealdinnerbone.yaum.api;
+package com.unrealdinnerbone.yaum.api.command;
 
-import com.unrealdinnerbone.yaum.libs.helpers.LangHelper;
+import com.unrealdinnerbone.yaum.api.register.YaumRegistry;
+import com.unrealdinnerbone.yaum.api.util.LangHelper;
 import net.minecraft.command.ICommandSender;
 import net.minecraft.server.MinecraftServer;
 import net.minecraftforge.server.command.CommandTreeBase;
 
 import java.util.HashMap;
-import java.util.List;
 
 public class YurmCMD extends CommandTreeBase {
 
-
     private static HashMap<String, YurmCMD> yurmCMDs = new HashMap<>();
 
-    private final String ModID;
+    private final YaumRegistry yaumRegistry;
 
-    public YurmCMD(String ModId, List<YarmCommandBase> baseList) {
-        this.ModID = ModId;
+    public YurmCMD(String ModId, YaumRegistry yaumRegistry) {
+        this.yaumRegistry = yaumRegistry;
         yurmCMDs.put(ModId, this);
-        for(YarmCommandBase base: baseList) {
+        for(YaumCommandBase base: yaumRegistry.getResistedCommands()) {
             addSubcommand(base);
         }
     }
 
     @Override
     public String getName() {
-        return ModID;
+        return yaumRegistry.getModID();
     }
 
     @Override
@@ -40,7 +39,7 @@ public class YurmCMD extends CommandTreeBase {
 
     @Override
     public String getUsage(ICommandSender iCommandSender) {
-        return YaumRegistry.getModRegistry(ModID).getLangHelper().translateMessage(LangHelper.Type.COMMAND, "usage.base");
+        return yaumRegistry.getLangHelper().translateMessage(LangHelper.Type.COMMAND, "usage.base");
     }
 
 }

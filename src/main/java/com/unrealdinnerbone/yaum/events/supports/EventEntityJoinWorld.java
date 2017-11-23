@@ -24,18 +24,16 @@ import static com.mojang.authlib.minecraft.MinecraftProfileTexture.Type.ELYTRA;
 public class EventEntityJoinWorld
 {
 
-
     @SubscribeEvent
     public static void entityJoinWorld(EntityJoinWorldEvent event) {
         if (event.getEntity() instanceof AbstractClientPlayer) {
             final AbstractClientPlayer player = (AbstractClientPlayer) event.getEntity();
             final Supporter supporter = StatsGetter.getSupporter(player);
             if (supporter != null) {
-                if (supporter.hasCape() && supporter.hasElytra() && YaumConfiguration.ClientConfig.elytraEnabled && YaumConfiguration.ClientConfig.capesEnabled) {
-                    PlayerUtils.makePlayerFancy(player, supporter.getCapeTexture(), supporter.getElytraTexture());
-                } else if (supporter.hasCape() && YaumConfiguration.ClientConfig.capesEnabled) {
+                if (supporter.hasCape() && YaumConfiguration.ClientConfig.capesEnabled) {
                     PlayerUtils.changePlayerTexture(MinecraftProfileTexture.Type.CAPE, player, supporter.getCapeTexture());
-                } else if (supporter.hasElytra() && YaumConfiguration.ClientConfig.elytraEnabled) {
+                }
+                if (supporter.hasElytra() && YaumConfiguration.ClientConfig.elytraEnabled) {
                     PlayerUtils.changePlayerTexture(MinecraftProfileTexture.Type.ELYTRA, player, supporter.getElytraTexture());
                 }
             }

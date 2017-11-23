@@ -68,7 +68,7 @@ public class StatsGetter
             reader.close();
         } catch (final IOException e)
         {
-            yaum.getLogHelper().error(e.getCause());
+            yaum.getRegistry().getLogHelper().error(e.getCause());
         }
     }
 

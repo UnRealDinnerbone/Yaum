@@ -1,38 +1,24 @@
 package com.unrealdinnerbone.yaum.events.registeies;
 
-import com.unrealdinnerbone.yaum.api.IYaumBlock;
-import com.unrealdinnerbone.yaum.api.YaumRegistry;
-import com.unrealdinnerbone.yaum.yaum;
+import com.unrealdinnerbone.yaum.api.register.YaumRegistry;
+import com.unrealdinnerbone.yaum.libs.Reference;
 import net.minecraft.block.Block;
-import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-import java.util.HashMap;
-
+@Mod.EventBusSubscriber(modid = Reference.MOD_ID)
 public class EventBlockRegister
 {
-    public static HashMap<String, EventBlockRegister> blockRegisterEvents = new HashMap<>();
-
-    private final String MOD_ID;
-
-    public EventBlockRegister(String ModID)
-    {
-        this.MOD_ID = ModID;
-        blockRegisterEvents.put(ModID, this);
-        MinecraftForge.EVENT_BUS.register(this);
-    }
-
     @SubscribeEvent
     public void registerBlocks(RegistryEvent.Register<Block> event) {
-        YaumRegistry yaumRegistry = YaumRegistry.getModRegistry(MOD_ID);
-        yaum.getLogHelper().info("Starting Block registering for " + MOD_ID + "...");
-        for (IYaumBlock iYaumBlock : yaumRegistry.getRegisteredBlocks()) {
-            iYaumBlock.getBlock().setUnlocalizedName(iYaumBlock.getBlockName().toLowerCase());
-            iYaumBlock.getBlock().setRegistryName(MOD_ID, iYaumBlock.getBlockName());
-            yaum.getLogHelper().debug("Registering Block... " + iYaumBlock.getBlockName());
-            event.getRegistry().registerAll(iYaumBlock.getBlock());
+        for(YaumRegistry yaumRegistry: YaumRegistry.getRegistries().values()) {
+            if (yaumRegistry.getRegisteredBlocks() != null && yaumRegistry.getRegisteredBlocks().size() > 0) {
+                yaumRegistry.getLogHelper().info("Starting Block Regeneration for " + yaumRegistry.getRegisteredBlocks().size()  + " block(s)");
+                yaumRegistry.getRegisteredBlocks().forEach(iYaumBlock -> iYaumBlock.registerBlock(event, yaumRegistry));
+                yaumRegistry.getLogHelper().info("Finished Block Regeneration for " + yaumRegistry.getRegisteredBlocks().size()  + " block(s)");
+            }
         }
-        yaum.getLogHelper().info("Finished Block registering for " + MOD_ID);
+
     }
 }
