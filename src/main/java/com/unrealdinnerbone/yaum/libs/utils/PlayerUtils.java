@@ -1,19 +1,16 @@
 package com.unrealdinnerbone.yaum.libs.utils;
 
 import com.mojang.authlib.minecraft.MinecraftProfileTexture.Type;
-import com.unrealdinnerbone.yaum.yaum;
+import com.unrealdinnerbone.yaum.Yaum;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.AbstractClientPlayer;
 import net.minecraft.client.network.NetworkPlayerInfo;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import java.lang.reflect.Field;
 import java.util.Map;
-import java.util.Objects;
 import java.util.UUID;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.LinkedBlockingQueue;
@@ -29,16 +26,15 @@ public class PlayerUtils {
 
         THREAD_POOL.submit(() -> {
             try {
-                Thread.sleep(100);
+                Thread.sleep(1000);
+                Minecraft.getMinecraft().addScheduledTask(() -> {
+                    changePlayerTexture(Type.CAPE, player, cape);
+                    changePlayerTexture(Type.ELYTRA, player, elytra);
+                });
             } catch (final InterruptedException e) {
-                yaum.getRegistry().getLogHelper().warn("There was and error with the texture thread pool");
-                yaum.getRegistry().getLogHelper().warn(e.getMessage());
-                return;
+                Yaum.getRegistry().getLogHelper().warn("There was and error with the texture thread pool");
+                Yaum.getRegistry().getLogHelper().warn(e.getMessage());
             }
-            Minecraft.getMinecraft().addScheduledTask(() -> {
-                changePlayerTexture(Type.CAPE, player, cape);
-                changePlayerTexture(Type.ELYTRA, player, elytra);
-            });
         });
     }
 
@@ -58,8 +54,8 @@ public class PlayerUtils {
                 maps = Minecraft.getMinecraft().getConnection().getPlayerInfo(uuid).playerTextures;
                 maps.put(type, texture);
             } catch (Exception e) {
-                yaum.getRegistry().getLogHelper().warn("There was and error while trying change a player texture");
-                yaum.getRegistry().getLogHelper().warn(e.getMessage());
+                Yaum.getRegistry().getLogHelper().warn("There was and error while trying change a player texture");
+                Yaum.getRegistry().getLogHelper().warn(e.getMessage());
             }
         }
         return;

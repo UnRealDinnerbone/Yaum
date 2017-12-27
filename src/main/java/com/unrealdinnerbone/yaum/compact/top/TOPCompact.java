@@ -8,7 +8,7 @@ public class TOPCompact
     public static void init()
     {
         if (Loader.isModLoaded("theoneprobe")) {
-            FMLInterModComms.sendFunctionMessage("theoneprobe", "getTheOneProbe", "com.unrealdinnerbone.yaum.compact.top.TOPGetter");
+            FMLInterModComms.sendFunctionMessage("theoneprobe", "getTheOneProbe", "com.unrealdinnerbone.Yaum.compact.top.TOPGetter");
         }
     }
 }

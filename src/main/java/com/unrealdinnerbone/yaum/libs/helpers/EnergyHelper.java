@@ -1,4 +1,4 @@
-package com.unrealdinnerbone.yaum.libs.utils;
+package com.unrealdinnerbone.yaum.libs.helpers;
 
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;

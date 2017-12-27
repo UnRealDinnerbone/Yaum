@@ -14,7 +14,7 @@ public class TOPGetter implements Function<ITheOneProbe, Void> {
         theOneProbe.registerProvider(new IProbeInfoProvider() {
             @Override
             public String getID() {
-                return "yaum:default";
+                return "Yaum:default";
             }
 
             @Override

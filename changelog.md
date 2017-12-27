@@ -1,11 +1,12 @@
-#1.12.1
+* ## 1.4.0
+    * Changed Configs Around a bit
+    * Add Config to hide the recipe book
 * ## 1.3.1
 	* I Forget stuff i did
 * ## 1.3.0
     * Updated to 1.12.1
     * Fixed bug where supporter chat msg where only the msg not the name
 
-#1.12.0
 * ## 1.2.0
    * Added Enchament Util
    * Added Commend Registry Helper

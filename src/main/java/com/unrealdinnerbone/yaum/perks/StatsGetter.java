@@ -1,8 +1,10 @@
 package com.unrealdinnerbone.yaum.perks;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.gson.stream.JsonReader;
 import com.unrealdinnerbone.yaum.libs.Reference;
-import com.unrealdinnerbone.yaum.yaum;
+import com.unrealdinnerbone.yaum.Yaum;
 import net.minecraft.entity.player.EntityPlayer;
 
 import javax.annotation.Nullable;
@@ -25,50 +27,13 @@ public class StatsGetter
 
             final HttpURLConnection connection = (HttpURLConnection) new URL(Reference.SUPPORTER_DATA_JSON).openConnection();
             final JsonReader reader = new JsonReader(new InputStreamReader((InputStream) connection.getContent()));
-
-            reader.beginObject();
-
-            while (reader.hasNext()) {
-
-                reader.nextName();
-                UUID playerID = null;
-                boolean cape = false;
-                boolean elytra = false;
-                boolean fancyChat = false;
-                String elytraTexture = null;
-                String capeTexture = null;
-                reader.beginObject();
-
-                while (reader.hasNext()) {
-
-                    final String name = reader.nextName();
-
-                    if (name.equals("playerID")) {
-                        playerID = UUID.fromString(reader.nextString());
-                    } else if (name.equals("cape")) {
-                        cape = reader.nextBoolean();
-                    } else if (name.equals("elytra")) {
-                        elytra = reader.nextBoolean();
-                    } else if (name.equals("elytraTexture")) {
-                        elytraTexture = reader.nextString();
-                    } else if (name.equals("capeTexture")) {
-                        capeTexture = reader.nextString();
-                    } else if (name.equals("fancyChat")) {
-                        fancyChat = reader.nextBoolean();
-                    } else
-                        reader.skipValue();
-                }
-
-                Supporter supporter = new Supporter(playerID, cape, elytra, elytraTexture, capeTexture, fancyChat);
-                supporters.put(playerID, supporter);
-                reader.endObject();
-            }
-
+            Gson gson = new GsonBuilder().create();
+            //Todo THIWS
+            //Supporters supporters = gson.fromJson(reader, Supporters.class);
             reader.endObject();
             reader.close();
-        } catch (final IOException e)
-        {
-            yaum.getRegistry().getLogHelper().error(e.getCause());
+        } catch (final IOException e) {
+            Yaum.getRegistry().getLogHelper().error(e.getCause());
         }
     }
 

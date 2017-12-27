@@ -74,7 +74,6 @@ configurations {
 dependencies {
 	deobfCompile "mcjty.theoneprobe:TheOneProbe-1.12:+"
 	deobfCompile "cofh:RedstoneFlux:+:universal"
-	shade "io.github.lukehutch:fast-classpath-scanner:+"
 }
 
 
@@ -85,7 +84,7 @@ jar {
 		}
 	}
 	manifest {
-		attributes 'FMLAT': '${mod_name}_at.cfg'
+		attributes 'FMLAT': 'yaum_at.cfg'
 	}
 }
 

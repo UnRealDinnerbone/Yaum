@@ -11,13 +11,13 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-@Mod.EventBusSubscriber(modid = Reference.MOD_ID, value = Side.SERVER)
 @SideOnly(Side.SERVER)
+@Mod.EventBusSubscriber(modid = Reference.MOD_ID, value = Side.SERVER)
 public class EventChat {
 
     @SubscribeEvent
     public static void onChat(ServerChatEvent event) {
-        if (YaumConfiguration.GeneralConfig.supporterChat) {
+        if (YaumConfiguration.GeneralConfig.General.supporterChat) {
             if (StatsGetter.isSupporter(event.getPlayer())) {
                 if(StatsGetter.getSupporter(event.getPlayer().getUniqueID()).hasFancyChat()) {
                     event.setComponent(new TextComponentString("<" + event.getUsername() + ">" + ColorUtil.format(event.getMessage())));
