@@ -17,7 +17,7 @@ import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
-public class PlayerUtils {
+public class PlayerUtil {
 
     private static final ExecutorService THREAD_POOL = new ThreadPoolExecutor(0, 2, 1L, TimeUnit.MINUTES, new LinkedBlockingQueue());
 
@@ -37,7 +37,6 @@ public class PlayerUtils {
             }
         });
     }
-
 
 
     @SideOnly(Side.CLIENT)

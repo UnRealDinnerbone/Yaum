@@ -1,3 +1,3 @@
 # Yaum
-Yet Another Util Modaftion
-It Adds Util Things!
+Yet Another util Modaftion
+It Adds util Things!

@@ -8,7 +8,7 @@
     * Fixed bug where supporter chat msg where only the msg not the name
 
 * ## 1.2.0
-   * Added Enchament Util
+   * Added Enchament util
    * Added Commend Registry Helper
    * Fixed LangHelper to be per mod not for yaum only
 * ## 1.1.1

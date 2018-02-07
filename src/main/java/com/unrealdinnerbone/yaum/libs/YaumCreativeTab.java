@@ -9,7 +9,7 @@ import net.minecraft.item.ItemStack;
 public class YaumCreativeTab extends CreativeTabs {
 
     public YaumCreativeTab(String unlocalLisedName) {
-        super(Yaum.getRegistry().getLangHelper().translateMessage(LangHelper.Type.TAB, unlocalLisedName));
+        super(Yaum.getLangHelper().translateMessage(LangHelper.Type.TAB, unlocalLisedName));
     }
 
     @Override

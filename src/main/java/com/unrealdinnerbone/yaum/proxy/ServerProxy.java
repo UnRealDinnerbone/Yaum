@@ -1,7 +1,8 @@
 package com.unrealdinnerbone.yaum.proxy;
 
-import com.unrealdinnerbone.yaum.api.register.YaumRegistry;
-import com.unrealdinnerbone.yaum.api.command.YurmCMD;
+import com.unrealdinnerbone.yaum.api.Register;
+import com.unrealdinnerbone.yaum.api.command.YaumCommandBase;
+import net.minecraftforge.fml.common.ModContainer;
 import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -11,11 +12,6 @@ public class ServerProxy extends CommonProxy
 {
     @Override
     public void onServerStart(FMLServerStartingEvent event) {
-        for (YaumRegistry yaumRegistry : YaumRegistry.getRegistries().values()) {
-            if (yaumRegistry.getResistedCommands().size() > 0) {
-                event.registerServerCommand(new YurmCMD(yaumRegistry.getModID(), yaumRegistry));
-            }
-        }
-
+        Register.getRegisteredCommands().keySet().stream().map(modContainer -> new YaumCommandBase(modContainer.getModId(), Register.getRegisteredCommands().get(modContainer))).forEach(event::registerServerCommand);
     }
 }

@@ -22,7 +22,7 @@ public class EntityRegisterUtil {
     EntityRegistry.registerModEntity(resourceLocation, entityClass, entityName, id, this.mod, 64, 3, true, eggPrimary, eggSecondary);
 
     //Todo Move to client only sytem
-    if(ServerUtils.isClient())
+    if(ServerUtil.isClient())
     RenderingRegistry.registerEntityRenderingHandler(entityClass, renderFactory);
   }
 

@@ -1,6 +1,5 @@
 package com.unrealdinnerbone.yaum.libs.utils;
 
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.server.MinecraftServer;
 import net.minecraftforge.fml.common.FMLCommonHandler;
@@ -9,7 +8,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ServerUtils {
+public class ServerUtil {
 
     public static MinecraftServer getServer() {
         return FMLCommonHandler.instance().getMinecraftServerInstance();
@@ -30,6 +29,6 @@ public class ServerUtils {
     }
 
     public static List<EntityPlayerMP> getOnlinePlayers() {
-        return new ArrayList<>(ServerUtils.getServer().getPlayerList().getPlayers());
+        return new ArrayList<>(ServerUtil.getServer().getPlayerList().getPlayers());
     }
 }

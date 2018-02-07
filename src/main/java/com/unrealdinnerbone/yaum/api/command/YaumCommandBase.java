@@ -6,14 +6,14 @@ import net.minecraftforge.server.command.CommandTreeBase;
 
 import java.util.ArrayList;
 
-public class YurmSubCommand extends CommandTreeBase {
+public class YaumCommandBase extends CommandTreeBase {
 
 
     private final String ModId;
 
-    public YurmSubCommand(String ModId, ArrayList<YurmSubCommand> subCommands) {
+    public YaumCommandBase(String ModId, ArrayList<YaumSubCommand> subCommands) {
         this.ModId = ModId;
-        subCommands.forEach(subCommand -> addSubcommand(subCommand));
+        subCommands.forEach(this::addSubcommand);
     }
 
     @Override

@@ -2,6 +2,7 @@ package com.unrealdinnerbone.yaum.client.gui;
 
 import java.util.Set;
 
+import com.unrealdinnerbone.yaum.Yaum;
 import com.unrealdinnerbone.yaum.libs.Reference;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreen;
@@ -25,7 +26,7 @@ public class ModConfigGUI implements IModGuiFactory
   @SideOnly(Side.CLIENT)
   @Override
   public GuiScreen createConfigGui(GuiScreen guiScreen) {
-    return new ModGuiConfig(guiScreen, Reference.MOD_ID, Reference.MOD_NAME);
+    return new ModGuiConfig(guiScreen, Yaum.getModContainer());
   }
 
   @Override

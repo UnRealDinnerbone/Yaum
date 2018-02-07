@@ -1,14 +1,12 @@
 package com.unrealdinnerbone.yaum.api.block;
 
-import com.unrealdinnerbone.yaum.api.register.YaumRegistry;
+import com.unrealdinnerbone.yaum.libs.helpers.TextureHelper;
 import net.minecraft.block.Block;
-import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraftforge.client.event.ModelRegistryEvent;
-import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.event.RegistryEvent;
-import net.minecraftforge.fml.common.FMLCommonHandler;
+import net.minecraftforge.fml.common.ModContainer;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -18,22 +16,19 @@ public interface IYaumBlock {
 
     String getBlockName();
 
-    default void registerBlock(RegistryEvent.Register<Block> event, YaumRegistry registry) {
+    default void registerBlock(RegistryEvent.Register<Block> event, ModContainer modContainer) {
         getBlock().setUnlocalizedName(getBlockName().toLowerCase());
-        getBlock().setRegistryName(registry.getModID(), getBlockName());
-        registry.getLogHelper().debug("Registering Block... " + getBlockName());
+        getBlock().setRegistryName(modContainer.getModId(), getBlockName());
         event.getRegistry().register(getBlock());
     }
 
-    default void registerItemBlock(RegistryEvent.Register<Item> event, YaumRegistry registry) {
-        registry.getLogHelper().debug("Registering ItemBlock... " + getBlockName());
-        event.getRegistry().register(new ItemBlock(getBlock()).setRegistryName(registry.getModID(), getBlockName()));
+    default void registerItemBlock(RegistryEvent.Register<Item> event, ModContainer modContainer) {
+        event.getRegistry().register(new ItemBlock(getBlock()).setRegistryName(modContainer.getModId(), getBlockName()));
     }
 
     @SideOnly(Side.CLIENT)
-    default void renderBlock(ModelRegistryEvent event, YaumRegistry registry) {
-        registry.getLogHelper().debug("Rendering Block... " + getBlockName());
-        ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(getBlock()), 0, new ModelResourceLocation(getBlock().getRegistryName(), "inventory"));
+    default void renderBlock(ModelRegistryEvent event) {
+        TextureHelper.registerItemTexture(Item.getItemFromBlock(getBlock()), getBlock().getRegistryName());
     }
 
 }

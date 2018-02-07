@@ -1,6 +1,6 @@
 package com.unrealdinnerbone.yaum.libs.helpers;
 
-import com.unrealdinnerbone.yaum.libs.utils.ServerUtils;
+import com.unrealdinnerbone.yaum.libs.utils.ServerUtil;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiNewChat;
 import net.minecraft.command.ICommandSender;
@@ -12,17 +12,17 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class MessageHelper {
 
 
-    public static void sendChatMessageToPlayer(TextComponentString message, EntityPlayer player)
+    public static void sendChatMessage(TextComponentString message, EntityPlayer player)
     {
         player.sendMessage(message);
     }
-    public static void sendChatMessageToSender(TextComponentString message, ICommandSender sender)
+    public static void sendChatMessage(TextComponentString message, ICommandSender sender)
     {
         sender.sendMessage(message);
     }
 
     public static void sendChatMessageServerWide(TextComponentString message) {
-        for (EntityPlayer player : ServerUtils.getServer().getPlayerList().getPlayers()) {
+        for (EntityPlayer player : ServerUtil.getServer().getPlayerList().getPlayers()) {
             player.sendMessage(message);
 
         }
@@ -30,7 +30,8 @@ public class MessageHelper {
 
     @SideOnly(Side.CLIENT)
     public static void sendSpamlessMessage(int messageID, TextComponentString message) {
-        final GuiNewChat chat = Minecraft.getMinecraft().ingameGUI.getChatGUI();
-        chat.printChatMessageWithOptionalDeletion(message, messageID);
+            sendChatMessageServerWide(message);
+// final GuiNewChat chat = Minecraft.getMinecraft().ingameGUI.getChatGUI();
+//        chat.printChatMessageWithOptionalDeletion(message, messageID);
     }
 }

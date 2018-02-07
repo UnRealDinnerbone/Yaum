@@ -1,44 +1,50 @@
 package com.unrealdinnerbone.yaum.libs.utils;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Random;
+import java.util.stream.Collectors;
 
 public enum ColorUtil {
-    BLACK("0"),
-    DBLUE("1"),
-    DGREEN("2"),
-    DAQUA("3"),
-    DRED("4"),
-    DPURPLE("5"),
-    GOLD("6"),
-    GRAY("7"),
-    DGRAY("8"),
-    BLUE("9"),
-    GREEN("a"),
-    AQUA("b"),
-    RED("c"),
-    LPURPLE("d"),
-    YELLOW("e"),
-    WHITE("f"),
-    BOLD("l"),
-    SLANT("o"),
-    UNDERLUNE("n"),
-    STRIKE("m"),
-    MAGIC("k"),
-    RESET("r");
+    BLACK("0", true),
+    DBLUE("1", true),
+    DGREEN("2", true),
+    DAQUA("3", true),
+    DRED("4", true),
+    DPURPLE("5", true),
+    GOLD("6", true),
+    GRAY("7", true),
+    DGRAY("8", true),
+    BLUE("9", true),
+    GREEN("a", true),
+    AQUA("b", true),
+    RED("c", true),
+    LPURPLE("d", true),
+    YELLOW("e", true),
+    WHITE("f", true),
+    BOLD("l", false),
+    SLANT("o", false),
+    UNDERLUNE("n", false),
+    STRIKE("m", false),
+    MAGIC("k", false),
+    RESET("r", false);
 
 
-    public static final ColorUtil[] VALID_COLORS = {BLACK, DBLUE, DGREEN, DAQUA, DRED, DPURPLE, GOLD, GRAY, DGRAY, BLUE, GREEN, AQUA, RED, LPURPLE, YELLOW, WHITE};
+    private final boolean isVaildColor;
     private static final String MCStyle = "\u00A7";
     private final String color;
     private final String number;
 
-    ColorUtil(String num) {
+    ColorUtil(String num, boolean isVaildColor) {
         this.number = num;
         this.color = MCStyle + num;
+        this.isVaildColor = isVaildColor;
     }
 
     public static ColorUtil getRandom() {
-        return VALID_COLORS[new Random().nextInt(VALID_COLORS.length)];
+        List<ColorUtil> colorUtils = Arrays.stream(values()).filter(colorUtil -> colorUtil.isVaildColor).collect(Collectors.toList());
+        return colorUtils.get(new Random().nextInt(colorUtils.size()));
     }
 
     @Override

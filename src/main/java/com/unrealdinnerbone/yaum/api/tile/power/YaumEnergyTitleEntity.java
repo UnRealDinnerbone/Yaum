@@ -1,4 +1,4 @@
-package com.unrealdinnerbone.yaum.api.power.title;
+package com.unrealdinnerbone.yaum.api.tile.power;
 
 import com.unrealdinnerbone.yaum.api.power.YaumFEStorage;
 import net.minecraft.nbt.NBTTagCompound;
@@ -38,7 +38,7 @@ public abstract class YaumEnergyTitleEntity extends TileEntity {
 
     @Override
     public NBTTagCompound writeToNBT(NBTTagCompound compound) {
-        compound = super.writeToNBT(compound);
+        compound = super.writeToNBT(compound.copy());
         return forgeEnergyStorage.writeToNBT(compound);
     }
 

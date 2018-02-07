@@ -19,27 +19,24 @@ import java.util.UUID;
 public class StatsGetter
 {
 
-    private static HashMap<UUID, Supporter> supporters = new HashMap<>();
+    private static Supporters supporters;
 
-    public static void ReadPepsData() {
+    public static void initStats() {
 
         try {
-
             final HttpURLConnection connection = (HttpURLConnection) new URL(Reference.SUPPORTER_DATA_JSON).openConnection();
             final JsonReader reader = new JsonReader(new InputStreamReader((InputStream) connection.getContent()));
             Gson gson = new GsonBuilder().create();
-            //Todo THIWS
-            //Supporters supporters = gson.fromJson(reader, Supporters.class);
-            reader.endObject();
+            supporters = gson.fromJson(reader, Supporters.class);
             reader.close();
         } catch (final IOException e) {
-            Yaum.getRegistry().getLogHelper().error(e.getCause());
+            Yaum.getLogHelper().error("There was and error when loading supporter json, this is ok");
         }
     }
 
     public static boolean isSupporter(UUID uuid) {
-        return supporters.containsKey(uuid);
-    }
+        return supporters.getSupporters().stream().anyMatch(supporter -> supporter.getPlayerID().equals(uuid));
+}
 
     public static boolean isSupporter(EntityPlayer player) {
         return isSupporter(player.getUniqueID());
@@ -51,10 +48,6 @@ public class StatsGetter
     }
     @Nullable
     public static Supporter getSupporter(UUID uuid) {
-        if(isSupporter(uuid)) {
-            return supporters.get(uuid);
-        }else {
-            return null;
-        }
+        return supporters.getSupporters().stream().filter(supporter -> supporter.getPlayerID().equals(uuid)).findFirst().orElse(null);
     }
 }

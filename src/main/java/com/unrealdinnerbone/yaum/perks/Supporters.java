@@ -3,5 +3,9 @@ package com.unrealdinnerbone.yaum.perks;
 import java.util.List;
 
 public class Supporters {
-    public static List<Supporter> supporterList;
+    public List<Supporter> supporters;
+
+    public List<Supporter> getSupporters() {
+        return supporters;
+    }
 }
