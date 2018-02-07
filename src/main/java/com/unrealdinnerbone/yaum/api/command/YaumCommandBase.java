@@ -1,44 +1,40 @@
 package com.unrealdinnerbone.yaum.api.command;
 
-import net.minecraft.command.CommandBase;
 import net.minecraft.command.ICommandSender;
 import net.minecraft.server.MinecraftServer;
-import net.minecraft.util.math.BlockPos;
+import net.minecraftforge.server.command.CommandTreeBase;
 
-import javax.annotation.Nullable;
-import java.util.Collections;
-import java.util.List;
+import java.util.ArrayList;
 
-public abstract class YaumCommandBase extends CommandBase {
+public class YurmSubCommand extends CommandTreeBase {
+
+
+    private final String ModId;
+
+    public YurmSubCommand(String ModId, ArrayList<YurmSubCommand> subCommands) {
+        this.ModId = ModId;
+        subCommands.forEach(subCommand -> addSubcommand(subCommand));
+    }
+
+    @Override
+    public String getName() {
+        return this.ModId;
+    }
+
+    @Override
+    public String getUsage(ICommandSender sender) {
+        return this.ModId;
+    }
 
     @Override
     public int getRequiredPermissionLevel() {
-        return 2;
+        return 0;
     }
 
     @Override
-    public boolean checkPermission(MinecraftServer server, ICommandSender ics) {
-        return getRequiredPermissionLevel() == 0 || !server.isDedicatedServer() || super.checkPermission(server, ics);
-    }
-
-    @Override
-    public String getUsage(ICommandSender iCommandSender) {
-        return '/' + getName();
+    public boolean checkPermission(MinecraftServer minecraftServer, ICommandSender sender) {
+        return true;
     }
 
 
-    @Override
-    public List<String> getTabCompletions(MinecraftServer server, ICommandSender ics, String[] args, @Nullable BlockPos pos) {
-        if (args.length == 0) {
-            return Collections.emptyList();
-        } else if (isUsernameIndex(args, args.length - 1)) {
-            return getListOfStringsMatchingLastWord(args, server.getOnlinePlayerNames());
-        }
-        return super.getTabCompletions(server, ics, args, pos);
-    }
-
-    @Override
-    public boolean isUsernameIndex(String[] strings, int i) {
-        return false;
-    }
 }
