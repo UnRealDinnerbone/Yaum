@@ -17,7 +17,7 @@ public class CommandListOres extends YaumSubCommand  {
     @Override
     public void execute(MinecraftServer server, ICommandSender sender, String[] args) throws CommandException {
         for(Item item: Item.REGISTRY) {
-            String oreName = OreDictionary.getOreName(new ItemStack(item));
+//            String oreName = OreDictionary.getOreName(new ItemStack(item)??);
         }
     }
 }

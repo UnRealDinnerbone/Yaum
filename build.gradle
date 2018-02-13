@@ -72,8 +72,8 @@ configurations {
 }
 
 dependencies {
-	deobfCompile "mcjty.theoneprobe:TheOneProbe-1.12:+"
-	deobfCompile "cofh:RedstoneFlux:+:universal"
+	compile "mcjty.theoneprobe:TheOneProbe-1.12:1.12-1.4.19-11"
+    compile "cofh:RedstoneFlux:+:universal"
 }
 
 
