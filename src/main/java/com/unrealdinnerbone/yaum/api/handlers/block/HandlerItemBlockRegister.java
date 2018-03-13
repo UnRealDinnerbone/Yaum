@@ -1,7 +1,8 @@
-package com.unrealdinnerbone.yaum.api.handlers;
+package com.unrealdinnerbone.yaum.api.handlers.block;
 
 import com.unrealdinnerbone.yaum.Yaum;
 import com.unrealdinnerbone.yaum.api.IYaumRegisterObject;
+import com.unrealdinnerbone.yaum.api.handlers.Handler;
 import com.unrealdinnerbone.yaum.libs.helpers.TextureHelper;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
@@ -19,13 +20,4 @@ public class HandlerItemBlockRegister implements Handler<Item>
             Yaum.getLogHelper().warn("A Class tried to use the Item Block register");
         }
     }
-
-//    @Override
-//        public void render(ModelRegistryEvent event, IYaumRegisterObject<Item> registerObject) {
-//            if(registerObject.get() instanceof ItemBlock) {
-//                TextureHelper.registerItemTexture(registerObject.get(), registerObject.get().getRegistryName());
-//            }else {
-//                Yaum.getLogHelper().warn("A Class tried to use the Item Block register");
-//            }
-//    }
 }

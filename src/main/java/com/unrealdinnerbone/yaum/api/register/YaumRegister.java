@@ -7,11 +7,11 @@ import net.minecraftforge.registries.IForgeRegistryEntry;
 
 import java.util.ArrayList;
 
-public class YaumRegister3<T extends IForgeRegistryEntry<T>> {
+public class YaumRegister<T> {
 
     private ArrayList<Wrapper<IYaumRegisterObject<T>, Handler<T>>> wrapperList;
 
-    public YaumRegister3() {
+    public YaumRegister() {
         this.wrapperList = new ArrayList<>();
     }
 

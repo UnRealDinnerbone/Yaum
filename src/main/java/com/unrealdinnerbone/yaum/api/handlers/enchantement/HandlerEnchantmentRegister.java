@@ -1,7 +1,8 @@
-package com.unrealdinnerbone.yaum.api.handlers;
+package com.unrealdinnerbone.yaum.api.handlers.enchantement;
 
 
 import com.unrealdinnerbone.yaum.api.IYaumRegisterObject;
+import com.unrealdinnerbone.yaum.api.handlers.Handler;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraftforge.registries.IForgeRegistry;
 

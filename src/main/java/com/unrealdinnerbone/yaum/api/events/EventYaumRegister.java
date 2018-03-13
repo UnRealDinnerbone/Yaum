@@ -1,13 +1,13 @@
 package com.unrealdinnerbone.yaum.api.events;
 
-import com.unrealdinnerbone.yaum.api.register.YaumRegister;
 import net.minecraftforge.fml.common.eventhandler.Event;
+import net.minecraftforge.registries.IForgeRegistryEntry;
 
-public class EventYaumBlockRegister<T extends YaumRegister<T>> extends Event
+public class EventYaumRegister<T extends IForgeRegistryEntry<T>> extends Event
 {
     private T register;
 
-    public EventYaumBlockRegister(T t) {
+    public EventYaumRegister(T t) {
         this.register = t;
     }
 

@@ -7,7 +7,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.registries.IForgeRegistry;
 import net.minecraftforge.registries.IForgeRegistryEntry;
 
-public interface Handler<T extends IForgeRegistryEntry<T>> {
+public interface Handler2<T extends IForgeRegistryEntry<T>> {
 
     default void register(IForgeRegistry<T> registry, IYaumRegisterObject<T> registerObject) {
 
