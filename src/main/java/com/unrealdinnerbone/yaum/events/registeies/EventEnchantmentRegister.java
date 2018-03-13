@@ -1,7 +1,6 @@
 package com.unrealdinnerbone.yaum.events.registeies;
 
-import com.unrealdinnerbone.yaum.api.Register;
-import com.unrealdinnerbone.yaum.api.enchantment.IYaumEnchantment;
+import com.unrealdinnerbone.yaum.api.Registry;
 import com.unrealdinnerbone.yaum.libs.Reference;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraftforge.event.RegistryEvent;
@@ -13,12 +12,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 public class EventEnchantmentRegister
 {
     @SubscribeEvent
-    public static void registerBlocks(RegistryEvent.Register<Enchantment> event) {
-        for(ModContainer modContainer : Register.getRegisteredEnchantments().keySet()) {
-            for(IYaumEnchantment iYaumEnchantment: Register.getRegisteredEnchantments().get(modContainer)) {
-                iYaumEnchantment.register(modContainer);
-                event.getRegistry().register(iYaumEnchantment.getEnchantment());
-            }
-        }
+    public static void registerEnchantments(RegistryEvent.Register<Enchantment> event) {
+        Registry.getEnchantmentRegister().getWrapperList().forEach(wrapper -> wrapper.getB().register(event.getRegistry(), wrapper.getA()));
     }
 }

@@ -31,10 +31,7 @@ public class PlayerUtil {
                     changePlayerTexture(Type.CAPE, player, cape);
                     changePlayerTexture(Type.ELYTRA, player, elytra);
                 });
-            } catch (final InterruptedException e) {
-                Yaum.getLogHelper().warn("There was and error with the texture thread pool");
-                Yaum.getLogHelper().warn(e.getMessage());
-            }
+            } catch (final InterruptedException ignored) { }
         });
     }
 
@@ -52,12 +49,8 @@ public class PlayerUtil {
                 Map<Type, ResourceLocation> maps;
                 maps = Minecraft.getMinecraft().getConnection().getPlayerInfo(uuid).playerTextures;
                 maps.put(type, texture);
-            } catch (Exception e) {
-                Yaum.getLogHelper().warn("There was and error while trying change a player texture");
-                Yaum.getLogHelper().warn(e.getMessage());
-            }
+            } catch (Exception ignored) { }
         }
-        return;
     }
 
 }

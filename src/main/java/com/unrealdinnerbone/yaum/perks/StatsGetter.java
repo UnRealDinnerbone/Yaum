@@ -31,6 +31,7 @@ public class StatsGetter
             reader.close();
         } catch (final IOException e) {
             Yaum.getLogHelper().error("There was and error when loading supporter json, this is ok");
+            supporters = new Supporters();
         }
     }
 

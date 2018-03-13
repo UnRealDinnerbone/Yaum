@@ -1,7 +1,7 @@
 package com.unrealdinnerbone.yaum.events.supports;
 
 import com.mojang.authlib.minecraft.MinecraftProfileTexture;
-import com.unrealdinnerbone.yaum.config.YaumConfiguration;
+import com.unrealdinnerbone.yaum.config.ConfigClient;
 import com.unrealdinnerbone.yaum.libs.Reference;
 import com.unrealdinnerbone.yaum.libs.utils.PlayerUtil;
 import com.unrealdinnerbone.yaum.perks.StatsGetter;
@@ -25,11 +25,14 @@ public class EventEntityJoinWorld
             final AbstractClientPlayer player = (AbstractClientPlayer) event.getEntity();
             if (StatsGetter.isSupporter(player.getUniqueID())) {
                 final Supporter supporter = StatsGetter.getSupporter(player);
-                if (supporter.hasCape() && YaumConfiguration.ClientConfig.Supports.capesEnabled) {
-                    PlayerUtil.changePlayerTexture(MinecraftProfileTexture.Type.CAPE, player, supporter.getCapeTexture());
-                }
-                if (supporter.hasElytra() && YaumConfiguration.ClientConfig.Supports.elytraEnabled) {
-                    PlayerUtil.changePlayerTexture(MinecraftProfileTexture.Type.ELYTRA, player, supporter.getElytraTexture());
+                if(supporter != null)
+                {
+                    if (supporter.hasCape() && ConfigClient.supporters.capesEnabled) {
+                        PlayerUtil.changePlayerTexture(MinecraftProfileTexture.Type.CAPE, player, supporter.getCapeTexture());
+                    }
+                    if (supporter.hasElytra() && ConfigClient.supporters.elytraEnabled) {
+                        PlayerUtil.changePlayerTexture(MinecraftProfileTexture.Type.ELYTRA, player, supporter.getElytraTexture());
+                    }
                 }
             }
         }

@@ -6,7 +6,7 @@ public class Reference
 {
   public static final String MOD_ID = "yaum";
   public static final String MOD_NAME = "YAUM - (Yet Another util Mod)";
-  public static final String VERSION = "2.0.0-beta1";
+  public static final String VERSION = "3.0.0";
   public static final String MC_VERSION = "1.12.2";
   public static final String SERVER_SIDE = "com.unrealdinnerbone.yaum.proxy.ServerProxy";
   public static final String CLIENT_SIDE = "com.unrealdinnerbone.yaum.proxy.ClientProxy";

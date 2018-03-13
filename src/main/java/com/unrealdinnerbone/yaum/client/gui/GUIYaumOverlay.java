@@ -1,6 +1,5 @@
 package com.unrealdinnerbone.yaum.client.gui;
 
-import com.unrealdinnerbone.yaum.libs.utils.ColorUtil;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.Gui;

@@ -1,6 +1,7 @@
 package com.unrealdinnerbone.yaum;
 
-import com.unrealdinnerbone.yaum.api.Register;
+import com.unrealdinnerbone.yaum.api.Registry;
+import com.unrealdinnerbone.yaum.api.command.YaumCommandBase;
 import com.unrealdinnerbone.yaum.api.util.LangHelper;
 import com.unrealdinnerbone.yaum.api.util.LogHelper;
 import com.unrealdinnerbone.yaum.proxy.IProxy;
@@ -53,8 +54,9 @@ public class Yaum {
 
     @Mod.EventHandler
     public void onServerStart(FMLServerStartingEvent event) {
-        proxy.onServerStart(event);
+        Registry.getRegisteredCommands().keySet().stream().map(modContainer -> new YaumCommandBase(modContainer.getModId(), Registry.getRegisteredCommands().get(modContainer))).forEach(event::registerServerCommand);
     }
+
 
     public static LogHelper getLogHelper() {
         return logHelper;
@@ -65,6 +67,6 @@ public class Yaum {
     }
 
     public static ModContainer getModContainer() {
-        return Register.getModContanier(instance);
+        return Registry.getModContanier(instance);
     }
 }
