@@ -14,7 +14,6 @@ public class EventPlayerRender
 
     @SubscribeEvent
     public static void onPlayerRenderEvent(RenderPlayerEvent.Specials.Pre event) {
-            event.setRenderCape(false);
     }
 
 }

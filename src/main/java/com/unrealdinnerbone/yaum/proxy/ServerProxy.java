@@ -12,6 +12,6 @@ public class ServerProxy extends CommonProxy
 {
     @Override
     public void onServerStart(FMLServerStartingEvent event) {
-        Register.getRegisteredCommands().keySet().stream().map(modContainer -> new YaumCommandBase(modContainer.getModId(), Register.getRegisteredCommands().get(modContainer))).forEach(event::registerServerCommand);
+//        Register.getRegisteredCommands().keySet().stream().map(modContainer -> new YaumCommandBase(modContainer.getModId(), Register.getRegisteredCommands().get(modContainer))).forEach(event::registerServerCommand);
     }
 }

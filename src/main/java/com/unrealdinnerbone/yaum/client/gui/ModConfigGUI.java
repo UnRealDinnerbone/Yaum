@@ -26,7 +26,7 @@ public class ModConfigGUI implements IModGuiFactory
   @SideOnly(Side.CLIENT)
   @Override
   public GuiScreen createConfigGui(GuiScreen guiScreen) {
-    return new ModGuiConfig(guiScreen, Yaum.getModContainer());
+    return new ModGuiConfig(guiScreen, Yaum.getInstance());
   }
 
   @Override

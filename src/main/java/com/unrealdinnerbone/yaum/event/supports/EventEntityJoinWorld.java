@@ -1,4 +1,4 @@
-package com.unrealdinnerbone.yaum.events.supports;
+package com.unrealdinnerbone.yaum.event.supports;
 
 import com.mojang.authlib.minecraft.MinecraftProfileTexture;
 import com.unrealdinnerbone.yaum.config.YaumConfiguration;

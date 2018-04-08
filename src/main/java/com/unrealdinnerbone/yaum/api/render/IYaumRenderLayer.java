@@ -6,9 +6,10 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import net.minecraftforge.registries.IForgeRegistryEntry;
 
 @SideOnly(Side.CLIENT)
-public interface IYaumRenderLayer<E extends EntityLivingBase> extends LayerRenderer<E>
+public interface IYaumRenderLayer <E extends EntityLivingBase> extends LayerRenderer<E>
 {
 
     @Override

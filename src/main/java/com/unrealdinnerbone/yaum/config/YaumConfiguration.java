@@ -10,7 +10,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 @Mod.EventBusSubscriber(modid = Reference.MOD_ID)
 public class YaumConfiguration {
 
-    @Config(modid = Reference.MOD_ID, name = Reference.MOD_ID + "/client")
+    @Config(modid = Reference.MOD_ID, name = Reference.MOD_ID + "/general")
     public static class ClientConfig {
 
         public static class Supports {

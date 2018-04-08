@@ -46,11 +46,10 @@ public class YaumFEStorage extends EnergyStorage {
         return compound;
     }
 
+
     public void readFromNBT(NBTTagCompound compound) {
         energy = compound.getInteger("energy");
     }
-
-
 
 
     public int getMaxExtract() {

@@ -3,6 +3,7 @@ package com.unrealdinnerbone.yaum.proxy;
 import com.unrealdinnerbone.yaum.client.render.PlayerRenderLayer;
 import com.unrealdinnerbone.yaum.libs.helpers.DownloadHelper;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.renderer.entity.RenderPlayer;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
@@ -32,4 +33,8 @@ public class ClientProxy extends CommonProxy {
         }
     }
 
+    @Override
+    public void displayGUIScreen(GuiScreen guiScreen) {
+        Minecraft.getMinecraft().displayGuiScreen(guiScreen);
+    }
 }

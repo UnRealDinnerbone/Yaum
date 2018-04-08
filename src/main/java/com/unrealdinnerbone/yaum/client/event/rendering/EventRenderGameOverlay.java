@@ -27,7 +27,7 @@ public class EventRenderGameOverlay
             }
 
         } catch (Exception e) {
-            Yaum.getLogHelper().error("And error happened while trying to render and GUI Server Overlay : " + e.getMessage());
+            Yaum.getInstance().getLogHelper().error("And error happened while trying to render and GUI Server Overlay : " + e.getMessage());
         }
 
     }

@@ -14,14 +14,13 @@ public class TOPGetter implements Function<ITheOneProbe, Void> {
         theOneProbe.registerProvider(new IProbeInfoProvider() {
             @Override
             public String getID() {
-                return "Yaum:default";
+                return "yaum:default";
             }
 
             @Override
             public void addProbeInfo(ProbeMode mode, IProbeInfo probeInfo, EntityPlayer player, World world, IBlockState blockState, IProbeHitData data) {
                 if (blockState.getBlock() instanceof ITopInfo) {
-                    ITopInfo topInfo = (ITopInfo) blockState.getBlock();
-                    topInfo.addProbeInfo(mode, probeInfo, player, world, blockState, data);
+                    ((ITopInfo) blockState.getBlock()).addProbeInfo(mode, probeInfo, player, world, blockState, data);
                 }
 
             }
