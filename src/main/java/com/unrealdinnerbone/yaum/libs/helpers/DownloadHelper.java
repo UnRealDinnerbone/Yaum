@@ -26,19 +26,10 @@ public class DownloadHelper {
         if (imageData == null) {
             imageData = new ThreadDownloadImageData(null, url, errorResourceLocation, null);
             textureManager.loadTexture(outputResourceLocation, imageData);
-        }else
-        {
+        }else {
             textureManager.loadTexture(outputResourceLocation, imageData);
         }
         return imageData;
     }
-
-    public static void a()
-    {
-
-        downloadResource("https://github.com/FlatStoneTech/AppliedLogistics/blob/develop/src/main/resources/assets/minecraft/textures/blocks/gold_block.png?raw=true", new ResourceLocation("minecraft", "textures/blocks/gold_block.png"), new ResourceLocation("minecraft", "textures/blocks/iron_block.png"));
-    }
-
-
 
 }

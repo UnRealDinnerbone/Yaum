@@ -1,7 +1,7 @@
-
-## 3.0.0
+## 4.1.0
 <ul>
-<li>Added Block, Item, Enchement Annotation Register</li>
-<li>Changed Register name to Registry</li>
-<li>Broke Stuff?</li>
+<li>Added EnumUtil</li>
+<li>Added FileUtils</li>
+<li>Added Telporter Helper</li>
+<li>Added Firework "API" form SimpleFireworks (SimpleFireworks now needs Yaum)</li>
 </ul>

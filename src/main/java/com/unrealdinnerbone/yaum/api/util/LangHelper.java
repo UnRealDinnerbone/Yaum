@@ -1,18 +1,17 @@
 package com.unrealdinnerbone.yaum.api.util;
 
-import net.minecraft.util.text.translation.I18n;
+
+import net.minecraft.client.resources.I18n;
 
 public class LangHelper {
 
     private String MOD_ID;
 
-    public LangHelper(String ModID)
-    {
+    public LangHelper(String ModID) {
         this.MOD_ID = ModID;
     }
 
-    public String translateMessage(Type type, String message)
-    {
+    public String translateMessage(Type type, String message) {
         return type.translateMessage(MOD_ID, message);
     }
 
@@ -32,8 +31,8 @@ public class LangHelper {
             this.name = name;
         }
 
-        public String translateMessage(String ModId, String message) {
-            return I18n.translateToLocal(ModId  + name + message + "");
+        public String translateMessage(String modId, String message) {
+            return I18n.format(modId + "." + message);
         }
     }
 }
