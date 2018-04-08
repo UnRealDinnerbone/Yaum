@@ -1,4 +1,4 @@
-package com.unrealdinnerbone.simplefireworks.api.firework;
+package com.unrealdinnerbone.yaum.api.firework;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.nbt.NBTTagCompound;

@@ -1,4 +1,4 @@
-package com.unrealdinnerbone.yaum.api.register;
+package com.unrealdinnerbone.yaum.api.register.annotation;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

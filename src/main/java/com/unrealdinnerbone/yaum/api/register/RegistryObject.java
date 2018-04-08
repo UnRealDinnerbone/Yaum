@@ -1,27 +1,23 @@
 package com.unrealdinnerbone.yaum.api.register;
 
-import net.minecraftforge.registries.IForgeRegistryEntry;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import com.unrealdinnerbone.yaum.api.IYaumMod;
 
-public class RegisterHolder<T extends IForgeRegistryEntry<T>> {
-    private HashMap<IForgeRegistryEntry<T>, List<IYaumObject<T>>> entryObjectsHashMap;
+public class RegistryObject {
 
-    public RegisterHolder() {
-        entryObjectsHashMap = new HashMap<>();
+    private IYaumMod mod;
+    private IYaumObject yaumObject;
+
+    public RegistryObject(IYaumMod mod, IYaumObject yaumObject) {
+        this.mod = mod;
+        this.yaumObject = yaumObject;
     }
 
-    public void register(T forgeRegistryEntry, IYaumObject<T> yaumObject) {
-        if (!entryObjectsHashMap.containsKey(forgeRegistryEntry)) {
-            entryObjectsHashMap.put(forgeRegistryEntry, new ArrayList<>());
-        }
-        entryObjectsHashMap.get(forgeRegistryEntry).add(yaumObject);
+    public IYaumMod getMod() {
+        return mod;
     }
 
-    public HashMap<IForgeRegistryEntry<T>, List<IYaumObject<T>>> getEntryObjectsHashMap() {
-        return entryObjectsHashMap;
+    public IYaumObject getYaumObject() {
+        return yaumObject;
     }
-
 }
