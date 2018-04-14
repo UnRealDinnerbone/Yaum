@@ -5,13 +5,14 @@ import net.minecraft.server.MinecraftServer;
 import net.minecraftforge.server.command.CommandTreeBase;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class YaumCommandBase extends CommandTreeBase {
 
 
     private final String ModId;
 
-    public YaumCommandBase(String ModId, ArrayList<YaumSubCommand> subCommands) {
+    public YaumCommandBase(String ModId, List<YaumSubCommand> subCommands) {
         this.ModId = ModId;
         subCommands.forEach(this::addSubcommand);
     }

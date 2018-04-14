@@ -20,16 +20,15 @@ public class EventEntityJoinWorld
 
     @SubscribeEvent
     public static void entityJoinWorld(EntityJoinWorldEvent event) {
-
         if (event.getEntity() instanceof AbstractClientPlayer) {
             final AbstractClientPlayer player = (AbstractClientPlayer) event.getEntity();
             if (StatsGetter.isSupporter(player.getUniqueID())) {
                 final Supporter supporter = StatsGetter.getSupporter(player);
-                if (supporter.hasCape() && YaumConfiguration.ClientConfig.Supports.capesEnabled) {
-                    PlayerUtil.changePlayerTexture(MinecraftProfileTexture.Type.CAPE, player, supporter.getCapeTexture());
+                if (supporter.getCapeTexture() != null && YaumConfiguration.ClientConfig.Supports.capesEnabled) {
+                    PlayerUtil.makePlayerFancy(MinecraftProfileTexture.Type.CAPE, player, supporter.getCapeTexture());
                 }
-                if (supporter.hasElytra() && YaumConfiguration.ClientConfig.Supports.elytraEnabled) {
-                    PlayerUtil.changePlayerTexture(MinecraftProfileTexture.Type.ELYTRA, player, supporter.getElytraTexture());
+                if (supporter.getElytraTexture() != null && YaumConfiguration.ClientConfig.Supports.elytraEnabled) {
+                    PlayerUtil.makePlayerFancy(MinecraftProfileTexture.Type.ELYTRA, player, supporter.getElytraTexture());
                 }
             }
         }

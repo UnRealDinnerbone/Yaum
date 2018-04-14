@@ -5,12 +5,12 @@ import net.minecraftforge.registries.IForgeRegistryEntry;
 
 import javax.annotation.Nullable;
 
-public interface IYaumAnvilRecipe extends IForgeRegistryEntry<IYaumAnvilRecipe> {
+public abstract class IYaumAnvilRecipe extends IForgeRegistryEntry.Impl<IYaumAnvilRecipe> {
 
-   int getXPCost(ItemStack leftSlot, ItemStack rightSlot, String name);
+   abstract int getXPCost(ItemStack leftSlot, ItemStack rightSlot, String name);
 
-   int getMaterialCost(ItemStack leftSlot, ItemStack rightSlot, String name);
+   abstract int getMaterialCost(ItemStack leftSlot, ItemStack rightSlot, String name);
 
-   ItemStack getOutput(ItemStack leftSlot, ItemStack rightSlot, String name);
+   abstract ItemStack getOutput(ItemStack leftSlot, ItemStack rightSlot, String name);
 
 }

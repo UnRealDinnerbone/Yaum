@@ -22,14 +22,12 @@ public class PlayerUtil {
     private static final ExecutorService THREAD_POOL = new ThreadPoolExecutor(0, 2, 1L, TimeUnit.MINUTES, new LinkedBlockingQueue());
 
     @SideOnly(Side.CLIENT)
-    public static void makePlayerFancy(final AbstractClientPlayer player, final ResourceLocation cape, final ResourceLocation elytra) {
-
+    public static void makePlayerFancy(Type type,  EntityPlayer player, ResourceLocation texture) {
         THREAD_POOL.submit(() -> {
             try {
                 Thread.sleep(1000);
                 Minecraft.getMinecraft().addScheduledTask(() -> {
-                    changePlayerTexture(Type.CAPE, player, cape);
-                    changePlayerTexture(Type.ELYTRA, player, elytra);
+                    changePlayerTexture(type, player, texture);
                 });
             } catch (final InterruptedException e) {
                 Yaum.getInstance().getLogHelper().warn("There was and error with the texture thread pool");

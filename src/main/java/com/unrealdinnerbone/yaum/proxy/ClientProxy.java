@@ -1,7 +1,9 @@
 package com.unrealdinnerbone.yaum.proxy;
 
 import com.unrealdinnerbone.yaum.client.render.PlayerRenderLayer;
+import com.unrealdinnerbone.yaum.libs.Reference;
 import com.unrealdinnerbone.yaum.libs.helpers.DownloadHelper;
+import com.unrealdinnerbone.yaum.texture.TextureManager;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.renderer.entity.RenderPlayer;
@@ -14,9 +16,13 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class ClientProxy extends CommonProxy {
 
+    private static TextureManager textureManager;
+
     @Override
     public void onPreInt(FMLPreInitializationEvent event) {
         super.onPreInt(event);
+        textureManager = new TextureManager(Reference.SUPPORTER_TEXTURE_JSON);
+        TextureManager.registerTextureManager(textureManager);
     }
 
     @Override
@@ -31,10 +37,15 @@ public class ClientProxy extends CommonProxy {
         for (RenderPlayer playerRender : Minecraft.getMinecraft().getRenderManager().getSkinMap().values()) {
             playerRender.addLayer(layer);
         }
+        TextureManager.reload();
     }
 
     @Override
     public void displayGUIScreen(GuiScreen guiScreen) {
         Minecraft.getMinecraft().displayGuiScreen(guiScreen);
+    }
+
+    public static TextureManager getTextureManager() {
+        return textureManager;
     }
 }

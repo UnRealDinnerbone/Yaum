@@ -1,5 +1,6 @@
 package com.unrealdinnerbone.yaum.libs.helpers;
 
+import com.unrealdinnerbone.yaum.Yaum;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.IImageBuffer;
 import net.minecraft.client.renderer.ThreadDownloadImageData;
@@ -21,7 +22,7 @@ public class DownloadHelper {
     }
 
     public static ThreadDownloadImageData downloadResource(String url, ResourceLocation outputResourceLocation, ResourceLocation errorResourceLocation) {
-        final TextureManager textureManager = Minecraft.getMinecraft().getTextureManager();
+        TextureManager textureManager = Minecraft.getMinecraft().getTextureManager();
         ThreadDownloadImageData imageData = (ThreadDownloadImageData) textureManager.getTexture(outputResourceLocation);
         if (imageData == null) {
             imageData = new ThreadDownloadImageData(null, url, errorResourceLocation, null);

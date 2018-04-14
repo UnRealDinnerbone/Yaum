@@ -13,30 +13,32 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.HashMap;
 import java.util.UUID;
 
 public class StatsGetter
 {
 
     private static Supporters supporters;
+    private static boolean loaded;
 
-    public static void initStats() {
+    public static void reload() {
 
         try {
-            final HttpURLConnection connection = (HttpURLConnection) new URL(Reference.SUPPORTER_DATA_JSON).openConnection();
-            final JsonReader reader = new JsonReader(new InputStreamReader((InputStream) connection.getContent()));
+            HttpURLConnection connection = (HttpURLConnection) new URL(Reference.SUPPORTER_DATA_JSON).openConnection();
+            JsonReader reader = new JsonReader(new InputStreamReader((InputStream) connection.getContent()));
             Gson gson = new GsonBuilder().create();
             supporters = gson.fromJson(reader, Supporters.class);
             reader.close();
+            loaded = true;
         } catch (final IOException e) {
             Yaum.getInstance().getLogHelper().error("There was and error when loading supporter json, this is ok");
+            loaded = false;
         }
     }
 
     public static boolean isSupporter(UUID uuid) {
-        return supporters.getSupporters().stream().anyMatch(supporter -> supporter.getPlayerID().equals(uuid));
-}
+        return loaded && supporters.getSupporters().stream().anyMatch(supporter -> supporter.getPlayerUUID().equals(uuid));
+    }
 
     public static boolean isSupporter(EntityPlayer player) {
         return isSupporter(player.getUniqueID());
@@ -48,6 +50,6 @@ public class StatsGetter
     }
     @Nullable
     public static Supporter getSupporter(UUID uuid) {
-        return supporters.getSupporters().stream().filter(supporter -> supporter.getPlayerID().equals(uuid)).findFirst().orElse(null);
+        return loaded ? supporters.getSupporters().stream().filter(supporter -> supporter.getPlayerUUID().equals(uuid)).findFirst().orElse(null) : null;
     }
 }

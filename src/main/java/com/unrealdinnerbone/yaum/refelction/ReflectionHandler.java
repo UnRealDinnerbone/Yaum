@@ -22,17 +22,15 @@ public class ReflectionHandler {
                 Object classObject = ReflectionUtils.createInstance(objectClass);
                 if (classObject != null) {
                     if (objectClass.isAnnotationPresent(Register.class)) {
-                        Register objectAnnotation = (Register) objectClass.getAnnotation(Register.class);
-                        if (classObject instanceof IConfgRegister) {
+                        Register registerAnnotation = (Register) objectClass.getAnnotation(Register.class);
+                        if (classObject instanceof IYaumObject) {
                             IConfgRegister register = (IConfgRegister) classObject;
                             if (!register.doRegistration()) {
                                 Yaum.getInstance().getLogHelper().debug(classObject.getClass().getName() + " is not going to be registered");
                                 break;
                             }
-                        }
-                        if (classObject instanceof IYaumObject) {
                             IYaumObject yaumObject = (IYaumObject) classObject;
-                            com.unrealdinnerbone.yaum.api.Register.register(objectAnnotation.modID(), yaumObject);
+                            com.unrealdinnerbone.yaum.api.Register.register(registerAnnotation.modID(), yaumObject);
                         } else {
                             Yaum.getInstance().getLogHelper().error(classObject.getClass().getName() + " is not going to registered since it does not implement IYaumObject ");
                         }

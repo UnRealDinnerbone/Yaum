@@ -1,7 +1,7 @@
 package com.unrealdinnerbone.yaum.perks;
 
-import com.unrealdinnerbone.yaum.libs.helpers.DownloadHelper;
 import com.unrealdinnerbone.yaum.libs.Reference;
+import com.unrealdinnerbone.yaum.proxy.ClientProxy;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -10,42 +10,51 @@ import java.util.UUID;
 
 public class Supporter {
 
-    private UUID playerID;
+    private UUID playerUUID;
     private String playerName;
     private String type;
-    private boolean cape;
-    private boolean elytra;
     private boolean fancyChat;
-    private String elytraTexture;
-    private String capeTexture;
+    private String elytra;
+    private String cape;
 
-    public Supporter(UUID playerID) {
-        this.playerID = playerID;
+    public Supporter(UUID playerUUID) {
+        this.playerUUID = playerUUID;
     }
 
-    public UUID getPlayerID() {
-        return this.playerID;
+    public UUID getPlayerUUID() {
+        return this.playerUUID;
     }
 
     @SideOnly(Side.CLIENT)
     public ResourceLocation getCapeTexture() {
-        return this.capeTexture != null && !this.capeTexture.isEmpty() ? DownloadHelper.downloadResourceLocation(this.capeTexture, new ResourceLocation(Reference.MOD_ID, "cape/" + this.playerID.toString()), Reference.MISSING_CAPE) : null;
+        ResourceLocation location = Reference.MISSING_CAPE;
+        if(ClientProxy.getTextureManager().getWrapper() != null) {
+            location = ClientProxy.getTextureManager().getWrapper().getTextureByID(cape).getLocation();
+            if (location == null || location == Reference.TEXTURE_404) {
+                location = Reference.MISSING_CAPE;
+            }
+        }
+        return location;
     }
+
 
     @SideOnly(Side.CLIENT)
     public ResourceLocation getElytraTexture() {
-        return this.elytraTexture != null && !this.elytraTexture.isEmpty() ? DownloadHelper.downloadResourceLocation(this.elytraTexture, new ResourceLocation(Reference.MOD_ID, "elytra/" + this.getPlayerID().toString()), Reference.MISSING_ELYTRA) : null;
-    }
-
-    public boolean hasCape() {
-        return cape;
-    }
-
-    public boolean hasElytra() {
-        return elytra;
+        ResourceLocation location = Reference.MISSING_ELYTRA;
+        if(ClientProxy.getTextureManager().getWrapper() != null) {
+            location = ClientProxy.getTextureManager().getWrapper().getTextureByID(elytra).getLocation();
+            if (location == null || location == Reference.TEXTURE_404) {
+                location = Reference.MISSING_ELYTRA;
+            }
+        }
+        return location;
     }
 
     public boolean hasFancyChat() {
         return fancyChat;
+    }
+
+    public String getType() {
+        return type;
     }
 }

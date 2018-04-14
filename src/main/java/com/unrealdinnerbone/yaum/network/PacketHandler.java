@@ -15,6 +15,6 @@ public class PacketHandler {
         INSTANCE = NetworkRegistry.INSTANCE.newSimpleChannel(Reference.MOD_ID);
         PacketRegisterEvent event = new PacketRegisterEvent(INSTANCE);
         MinecraftForge.EVENT_BUS.post(event);
-        Yaum.getInstance().getLogHelper().info("Registed " + event.getId() + " packets");
+        Yaum.getInstance().getLogHelper().info("Registered " + event.getId() + " packets");
     }
 }
