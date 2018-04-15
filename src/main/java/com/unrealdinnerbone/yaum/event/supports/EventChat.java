@@ -20,8 +20,8 @@ public class EventChat {
     public static void onChat(ServerChatEvent event) {
         if (YaumConfiguration.GeneralConfig.General.supporterChat) {
             if (StatsGetter.isSupporter(event.getPlayer())) {
-                if(StatsGetter.getSupporter(event.getPlayer().getUniqueID()).hasFancyChat()) {
-                    event.setComponent(new TextComponentString("<" + event.getUsername() + "> " + ColorUtil.format(event.getComponent().getFormattedText())));
+                if (StatsGetter.getSupporter(event.getPlayer()).hasFancyChat()) {
+                    event.setComponent(new TextComponentString("<" + event.getUsername() + "> " + ColorUtil.format(event.getMessage())));
                 }
             }
         }

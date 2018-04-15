@@ -3,9 +3,10 @@ package com.unrealdinnerbone.yaum.libs;
 import net.minecraft.util.ResourceLocation;
 
 public class Reference {
+
     public static final String MOD_ID = "yaum";
     public static final String MOD_NAME = "YAUM - (Yet Another util Mod)";
-    public static final String VERSION = "4.2.0";
+    public static final String VERSION = "4.2.3";
     public static final String MC_VERSION = "1.12.2";
     public static final String GUI_FACTORY_CLASS = "com.unrealdinnerbone.yaum.client.gui.ModConfigGUI";
     public static final String CLIENT_PROXY = "com.unrealdinnerbone.yaum.proxy.ClientProxy";
