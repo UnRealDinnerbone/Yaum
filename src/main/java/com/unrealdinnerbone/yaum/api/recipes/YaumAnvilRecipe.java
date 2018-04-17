@@ -3,9 +3,7 @@ package com.unrealdinnerbone.yaum.api.recipes;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.registries.IForgeRegistryEntry;
 
-import javax.annotation.Nullable;
-
-public abstract class IYaumAnvilRecipe extends IForgeRegistryEntry.Impl<IYaumAnvilRecipe> {
+public abstract class YaumAnvilRecipe extends IForgeRegistryEntry.Impl<YaumAnvilRecipe> {
 
    abstract int getXPCost(ItemStack leftSlot, ItemStack rightSlot, String name);
 

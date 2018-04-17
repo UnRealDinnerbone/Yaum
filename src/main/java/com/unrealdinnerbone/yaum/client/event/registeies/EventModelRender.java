@@ -3,13 +3,11 @@ package com.unrealdinnerbone.yaum.client.event.registeies;
 import com.unrealdinnerbone.yaum.api.IYaumMod;
 import com.unrealdinnerbone.yaum.api.Register;
 import com.unrealdinnerbone.yaum.api.register.IYaumObject;
-import com.unrealdinnerbone.yaum.api.register.RegistryObject;
 import com.unrealdinnerbone.yaum.config.YaumConfiguration;
 import com.unrealdinnerbone.yaum.libs.Reference;
 import com.unrealdinnerbone.yaum.libs.helpers.TextureHelper;
 import net.minecraft.init.Items;
 import net.minecraftforge.client.event.ModelRegistryEvent;
-import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
@@ -26,7 +24,7 @@ public class EventModelRender
     @SideOnly(Side.CLIENT)
     @SubscribeEvent
     public static void renderModels(ModelRegistryEvent event) {
-        for (List<Map.Entry<IYaumMod, IYaumObject>> entryList : Register.getRegistedObject().values()) {
+        for (List<Map.Entry<IYaumMod, IYaumObject>> entryList : Register.getRegisteredObject().values()) {
             for (Map.Entry<IYaumMod, IYaumObject> iYaumModIYaumObjectEntry : entryList) {
                 event.setModContainer(iYaumModIYaumObjectEntry.getKey().getModContainer());
                 iYaumModIYaumObjectEntry.getValue().render(event, iYaumModIYaumObjectEntry.getKey());

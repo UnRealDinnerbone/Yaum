@@ -2,11 +2,15 @@ package com.unrealdinnerbone.yaum.texture;
 
 import net.minecraft.util.ResourceLocation;
 
-public class Texture
+import javax.annotation.Nullable;
+
+public class WebTexture
 {
     private String id;
     private String url;
-    private ResourceLocation location;
+    @Nullable
+    private String location;
+
 
 
     public String getId() {
@@ -17,12 +21,8 @@ public class Texture
         return url;
     }
 
-    public void setLocation(ResourceLocation location) {
-        this.location = location;
-    }
-
     public ResourceLocation getLocation() {
-        return location;
+        return location == null ? new ResourceLocation(id, "textures/download") : new ResourceLocation(id, "textures/" + url);
     }
 
 }

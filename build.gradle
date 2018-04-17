@@ -18,6 +18,10 @@ apply plugin: 'maven'
 apply plugin: "com.matthewprenger.cursegradle"
 apply plugin: 'net.minecraftforge.gradle.forge'
 
+def ENV = System.getenv()
+version = ENV.BUILD_NUMBER ? "${minecraft_version}-${mod_verison}.${ENV.BUILD_NUMBER}" : "{minecraft_version}-${mod_verison}-localbeta"
+
+
 version = "${minecraft_version}-${mod_verison}-universal"
 group= "com.unrealdinnerbone.${mod_name}"
 archivesBaseName = "${mod_name}"
@@ -73,7 +77,6 @@ configurations {
 
 dependencies {
 	compile "mcjty.theoneprobe:TheOneProbe-1.12:1.12-1.4.19-11"
-    compile "cofh:RedstoneFlux:+:universal"
 }
 
 
@@ -90,14 +93,14 @@ jar {
 
 
 curseforge {
-    apiKey = project.curse_api_key
-    project {
+	apiKey = project.curse_api_key
+	project {
 		id = project.curse_project_id
 		changelogType = "markdown"
 		changelog = file('changelog.md')
 		releaseType = project.release_type
 		mainArtifact(jar) {
-            displayName = "${mod_name}-${minecraft_version}-${mod_verison}-universal"
-        }
-    }
+			displayName = "${mod_name}-${minecraft_version}-${mod_verison}-universal"
+		}
+	}
 }

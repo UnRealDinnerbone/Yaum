@@ -3,8 +3,6 @@ package com.unrealdinnerbone.yaum.api.register;
 import com.unrealdinnerbone.yaum.api.IYaumMod;
 import com.unrealdinnerbone.yaum.api.Register;
 import com.unrealdinnerbone.yaum.libs.Reference;
-import net.minecraft.block.Block;
-import net.minecraft.item.Item;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod;
@@ -21,7 +19,7 @@ public class YaumEventRegister {
 
     @SubscribeEvent
     public static void register(RegistryEvent.Register event) {
-        for(List<Map.Entry<IYaumMod, IYaumObject>> entryList: Register.getRegistedObject().values()) {
+        for(List<Map.Entry<IYaumMod, IYaumObject>> entryList: Register.getRegisteredObject().values()) {
             for(Map.Entry<IYaumMod, IYaumObject> entry: entryList) {
                 if(entry.getValue().get().getRegistryType().toString().equalsIgnoreCase(event.getRegistry().getRegistrySuperType().toString())) {
                     ModContainer pre = Loader.instance().activeModContainer();

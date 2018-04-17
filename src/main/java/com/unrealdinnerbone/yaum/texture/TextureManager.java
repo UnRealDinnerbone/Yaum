@@ -6,7 +6,6 @@ import com.google.gson.stream.JsonReader;
 import com.unrealdinnerbone.yaum.Yaum;
 import com.unrealdinnerbone.yaum.libs.Reference;
 import com.unrealdinnerbone.yaum.libs.helpers.DownloadHelper;
-import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -51,31 +50,30 @@ public class TextureManager
 
     @SideOnly(Side.CLIENT)
     public static void reload() {
-        for(TextureManager manager: textureManagerList) {
+        for (TextureManager manager : textureManagerList) {
             try {
                 HttpURLConnection connection = (HttpURLConnection) new URL(manager.getUrl()).openConnection();
                 JsonReader reader = new JsonReader(new InputStreamReader((InputStream) connection.getContent()));
                 Gson gson = new GsonBuilder().create();
                 TextureWrapper wrapepr = gson.fromJson(reader, TextureWrapper.class);
                 manager.wrapper = wrapepr;
-                if(wrapepr.getModID() != null) {
+                if (wrapepr.getModID() != null) {
                     if (Loader.isModLoaded(wrapepr.getModID())) {
-                        for(Texture texture: wrapepr.getTextures()) {
-                            if(texture.getId() != null && !texture.getId().isEmpty()) {
-                                if(texture.getUrl() != null && !texture.getUrl().isEmpty()) {
-                                    ResourceLocation location = DownloadHelper.downloadResourceLocation(texture.getUrl(), new ResourceLocation(wrapepr.getModID(), "downloaded/" + texture.getId()), Reference.TEXTURE_404);
-                                    texture.setLocation(location);
+                        for (WebTexture texture : wrapepr.getTextures()) {
+                            if (texture.getId() != null && !texture.getId().isEmpty()) {
+                                if (texture.getUrl() != null && !texture.getUrl().isEmpty()) {
+                                    DownloadHelper.downloadResourceLocation(texture.getUrl(), texture.getLocation(), Reference.TEXTURE_404);
                                 } else {
                                     Yaum.getInstance().getLogHelper().error("TextureManager with modID has and invalid texture url null/empty texture id " + texture.getId());
                                 }
-                            }else {
+                            } else {
                                 Yaum.getInstance().getLogHelper().error("TextureManager with modID has and invalid texture no id gives/empty");
                             }
                         }
-                    }else {
-                        Yaum.getInstance().getLogHelper().error("TextureManager with the url " + manager.getUrl()  + " will not load since it has the modID " + wrapepr.getModID() + " but that mod id is not in game");
+                    } else {
+                        Yaum.getInstance().getLogHelper().error("TextureManager with the url " + manager.getUrl() + " will not load since it has the modID " + wrapepr.getModID() + " but that mod id is not in game");
                     }
-                }else {
+                } else {
                     Yaum.getInstance().getLogHelper().error("Failed to init the TextureManager with the url " + manager.getUrl());
                 }
 
@@ -93,9 +91,9 @@ public class TextureManager
     public static class TextureWrapper {
 
         private String modID;
-        private List<Texture> textures;
+        private List<WebTexture> textures;
 
-        public List<Texture> getTextures() {
+        public List<WebTexture> getTextures() {
             return textures == null ? new ArrayList<>() : textures;
         }
 
@@ -104,7 +102,7 @@ public class TextureManager
         }
 
         @Nullable
-        public Texture getTextureByID(String id) {
+        public WebTexture getTextureByID(String id) {
             return textures.stream().filter(texture -> texture.getId().equalsIgnoreCase(id)).findFirst().orElse(null);
         }
     }

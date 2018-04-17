@@ -5,27 +5,23 @@ import com.unrealdinnerbone.yaum.api.register.*;
 import com.unrealdinnerbone.yaum.api.util.LangHelper;
 import com.unrealdinnerbone.yaum.api.util.LogHelper;
 import net.minecraft.block.Block;
-import net.minecraft.enchantment.Enchantment;
-import net.minecraft.item.Item;
-import net.minecraft.util.SoundEvent;
-import net.minecraft.world.biome.Biome;
+import net.minecraftforge.fml.common.API;
 
-import javax.print.DocFlavor;
 import java.util.*;
 
 public class Register {
 
-    private static final HashMap<Class<?>, List<Map.Entry<IYaumMod, IYaumObject>>> registedObject;
+    private static final HashMap<Class<?>, List<Map.Entry<IYaumMod, IYaumObject>>> registeredObject;
 
     static {
-        registedObject = new HashMap<>();
+        registeredObject = new HashMap<>();
     }
 
     public static void register(IYaumMod mod, IYaumObject iYaumObject) {
-        if (!registedObject.containsKey(iYaumObject.get().getRegistryType())) {
-            registedObject.put(iYaumObject.get().getRegistryType(), new ArrayList<>());
+        if (!registeredObject.containsKey(iYaumObject.get().getRegistryType())) {
+            registeredObject.put(iYaumObject.get().getRegistryType(), new ArrayList<>());
         }
-        registedObject.get(iYaumObject.get().getRegistryType()).add(new AbstractMap.SimpleEntry<>(mod, iYaumObject));
+        registeredObject.get(iYaumObject.get().getRegistryType()).add(new AbstractMap.SimpleEntry<>(mod, iYaumObject));
 
         if (iYaumObject.get() instanceof Block) {
             register(mod, new YaumItemBlock(iYaumObject));
@@ -37,8 +33,8 @@ public class Register {
         register(mod, yaumObject);
     }
 
-    public static HashMap<Class<?>, List<Map.Entry<IYaumMod, IYaumObject>>> getRegistedObject() {
-        return registedObject;
+    public static HashMap<Class<?>, List<Map.Entry<IYaumMod, IYaumObject>>> getRegisteredObject() {
+        return registeredObject;
     }
 
     public static class DummyMod implements IYaumMod {
