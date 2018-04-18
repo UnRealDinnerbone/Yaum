@@ -2,7 +2,7 @@ package com.unrealdinnerbone.yaum.libs.helpers;
 
 import java.util.concurrent.ThreadLocalRandom;
 
-public class MathHelper extends net.minecraft.util.math.MathHelper
+public class MathHelper
 {
 
     public static int getRandomInt(int min, int max) {
