@@ -9,7 +9,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.registries.IForgeRegistryEntry;
 
 @SideOnly(Side.CLIENT)
-public interface IYaumRenderLayer <E extends EntityLivingBase> extends LayerRenderer<E>
+public interface IYaumRenderLayer<E extends EntityLivingBase> extends LayerRenderer<E>
 {
 
     @Override
@@ -24,8 +24,10 @@ public interface IYaumRenderLayer <E extends EntityLivingBase> extends LayerRend
         return prevVal + partialTick * (nextVal - prevVal);
     }
 
+
     default void bindTexture(ResourceLocation rl) {
         Minecraft.getMinecraft().renderEngine.bindTexture(rl);
     }
+
 
 }

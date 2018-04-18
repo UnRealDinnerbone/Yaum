@@ -17,7 +17,6 @@ public class ParticleHelper
         spawnParticle(particleType.getParticleID(), x, y, z, xSpeed, ySpeed, zSpeed);
     }
 
-
     public static void spawnParticleRing(World world, EnumParticleTypes particle, double x, double y, double z, double velocityX, double velocityY, double velocityZ, double step) {
 
         for (double degree = 0.0d; degree < 2 * Math.PI; degree += step) {

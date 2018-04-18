@@ -28,6 +28,14 @@ public class Register {
         }
     }
 
+
+    public static void registerNoHelp(IYaumMod mod, IYaumObject iYaumObject) {
+        if (!registeredObject.containsKey(iYaumObject.get().getRegistryType())) {
+            registeredObject.put(iYaumObject.get().getRegistryType(), new ArrayList<>());
+        }
+        registeredObject.get(iYaumObject.get().getRegistryType()).add(new AbstractMap.SimpleEntry<>(mod, iYaumObject));
+    }
+
     public static void register(String modName, IYaumObject yaumObject) {
         IYaumMod mod = new DummyMod(modName);
         register(mod, yaumObject);

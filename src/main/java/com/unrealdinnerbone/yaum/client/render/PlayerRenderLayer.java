@@ -1,5 +1,6 @@
 package com.unrealdinnerbone.yaum.client.render;
 
+import com.unrealdinnerbone.yaum.api.render.IYaumRenderLayer;
 import com.unrealdinnerbone.yaum.perks.StatsGetter;
 import com.unrealdinnerbone.yaum.perks.Supporter;
 import net.minecraft.block.Block;
@@ -19,7 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @SideOnly(Side.CLIENT)
-public class PlayerRenderLayer implements LayerRenderer<EntityPlayer> {
+public class PlayerRenderLayer implements IYaumRenderLayer<EntityPlayer> {
 
     private static ItemStack itemStack;
 

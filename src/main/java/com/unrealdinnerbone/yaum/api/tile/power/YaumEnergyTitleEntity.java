@@ -1,6 +1,7 @@
 package com.unrealdinnerbone.yaum.api.tile.power;
 
 import com.unrealdinnerbone.yaum.api.power.YaumFEStorage;
+import com.unrealdinnerbone.yaum.api.tile.YaumTileEntity;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.play.server.SPacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
@@ -12,7 +13,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import javax.annotation.Nullable;
 
-public abstract class YaumEnergyTitleEntity extends TileEntity {
+public abstract class YaumEnergyTitleEntity extends YaumTileEntity {
 
     protected final YaumFEStorage forgeEnergyStorage;
 
@@ -53,18 +54,4 @@ public abstract class YaumEnergyTitleEntity extends TileEntity {
     }
 
 
-    @Nullable
-    @Override
-    public NBTTagCompound getUpdateTag() {
-        NBTTagCompound compound = super.writeToNBT(new NBTTagCompound());
-        writeToNBT(compound);
-        return compound;
-    }
-
-    @SideOnly(Side.CLIENT)
-    @Override
-    public void onDataPacket(net.minecraft.network.NetworkManager net, SPacketUpdateTileEntity pkt) {
-        super.onDataPacket(net, pkt);
-        readFromNBT(pkt.getNbtCompound());
-    }
 }
