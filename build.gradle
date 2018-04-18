@@ -21,8 +21,9 @@ apply plugin: 'net.minecraftforge.gradle.forge'
 def ENV = System.getenv()
 version = ENV.BUILD_NUMBER ? "${minecraft_version}-${mod_verison}.${ENV.BUILD_NUMBER}" : "{minecraft_version}-${mod_verison}-localbeta"
 
+System.console().print("Build Number: ")
+System.console().print(ENV.BUILD)
 
-version = "${minecraft_version}-${mod_verison}-universal"
 group= "com.unrealdinnerbone.${mod_name}"
 archivesBaseName = "${mod_name}"
 
@@ -100,7 +101,7 @@ curseforge {
 		changelog = file('changelog.md')
 		releaseType = project.release_type
 		mainArtifact(jar) {
-			displayName = "${mod_name}-${minecraft_version}-${mod_verison}-universal"
+			displayName = version
 		}
 	}
 }
