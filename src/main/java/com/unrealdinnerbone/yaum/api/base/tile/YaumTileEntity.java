@@ -1,4 +1,4 @@
-package com.unrealdinnerbone.yaum.api.tile;
+package com.unrealdinnerbone.yaum.api.base.tile;
 
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.play.server.SPacketUpdateTileEntity;

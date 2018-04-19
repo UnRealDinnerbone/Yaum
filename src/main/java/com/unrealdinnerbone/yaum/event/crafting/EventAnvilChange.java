@@ -8,12 +8,14 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 @Mod.EventBusSubscriber(modid = Reference.MOD_ID)
-public class EventAnvilChange
-{
+public class EventAnvilChange {
     @SubscribeEvent
     public static void anvilChange(AnvilUpdateEvent event) {
-        for(YaumAnvilRecipe recipe: EventRegisterRegistries.getAnvilRecipeRegistry()) {
-//            if(event.set)
+        for (YaumAnvilRecipe recipe : EventRegisterRegistries.getAnvilRecipeRegistry()) {
+            if (event.getCost() >= recipe.getXPCost(event.getLeft(), event.getRight(), event.getName())) {
+                event.setOutput(recipe.getOutput(event.getLeft(), event.getRight(), event.getName()));
+                event.setMaterialCost(recipe.getMaterialCost(event.getLeft(), event.getRight(), event.getName()));
+            }
         }
     }
 }

@@ -28,7 +28,7 @@ public class Register {
             register(mod, iYaumBlock.createItemBlock());
         }
     }
-    
+
 
     public static void register(String modName, IYaumObject yaumObject) {
         IYaumMod mod = new DummyMod(modName);

@@ -14,7 +14,7 @@ public interface IYaumBlock extends IYaumObject<Block> {
         IYaumObject.super.register(registryEvent, mod);
     }
 
-    default YaumItemBlock createItemBlock() {
+    default IYaumItem createItemBlock() {
         return new YaumItemBlock(this);
     }
 
