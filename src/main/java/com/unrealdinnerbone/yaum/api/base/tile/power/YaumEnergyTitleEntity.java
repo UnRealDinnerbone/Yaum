@@ -1,15 +1,11 @@
-package com.unrealdinnerbone.yaum.api.tile.power;
+package com.unrealdinnerbone.yaum.api.base.tile.power;
 
 import com.unrealdinnerbone.yaum.api.power.YaumFEStorage;
-import com.unrealdinnerbone.yaum.api.tile.YaumTileEntity;
+import com.unrealdinnerbone.yaum.api.base.tile.YaumTileEntity;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.network.play.server.SPacketUpdateTileEntity;
-import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.energy.CapabilityEnergy;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 
 import javax.annotation.Nullable;
 
