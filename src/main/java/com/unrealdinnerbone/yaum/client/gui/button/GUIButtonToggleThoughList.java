@@ -11,7 +11,6 @@ public class GUIButtonToggleThoughList extends GuiButton {
 
     private static int idCount = 4100;
     private List<String> options;
-    private String currentString;
 
     public GUIButtonToggleThoughList(int x, int y, List<String> options) {
         super(idCount++, x, y, options.stream().findFirst().get());
@@ -19,8 +18,7 @@ public class GUIButtonToggleThoughList extends GuiButton {
     }
 
     public void goNext() {
-        String nextString = StringUtil.getNextObjectForList(options, currentString);
-        this.currentString = nextString;
+        String nextString = StringUtil.getNextObjectForList(options, displayString);
         this.setDisplayString(nextString);
     }
 
@@ -33,19 +31,15 @@ public class GUIButtonToggleThoughList extends GuiButton {
     }
 
     public void setCurrentString(String currentString) {
-        this.currentString = currentString;
+        this.displayString = currentString;
     }
 
     public void goBack() {
         List<String> reversedOptions = Lists.reverse(new ArrayList<>(options));
-        String nextString = StringUtil.getNextObjectForList(reversedOptions, currentString);
-        this.currentString = nextString;
+        String nextString = StringUtil.getNextObjectForList(reversedOptions, displayString);
         this.setDisplayString(nextString);
     }
 
-    public String getCurrentString() {
-        return currentString;
-    }
 
     public List<String> getOptions() {
         return options;
