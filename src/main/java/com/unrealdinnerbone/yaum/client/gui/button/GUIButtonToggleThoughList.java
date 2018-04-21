@@ -1,6 +1,7 @@
-package com.unrealdinnerbone.yastm.client.gui;
+package com.unrealdinnerbone.yaum.client.gui.button;
 
 import com.google.common.collect.Lists;
+import com.unrealdinnerbone.yaum.libs.utils.StringUtil;
 import net.minecraft.client.gui.GuiButton;
 
 import java.util.ArrayList;
@@ -18,7 +19,7 @@ public class GUIButtonToggleThoughList extends GuiButton {
     }
 
     public void goNext() {
-        String nextString = getNextObjectForList(options, currentString);
+        String nextString = StringUtil.getNextObjectForList(options, currentString);
         this.currentString = nextString;
         this.setDisplayString(nextString);
     }
@@ -37,7 +38,7 @@ public class GUIButtonToggleThoughList extends GuiButton {
 
     public void goBack() {
         List<String> reversedOptions = Lists.reverse(new ArrayList<>(options));
-        String nextString = getNextObjectForList(reversedOptions, currentString);
+        String nextString = StringUtil.getNextObjectForList(reversedOptions, currentString);
         this.currentString = nextString;
         this.setDisplayString(nextString);
     }
@@ -55,16 +56,4 @@ public class GUIButtonToggleThoughList extends GuiButton {
     }
 
 
-    public static <T> T getNextObjectForList(List<T> list, T currentString) {
-        boolean isNext = false;
-        for(T entry: list) {
-            if(isNext) {
-                return entry;
-            }
-            if(entry.equals(currentString)){
-                isNext = true;
-            }
-        }
-        return list.stream().findFirst().get();
-    }
 }

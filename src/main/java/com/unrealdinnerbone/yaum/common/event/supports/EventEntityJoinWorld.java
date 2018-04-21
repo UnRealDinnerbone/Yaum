@@ -1,11 +1,11 @@
-package com.unrealdinnerbone.yaum.event.supports;
+package com.unrealdinnerbone.yaum.common.event.supports;
 
 import com.mojang.authlib.minecraft.MinecraftProfileTexture;
-import com.unrealdinnerbone.yaum.config.YaumConfiguration;
+import com.unrealdinnerbone.yaum.common.config.YaumConfiguration;
 import com.unrealdinnerbone.yaum.libs.Reference;
 import com.unrealdinnerbone.yaum.libs.utils.PlayerUtil;
-import com.unrealdinnerbone.yaum.perks.StatsGetter;
-import com.unrealdinnerbone.yaum.perks.Supporter;
+import com.unrealdinnerbone.yaum.common.perks.StatsGetter;
+import com.unrealdinnerbone.yaum.common.perks.Supporter;
 import net.minecraft.client.entity.AbstractClientPlayer;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.fml.common.Mod;

@@ -1,7 +1,7 @@
-package com.unrealdinnerbone.yaum.event.crafting;
+package com.unrealdinnerbone.yaum.common.event.crafting;
 
 import com.unrealdinnerbone.yaum.api.recipes.YaumAnvilRecipe;
-import com.unrealdinnerbone.yaum.event.register.EventRegisterRegistries;
+import com.unrealdinnerbone.yaum.common.event.register.EventRegisterRegistries;
 import com.unrealdinnerbone.yaum.libs.Reference;
 import net.minecraftforge.event.AnvilUpdateEvent;
 import net.minecraftforge.fml.common.Mod;

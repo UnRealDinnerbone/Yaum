@@ -1,9 +1,9 @@
-package com.unrealdinnerbone.yaum.event.supports;
+package com.unrealdinnerbone.yaum.common.event.supports;
 
-import com.unrealdinnerbone.yaum.config.YaumConfiguration;
+import com.unrealdinnerbone.yaum.common.config.YaumConfiguration;
 import com.unrealdinnerbone.yaum.libs.Reference;
 import com.unrealdinnerbone.yaum.libs.utils.ColorUtil;
-import com.unrealdinnerbone.yaum.perks.StatsGetter;
+import com.unrealdinnerbone.yaum.common.perks.StatsGetter;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraftforge.event.ServerChatEvent;
 import net.minecraftforge.fml.common.Mod;

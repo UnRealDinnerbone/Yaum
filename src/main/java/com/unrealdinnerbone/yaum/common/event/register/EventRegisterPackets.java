@@ -1,9 +1,9 @@
-package com.unrealdinnerbone.yaum.event.register;
+package com.unrealdinnerbone.yaum.common.event.register;
 
 import com.unrealdinnerbone.yaum.api.event.PacketRegisterEvent;
 import com.unrealdinnerbone.yaum.libs.Reference;
-import com.unrealdinnerbone.yaum.network.PacketSpawnFirework;
-import com.unrealdinnerbone.yaum.network.PacketSpawnParticle;
+import com.unrealdinnerbone.yaum.common.network.PacketSpawnFirework;
+import com.unrealdinnerbone.yaum.common.network.PacketSpawnParticle;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;

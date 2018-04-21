@@ -1,4 +1,4 @@
-package com.unrealdinnerbone.yaum.event.register;
+package com.unrealdinnerbone.yaum.common.event.register;
 
 import com.unrealdinnerbone.yaum.api.recipes.YaumAnvilRecipe;
 import com.unrealdinnerbone.yaum.libs.Reference;
