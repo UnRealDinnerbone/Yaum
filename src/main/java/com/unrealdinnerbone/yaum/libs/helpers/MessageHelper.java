@@ -2,9 +2,7 @@ package com.unrealdinnerbone.yaum.libs.helpers;
 
 import com.unrealdinnerbone.yaum.libs.utils.ServerUtil;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiNewChat;
 import net.minecraft.command.ICommandSender;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;

@@ -11,7 +11,6 @@ import net.minecraftforge.common.util.EnumHelper;
 public final class BannerUtils {
 
     public static ItemStack createBanner(EnumDyeColor baseColor, NBTTagList patterns) {
-
         return ItemBanner.makeBanner(baseColor, patterns);
     }
 

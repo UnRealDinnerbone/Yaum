@@ -48,20 +48,17 @@ processResources
 	inputs.property "version", project.version
 	inputs.property "mcversion", project.minecraft.version
 
-	from(sourceSets.main.resources.srcDirs)
-	{
+	from(sourceSets.main.resources.srcDirs) {
 		include 'mcmod.info'
 		expand 'version':project.version, 'mcversion':project.minecraft.version
 	}
-	from(sourceSets.main.resources.srcDirs)
-	{
+	from(sourceSets.main.resources.srcDirs) {
 		exclude 'mcmod.info'
 	}
 	rename '(.+_at.cfg)', 'META-INF/$1'
 }
 
 repositories {
-
 	maven {
 		name = "tterrag maven"
 		url = "http://maven.tterrag.com/"
@@ -70,11 +67,6 @@ repositories {
 		name = "CoFH Maven"
 		url = "http://maven.covers1624.net"
 	}
-	maven {
-		name = "Class"
-		url = "https://oss.sonatype.org/content/groups/public/"
-	}
-
 }
 
 configurations {
@@ -83,7 +75,7 @@ configurations {
 }
 
 dependencies {
-	compile "mcjty.theoneprobe:TheOneProbe-1.12:1.12-1.4.19-11"
+	compile "mcjty.theoneprobe:TheOneProbe-1.12:1.12-1.4.22-13"
 }
 
 

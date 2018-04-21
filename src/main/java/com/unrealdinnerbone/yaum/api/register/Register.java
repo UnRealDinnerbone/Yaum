@@ -1,11 +1,11 @@
-package com.unrealdinnerbone.yaum.api;
+package com.unrealdinnerbone.yaum.api.register;
 
 import com.unrealdinnerbone.yaum.Yaum;
-import com.unrealdinnerbone.yaum.api.register.*;
+import com.unrealdinnerbone.yaum.api.IYaumMod;
+import com.unrealdinnerbone.yaum.api.register.impl.IYaumBlock;
+import com.unrealdinnerbone.yaum.api.register.IYaumObject;
 import com.unrealdinnerbone.yaum.api.util.LangHelper;
 import com.unrealdinnerbone.yaum.api.util.LogHelper;
-import net.minecraft.block.Block;
-import net.minecraftforge.fml.common.API;
 
 import java.util.*;
 
@@ -22,7 +22,6 @@ public class Register {
             registeredObject.put(iYaumObject.get().getRegistryType(), new ArrayList<>());
         }
         registeredObject.get(iYaumObject.get().getRegistryType()).add(new AbstractMap.SimpleEntry<>(mod, iYaumObject));
-
         if (iYaumObject.get() instanceof IYaumBlock) {
             IYaumBlock iYaumBlock = (IYaumBlock) iYaumObject;
             register(mod, iYaumBlock.createItemBlock());
@@ -39,12 +38,12 @@ public class Register {
         return registeredObject;
     }
 
-    public static class DummyMod implements IYaumMod {
+    private static class DummyMod implements IYaumMod {
 
         private final String MOD_NAME;
 
-        public DummyMod(String modName) {
-            MOD_NAME = modName;
+        DummyMod(String modName) {
+            this.MOD_NAME = modName;
         }
 
 

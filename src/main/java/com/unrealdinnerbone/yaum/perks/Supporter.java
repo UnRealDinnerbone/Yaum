@@ -28,9 +28,9 @@ public class Supporter {
     @SideOnly(Side.CLIENT)
     public ResourceLocation getCapeTexture() {
         ResourceLocation location = Reference.MISSING_CAPE;
-        if(ClientProxy.getTextureManager().getWrapper() != null) {
-            location = ClientProxy.getTextureManager().getWrapper().getTextureByID(cape).getLocation();
-            if (location == null || location == Reference.TEXTURE_404) {
+        if(ClientProxy.getTextureWrapper() != null) {
+            location = ClientProxy.getTextureWrapper().getTextureByID(cape).getLocation();
+            if (location == Reference.TEXTURE_404) {
                 location = Reference.MISSING_CAPE;
             }
         }
@@ -41,9 +41,9 @@ public class Supporter {
     @SideOnly(Side.CLIENT)
     public ResourceLocation getElytraTexture() {
         ResourceLocation location = Reference.MISSING_ELYTRA;
-        if(ClientProxy.getTextureManager().getWrapper() != null) {
-            location = ClientProxy.getTextureManager().getWrapper().getTextureByID(elytra).getLocation();
-            if (location == null || location == Reference.TEXTURE_404) {
+        if(ClientProxy.getTextureWrapper()!= null) {
+            location = ClientProxy.getTextureWrapper().getTextureByID(elytra).getLocation();
+            if (location == Reference.TEXTURE_404) {
                 location = Reference.MISSING_ELYTRA;
             }
         }

@@ -43,17 +43,6 @@ public class YaumConfiguration {
     @Config(modid = Reference.MOD_ID, name = Reference.MOD_ID + "/general", category = "registering")
     public static class GeneralConfig {
 
-        public static class Debug {
-
-            @Config.RequiresMcRestart
-            @Config.Comment("Register the test item?")
-            public static boolean testBlockEnabled = true;
-
-            @Config.RequiresMcRestart
-            @Config.Comment("Register the test block?")
-            public static boolean testItemEnabled = true;
-
-        }
 
         public static class General {
 
@@ -67,6 +56,7 @@ public class YaumConfiguration {
     @SubscribeEvent
     public static void onConfigChanged(ConfigChangedEvent.OnConfigChangedEvent event) {
         if (event.getModID().equals(Reference.MOD_ID)) {
+
             ConfigManager.sync(Reference.MOD_ID, Config.Type.INSTANCE);
         }
     }

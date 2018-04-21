@@ -1,12 +1,13 @@
 package com.unrealdinnerbone.yaum.api.base.tile.power;
 
-import com.unrealdinnerbone.yaum.api.power.YaumFEStorage;
 import com.unrealdinnerbone.yaum.api.base.tile.YaumTileEntity;
+import com.unrealdinnerbone.yaum.api.power.YaumFEStorage;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumFacing;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.energy.CapabilityEnergy;
 
+import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 public abstract class YaumEnergyTitleEntity extends YaumTileEntity {
@@ -20,7 +21,7 @@ public abstract class YaumEnergyTitleEntity extends YaumTileEntity {
 
     @Nullable
     @Override
-    public <T> T getCapability(Capability<T> capability, @Nullable EnumFacing facing) {
+    public <T> T getCapability(@Nonnull Capability<T> capability, @Nullable EnumFacing facing) {
         if(capability == CapabilityEnergy.ENERGY) {
             return CapabilityEnergy.ENERGY.cast(forgeEnergyStorage);
         } else {
@@ -29,7 +30,7 @@ public abstract class YaumEnergyTitleEntity extends YaumTileEntity {
     }
 
     @Override
-    public boolean hasCapability(Capability<?> capability, @Nullable EnumFacing facing) {
+    public boolean hasCapability(@Nonnull Capability<?> capability, @Nullable EnumFacing facing) {
         return capability == CapabilityEnergy.ENERGY || super.hasCapability(capability, facing);
     }
 

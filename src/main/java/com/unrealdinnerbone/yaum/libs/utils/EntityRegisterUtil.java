@@ -20,8 +20,7 @@ public class EntityRegisterUtil {
   public void registerEntity(ResourceLocation resourceLocation, Class<? extends Entity> entityClass,  IRenderFactory renderFactory, String entityName, int eggPrimary, int eggSecondary)
   {
     EntityRegistry.registerModEntity(resourceLocation, entityClass, entityName, id, this.mod, 64, 3, true, eggPrimary, eggSecondary);
-
-    //Todo Move to general only sytem
+    
     if(ServerUtil.isClient())
     RenderingRegistry.registerEntityRenderingHandler(entityClass, renderFactory);
   }

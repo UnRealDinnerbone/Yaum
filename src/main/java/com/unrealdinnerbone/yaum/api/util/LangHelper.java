@@ -5,7 +5,7 @@ import net.minecraft.client.resources.I18n;
 
 public class LangHelper {
 
-    private String MOD_ID;
+    private final String MOD_ID;
 
     public LangHelper(String ModID) {
         this.MOD_ID = ModID;
@@ -32,7 +32,7 @@ public class LangHelper {
         }
 
         public String translateMessage(String modId, String message) {
-            return I18n.format(modId + "." + message);
+            return I18n.format(modId + "." + name + "." + message);
         }
     }
 }

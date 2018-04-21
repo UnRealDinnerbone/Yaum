@@ -1,6 +1,6 @@
 package com.unrealdinnerbone.yaum.api.register;
 
-public interface IConfgRegister {
+public interface IConfigRegister {
 
     boolean doRegistration();
 }

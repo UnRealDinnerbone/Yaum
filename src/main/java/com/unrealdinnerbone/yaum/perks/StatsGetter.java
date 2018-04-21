@@ -3,8 +3,8 @@ package com.unrealdinnerbone.yaum.perks;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.stream.JsonReader;
-import com.unrealdinnerbone.yaum.libs.Reference;
 import com.unrealdinnerbone.yaum.Yaum;
+import com.unrealdinnerbone.yaum.libs.Reference;
 import net.minecraft.entity.player.EntityPlayer;
 
 import javax.annotation.Nullable;

@@ -1,14 +1,13 @@
 package com.unrealdinnerbone.yaum.client.gui;
 
-import java.util.Set;
-
 import com.unrealdinnerbone.yaum.Yaum;
-import com.unrealdinnerbone.yaum.libs.Reference;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraftforge.fml.client.IModGuiFactory;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+
+import java.util.Set;
 
 
 public class ModConfigGUI implements IModGuiFactory

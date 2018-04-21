@@ -10,7 +10,4 @@ public class TextureHelper
     public static void registerItemTexture(Item item, ResourceLocation location) {
         ModelLoader.setCustomModelResourceLocation(item, 0, new ModelResourceLocation(location, "inventory"));
     }
-    public static void changeTextureLocation(Item item, String newModID, String name) {
-        registerItemTexture(item, new ResourceLocation(newModID, name));
-    }
 }

@@ -5,7 +5,7 @@ import com.unrealdinnerbone.yaum.api.register.annotation.Register;
 import com.unrealdinnerbone.yaum.libs.Reference;
 import net.minecraft.block.material.Material;
 
-@Register(modID = Reference.MOD_ID)
+@Register(Reference.MOD_ID)
 public class TestDoor extends YaumBlockDoor {
 
     public TestDoor() {

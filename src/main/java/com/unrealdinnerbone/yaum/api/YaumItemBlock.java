@@ -1,6 +1,6 @@
 package com.unrealdinnerbone.yaum.api;
 
-import com.unrealdinnerbone.yaum.api.register.IYaumItem;
+import com.unrealdinnerbone.yaum.api.register.impl.IYaumItem;
 import com.unrealdinnerbone.yaum.api.register.IYaumObject;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;

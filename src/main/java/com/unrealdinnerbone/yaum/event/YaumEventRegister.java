@@ -1,7 +1,8 @@
-package com.unrealdinnerbone.yaum.api.register;
+package com.unrealdinnerbone.yaum.event;
 
 import com.unrealdinnerbone.yaum.api.IYaumMod;
-import com.unrealdinnerbone.yaum.api.Register;
+import com.unrealdinnerbone.yaum.api.register.Register;
+import com.unrealdinnerbone.yaum.api.register.IYaumObject;
 import com.unrealdinnerbone.yaum.libs.Reference;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Loader;

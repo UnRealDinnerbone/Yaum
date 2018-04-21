@@ -1,12 +1,10 @@
 package com.unrealdinnerbone.yaum.libs;
 
-import com.unrealdinnerbone.yaum.Yaum;
 import com.unrealdinnerbone.yaum.api.IYaumMod;
 import com.unrealdinnerbone.yaum.api.util.LangHelper;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
-import net.minecraftforge.fml.common.ModContainer;
 
 public class YaumCreativeTab extends CreativeTabs {
 

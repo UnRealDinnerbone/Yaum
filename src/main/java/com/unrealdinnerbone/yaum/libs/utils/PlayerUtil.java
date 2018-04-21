@@ -3,7 +3,6 @@ package com.unrealdinnerbone.yaum.libs.utils;
 import com.mojang.authlib.minecraft.MinecraftProfileTexture.Type;
 import com.unrealdinnerbone.yaum.Yaum;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.entity.AbstractClientPlayer;
 import net.minecraft.client.network.NetworkPlayerInfo;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ResourceLocation;
@@ -38,12 +37,12 @@ public class PlayerUtil {
 
 
     @SideOnly(Side.CLIENT)
-    public static void changePlayerTexture(Type type, EntityPlayer player, ResourceLocation texture) {
+    private static void changePlayerTexture(Type type, EntityPlayer player, ResourceLocation texture) {
         changePlayerTexture(type, player.getUniqueID(), texture);
     }
 
     @SideOnly(Side.CLIENT)
-    public static void changePlayerTexture(Type type, UUID uuid, ResourceLocation texture) {
+    private static void changePlayerTexture(Type type, UUID uuid, ResourceLocation texture) {
         NetworkPlayerInfo networkPlayer = Minecraft.getMinecraft().getConnection().getPlayerInfo(uuid);
         if (texture != null) {
             try {

@@ -1,7 +1,7 @@
 package com.unrealdinnerbone.yaum.refelction;
 
 import com.unrealdinnerbone.yaum.Yaum;
-import com.unrealdinnerbone.yaum.api.register.IConfgRegister;
+import com.unrealdinnerbone.yaum.api.register.IConfigRegister;
 import com.unrealdinnerbone.yaum.api.register.IYaumObject;
 import com.unrealdinnerbone.yaum.api.register.annotation.Register;
 import com.unrealdinnerbone.yaum.libs.utils.ReflectionUtils;
@@ -24,13 +24,13 @@ public class ReflectionHandler {
                     if (objectClass.isAnnotationPresent(Register.class)) {
                         Register registerAnnotation = (Register) objectClass.getAnnotation(Register.class);
                         if (classObject instanceof IYaumObject) {
-                            IConfgRegister register = (IConfgRegister) classObject;
+                            IConfigRegister register = (IConfigRegister) classObject;
                             if (!register.doRegistration()) {
                                 Yaum.getInstance().getLogHelper().debug(classObject.getClass().getName() + " is not going to be registered");
                                 break;
                             }
                             IYaumObject yaumObject = (IYaumObject) classObject;
-                            com.unrealdinnerbone.yaum.api.Register.register(registerAnnotation.modID(), yaumObject);
+                            com.unrealdinnerbone.yaum.api.register.Register.register(registerAnnotation.value(), yaumObject);
                         } else {
                             Yaum.getInstance().getLogHelper().error(classObject.getClass().getName() + " is not going to registered since it does not implement IYaumObject ");
                         }

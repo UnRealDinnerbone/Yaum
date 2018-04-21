@@ -1,6 +1,6 @@
 package com.unrealdinnerbone.yaum.api.power;
 
-import net.minecraft.nbt.*;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.energy.EnergyStorage;
 
 public class YaumFEStorage extends EnergyStorage {

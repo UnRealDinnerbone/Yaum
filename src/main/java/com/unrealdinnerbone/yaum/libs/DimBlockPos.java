@@ -29,6 +29,7 @@ public class DimBlockPos extends BlockPos {
         this.dimID = dimID;
     }
 
+
     public static DimBlockPos fromStoreString(String s) {
         String[] strings = s.split(";");
         long blockPosLon = Long.valueOf(strings[0]);
@@ -40,18 +41,17 @@ public class DimBlockPos extends BlockPos {
     @Override
     public boolean equals(Object object) {
         if(object instanceof DimBlockPos) {
-            DimBlockPos compareBlockPos = (DimBlockPos) object;
-            return this.getX() == compareBlockPos.getX() && this.getY() == compareBlockPos.getY() && this.getZ() == compareBlockPos.getZ() && this.dimID == compareBlockPos.getDimID();
-        } else {
-            return false;
+            if(super.equals(object)) {
+                DimBlockPos blockPos = (DimBlockPos) object;
+                return blockPos.dimID == this.dimID;
+            }
         }
+        return false;
     }
 
     @Override
     public String toString() {
-        String string = super.toString();
-        string += "dimID: " + dimID;
-        return string;
+        return super.toString() + ("dimID: " + dimID);
     }
 
     public String toStoreString() {

@@ -1,6 +1,7 @@
 package com.unrealdinnerbone.yaum.libs.helpers;
 
-import com.unrealdinnerbone.yaum.api.firework.*;
+import com.unrealdinnerbone.yaum.api.firework.EnumExplodeEffect;
+import com.unrealdinnerbone.yaum.api.firework.EnumFireworkEffect;
 import com.unrealdinnerbone.yaum.api.firework.FireworkBase;
 import com.unrealdinnerbone.yaum.libs.utils.EnumUtil;
 import com.unrealdinnerbone.yaum.network.PacketHandler;
