@@ -1,8 +1,8 @@
 package com.unrealdinnerbone.yaum.client.render;
 
 import com.unrealdinnerbone.yaum.api.render.IYaumRenderLayer;
-import com.unrealdinnerbone.yaum.perks.StatsGetter;
-import com.unrealdinnerbone.yaum.perks.Supporter;
+import com.unrealdinnerbone.yaum.common.perks.StatsGetter;
+import com.unrealdinnerbone.yaum.common.perks.Supporter;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;

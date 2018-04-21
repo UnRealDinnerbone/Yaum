@@ -1,4 +1,4 @@
-package com.unrealdinnerbone.yaum.network;
+package com.unrealdinnerbone.yaum.common.network;
 
 import com.unrealdinnerbone.yaum.Yaum;
 import com.unrealdinnerbone.yaum.api.event.PacketRegisterEvent;

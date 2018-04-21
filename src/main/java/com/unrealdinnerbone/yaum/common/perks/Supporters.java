@@ -1,4 +1,4 @@
-package com.unrealdinnerbone.yaum.perks;
+package com.unrealdinnerbone.yaum.common.perks;
 
 import java.util.List;
 

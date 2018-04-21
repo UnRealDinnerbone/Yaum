@@ -1,4 +1,4 @@
-package com.unrealdinnerbone.yaum.api.base.block;
+package com.unrealdinnerbone.yaum.common.block;
 
 import com.unrealdinnerbone.yaum.api.register.impl.IYaumBlock;
 import net.minecraft.block.Block;

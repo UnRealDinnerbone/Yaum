@@ -1,7 +1,7 @@
-package com.unrealdinnerbone.yaum.api.base.tile.power;
+package com.unrealdinnerbone.yaum.common.base.tile.power;
 
-import com.unrealdinnerbone.yaum.api.base.tile.YaumTileEntity;
-import com.unrealdinnerbone.yaum.api.power.YaumFEStorage;
+import com.unrealdinnerbone.yaum.common.base.tile.YaumTileEntity;
+import com.unrealdinnerbone.yaum.common.power.YaumFEStorage;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumFacing;
 import net.minecraftforge.common.capabilities.Capability;

@@ -1,4 +1,4 @@
-package com.unrealdinnerbone.yaum.event;
+package com.unrealdinnerbone.yaum.common.event;
 
 import com.unrealdinnerbone.yaum.api.IYaumMod;
 import com.unrealdinnerbone.yaum.api.register.Register;

@@ -1,4 +1,4 @@
-package com.unrealdinnerbone.yaum.api.power;
+package com.unrealdinnerbone.yaum.common.power;
 
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.energy.EnergyStorage;

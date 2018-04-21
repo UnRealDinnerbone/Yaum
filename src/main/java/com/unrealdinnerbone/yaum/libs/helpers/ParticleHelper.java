@@ -1,7 +1,7 @@
 package com.unrealdinnerbone.yaum.libs.helpers;
 
-import com.unrealdinnerbone.yaum.network.PacketHandler;
-import com.unrealdinnerbone.yaum.network.PacketSpawnParticle;
+import com.unrealdinnerbone.yaum.common.network.PacketHandler;
+import com.unrealdinnerbone.yaum.common.network.PacketSpawnParticle;
 import net.minecraft.client.Minecraft;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.world.World;

@@ -1,4 +1,4 @@
-package com.unrealdinnerbone.yaum.texture;
+package com.unrealdinnerbone.yaum.client.texture;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;

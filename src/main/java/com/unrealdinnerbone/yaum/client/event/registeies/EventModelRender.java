@@ -3,7 +3,7 @@ package com.unrealdinnerbone.yaum.client.event.registeies;
 import com.unrealdinnerbone.yaum.api.IYaumMod;
 import com.unrealdinnerbone.yaum.api.register.Register;
 import com.unrealdinnerbone.yaum.api.register.IYaumObject;
-import com.unrealdinnerbone.yaum.config.YaumConfiguration;
+import com.unrealdinnerbone.yaum.common.config.YaumConfiguration;
 import com.unrealdinnerbone.yaum.libs.Reference;
 import com.unrealdinnerbone.yaum.libs.helpers.TextureHelper;
 import net.minecraft.init.Items;

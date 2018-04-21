@@ -2,9 +2,9 @@ package com.unrealdinnerbone.yaum.proxy;
 
 import com.unrealdinnerbone.yaum.compact.CompactManager;
 import com.unrealdinnerbone.yaum.libs.utils.DateUtils;
-import com.unrealdinnerbone.yaum.network.PacketHandler;
-import com.unrealdinnerbone.yaum.perks.StatsGetter;
-import com.unrealdinnerbone.yaum.refelction.ReflectionHandler;
+import com.unrealdinnerbone.yaum.common.network.PacketHandler;
+import com.unrealdinnerbone.yaum.common.perks.StatsGetter;
+import com.unrealdinnerbone.yaum.common.refelction.ReflectionHandler;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 

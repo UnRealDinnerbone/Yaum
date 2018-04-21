@@ -4,7 +4,7 @@ import com.unrealdinnerbone.yaum.api.texture.TextureRegister;
 import com.unrealdinnerbone.yaum.api.texture.TextureWrapper;
 import com.unrealdinnerbone.yaum.client.render.PlayerRenderLayer;
 import com.unrealdinnerbone.yaum.libs.Reference;
-import com.unrealdinnerbone.yaum.texture.TextureLoader;
+import com.unrealdinnerbone.yaum.client.texture.TextureLoader;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.renderer.entity.RenderPlayer;

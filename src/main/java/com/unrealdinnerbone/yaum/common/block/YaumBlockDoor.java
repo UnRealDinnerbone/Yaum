@@ -1,7 +1,7 @@
-package com.unrealdinnerbone.yaum.api.base.block;
+package com.unrealdinnerbone.yaum.common.block;
 
 import com.unrealdinnerbone.yaum.api.IYaumMod;
-import com.unrealdinnerbone.yaum.api.base.item.YaumDoorItem;
+import com.unrealdinnerbone.yaum.common.item.YaumDoorItem;
 import com.unrealdinnerbone.yaum.api.register.impl.IYaumBlock;
 import com.unrealdinnerbone.yaum.api.register.impl.IYaumItem;
 import net.minecraft.block.Block;

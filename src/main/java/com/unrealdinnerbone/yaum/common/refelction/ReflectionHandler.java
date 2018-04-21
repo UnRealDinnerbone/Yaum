@@ -1,4 +1,4 @@
-package com.unrealdinnerbone.yaum.refelction;
+package com.unrealdinnerbone.yaum.common.refelction;
 
 import com.unrealdinnerbone.yaum.Yaum;
 import com.unrealdinnerbone.yaum.api.register.IConfigRegister;

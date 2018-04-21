@@ -1,6 +1,6 @@
 package com.unrealdinnerbone.yaum.client.event.rendering;
 
-import com.unrealdinnerbone.yaum.config.YaumConfiguration;
+import com.unrealdinnerbone.yaum.common.config.YaumConfiguration;
 import com.unrealdinnerbone.yaum.libs.Reference;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraftforge.client.event.GuiScreenEvent;

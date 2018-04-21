@@ -1,4 +1,4 @@
-package com.unrealdinnerbone.yaum.config;
+package com.unrealdinnerbone.yaum.common.config;
 
 import com.unrealdinnerbone.yaum.libs.Reference;
 import net.minecraftforge.common.config.Config;
@@ -56,7 +56,6 @@ public class YaumConfiguration {
     @SubscribeEvent
     public static void onConfigChanged(ConfigChangedEvent.OnConfigChangedEvent event) {
         if (event.getModID().equals(Reference.MOD_ID)) {
-
             ConfigManager.sync(Reference.MOD_ID, Config.Type.INSTANCE);
         }
     }

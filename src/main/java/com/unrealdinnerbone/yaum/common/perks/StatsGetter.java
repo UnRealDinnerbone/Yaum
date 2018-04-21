@@ -1,4 +1,4 @@
-package com.unrealdinnerbone.yaum.perks;
+package com.unrealdinnerbone.yaum.common.perks;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
