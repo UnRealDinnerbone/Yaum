@@ -1,6 +1,7 @@
-package com.unrealdinnerbone.yaum.api.register;
+package com.unrealdinnerbone.yaum.api.register.impl;
 
 import com.unrealdinnerbone.yaum.api.IYaumMod;
+import com.unrealdinnerbone.yaum.api.register.IYaumObject;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
 import net.minecraftforge.client.event.ModelRegistryEvent;

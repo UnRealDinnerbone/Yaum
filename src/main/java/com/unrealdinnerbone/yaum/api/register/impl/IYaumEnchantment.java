@@ -1,6 +1,7 @@
-package com.unrealdinnerbone.yaum.api.register;
+package com.unrealdinnerbone.yaum.api.register.impl;
 
 import com.unrealdinnerbone.yaum.api.IYaumMod;
+import com.unrealdinnerbone.yaum.api.register.IYaumObject;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraftforge.event.RegistryEvent;
 
