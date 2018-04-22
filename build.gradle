@@ -18,17 +18,17 @@ apply plugin: 'maven'
 apply plugin: "com.matthewprenger.cursegradle"
 apply plugin: 'net.minecraftforge.gradle.forge'
 
-version = "${minecraft_version}-${mod_verison}"
+def buildVersion = "${mod_verison}"
+
 
 def ENV = System.getenv()
 if (ENV.BUILD_NUMBER) {
-    version = version + "." + "${System.getenv().BUILD_NUMBER}"
+    buildVersion = buildVersion + "." + "${System.getenv().BUILD_NUMBER}"
 }else {
-    version = version + ".0-localbeta"
+    buildVersion = buildVersion + ".0-localbeta"
 }
 
-System.console().print("Build Number: ")
-System.console().print(ENV.BUILD)
+version = "${minecraft_version}-" + buildVersion + "-universal"
 
 group= "com.unrealdinnerbone.${mod_name}"
 archivesBaseName = "${mod_name}"
@@ -41,22 +41,25 @@ minecraft {
     runDir = "run"
     mappings = "${forge_mappings}"
     useDepAts = true
+
+	replace "@VERSION@", buildVersion
+	replaceIn "Reference.java"
+    replace "@VERSION@", buildVersion
+    replaceIn "mcmod.info"
 }
 
 processResources
-{
-	inputs.property "version", project.version
-	inputs.property "mcversion", project.minecraft.version
+        {
 
-	from(sourceSets.main.resources.srcDirs) {
-		include 'mcmod.info'
-		expand 'version':project.version, 'mcversion':project.minecraft.version
-	}
-	from(sourceSets.main.resources.srcDirs) {
-		exclude 'mcmod.info'
-	}
-	rename '(.+_at.cfg)', 'META-INF/$1'
-}
+            from(sourceSets.main.resources.srcDirs) {
+                include 'mcmod.info'
+                expand 'version': buildVersion, 'mcversion': "${minecraft_version}"
+            }
+            from(sourceSets.main.resources.srcDirs) {
+                exclude 'mcmod.info'
+            }
+            rename '(.+_at.cfg)', 'META-INF/$1'
+        }
 
 repositories {
 	maven {
