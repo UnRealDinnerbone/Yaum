@@ -1,5 +1,6 @@
 package com.unrealdinnerbone.yaum.libs.helpers;
 
+import com.unrealdinnerbone.yaum.libs.DimBlockPos;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
@@ -12,30 +13,34 @@ import net.minecraftforge.common.util.ITeleporter;
 public class TelporterHelper
 {
 
-    public static void performTeleport(EntityPlayer entityPlayer, int dimension, double destX, double destY, double destZ) {
-        float rotationYaw = entityPlayer.rotationYaw;
-        float rotationPitch = entityPlayer.rotationPitch;
-        if (entityPlayer.getEntityWorld().provider.getDimension() != dimension) {
-            teleportToDimension(entityPlayer, dimension, destX, destY, destZ);
+    public static void performTeleport(Entity entity, int dimension, double destX, double destY, double destZ) {
+        float rotationYaw = entity.rotationYaw;
+        float rotationPitch = entity.rotationPitch;
+        if (entity.getEntityWorld().provider.getDimension() != dimension) {
+            teleportToDimension(entity, dimension, destX, destY, destZ);
         }
-        entityPlayer.rotationYaw = rotationYaw;
-        entityPlayer.rotationPitch = rotationPitch;
-        entityPlayer.setPositionAndUpdate(destX, destY, destZ);
+        entity.rotationYaw = rotationYaw;
+        entity.rotationPitch = rotationPitch;
+        entity.setPositionAndUpdate(destX, destY, destZ);
     }
 
-    public static void teleportToDimension(EntityPlayer entityPlayer, int dimension, double x, double y, double z) {
-        int formDimID = entityPlayer.getEntityWorld().provider.getDimension();
-        if(entityPlayer instanceof EntityPlayerMP) {
-            EntityPlayerMP entityPlayerMP = (EntityPlayerMP) entityPlayer;
-            MinecraftServer server = entityPlayer.getEntityWorld().getMinecraftServer();
+    public static void performTeleport(EntityPlayer entityPlayer, DimBlockPos dimBlockPos) {
+        performTeleport(entityPlayer, dimBlockPos.getDimID(), dimBlockPos.getX(), dimBlockPos.getY(), dimBlockPos.getZ());
+    }
+
+    public static void teleportToDimension(Entity entity, int dimension, double x, double y, double z) {
+        int formDimID = entity.getEntityWorld().provider.getDimension();
+        if(entity instanceof EntityPlayerMP) {
+            EntityPlayerMP entityPlayerMP = (EntityPlayerMP) entity;
+            MinecraftServer server = entity.getEntityWorld().getMinecraftServer();
             WorldServer worldServer = server.getWorld(dimension);
-            entityPlayer.addExperienceLevel(0);
+            entityPlayerMP.addExperienceLevel(0);
             worldServer.getMinecraftServer().getPlayerList().transferPlayerToDimension(entityPlayerMP, dimension, new YatmTeleporter(worldServer, x, y, z));
-            entityPlayer.setPositionAndUpdate(x, y, z);
+            entity.setPositionAndUpdate(x, y, z);
             if (formDimID == 1) {
-                entityPlayer.setPositionAndUpdate(x, y, z);
-                worldServer.spawnEntity(entityPlayer);
-                worldServer.updateEntityWithOptionalForce(entityPlayer, false);
+                entity.setPositionAndUpdate(x, y, z);
+                worldServer.spawnEntity(entity);
+                worldServer.updateEntityWithOptionalForce(entity, false);
             }
         }
     }
