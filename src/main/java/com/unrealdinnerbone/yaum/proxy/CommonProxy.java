@@ -21,5 +21,6 @@ public class CommonProxy implements IProxy
 
     @Override
     public void onServerStart(FMLServerStartingEvent event) {
+
     }
 }

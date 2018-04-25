@@ -3,6 +3,7 @@ package com.unrealdinnerbone.yaum.libs.utils;
 import com.mojang.authlib.minecraft.MinecraftProfileTexture.Type;
 import com.unrealdinnerbone.yaum.Yaum;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.entity.AbstractClientPlayer;
 import net.minecraft.client.network.NetworkPlayerInfo;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ResourceLocation;
@@ -25,9 +26,7 @@ public class PlayerUtil {
         THREAD_POOL.submit(() -> {
             try {
                 Thread.sleep(1000);
-                Minecraft.getMinecraft().addScheduledTask(() -> {
-                    changePlayerTexture(type, player, texture);
-                });
+                Minecraft.getMinecraft().addScheduledTask(() -> changePlayerTexture(type, player, texture));
             } catch (final InterruptedException e) {
                 Yaum.getInstance().getLogHelper().warn("There was and error with the texture thread pool");
                 Yaum.getInstance().getLogHelper().warn(e.getMessage());
@@ -46,15 +45,12 @@ public class PlayerUtil {
         NetworkPlayerInfo networkPlayer = Minecraft.getMinecraft().getConnection().getPlayerInfo(uuid);
         if (texture != null) {
             try {
-                Map<Type, ResourceLocation> maps;
-                maps = networkPlayer.playerTextures;
-                maps.put(type, texture);
+                networkPlayer.playerTextures.put(type, texture);
             } catch (Exception e) {
                 Yaum.getInstance().getLogHelper().warn("There was and error while trying change a player texture");
                 Yaum.getInstance().getLogHelper().warn(e.getMessage());
             }
         }
-        return;
     }
 
 }

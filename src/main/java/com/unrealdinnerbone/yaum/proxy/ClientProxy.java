@@ -8,11 +8,14 @@ import com.unrealdinnerbone.yaum.client.texture.TextureLoader;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.renderer.entity.RenderPlayer;
+import net.minecraft.world.World;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+
+import javax.annotation.Nullable;
 
 @SideOnly(Side.CLIENT)
 public class ClientProxy extends CommonProxy {
@@ -46,5 +49,10 @@ public class ClientProxy extends CommonProxy {
 
     public static TextureWrapper getTextureWrapper() {
         return TextureLoader.getTextureWrappers().get(Reference.MOD_ID);
+    }
+
+    @Override
+    public void spawnParticle(int id, boolean shouldIgnoreRange, float x, float y, float z, float xSpeed, float ySpeed, float zSpeed, @Nullable World world) {
+        Minecraft.getMinecraft().effectRenderer.spawnEffectParticle(id, x, y, z, xSpeed, ySpeed, zSpeed);
     }
 }
