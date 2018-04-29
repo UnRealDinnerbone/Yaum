@@ -27,7 +27,6 @@ public class TextureLoader {
     private static HashMap<String, TextureWrapper> textureWrappers = new HashMap<>();
     private final static Gson gson = new GsonBuilder().create();
 
-    @SideOnly(Side.CLIENT)
     public static void reload() {
         for (Map.Entry<String, String> stringStringEntry : TextureRegister.getTextureManagerList()) {
             String id = stringStringEntry.getKey();
@@ -56,8 +55,8 @@ public class TextureLoader {
                 } else {
                     Yaum.getInstance().getLogHelper().error("Failed to init the TextureLoader with the url " + url);
                 }
-
                 reader.close();
+                connection.disconnect();
             } catch (final IOException e) {
                 Yaum.getInstance().getLogHelper().error("Failed to load the TextureLoader with the url " + url + " json is not right");
             }

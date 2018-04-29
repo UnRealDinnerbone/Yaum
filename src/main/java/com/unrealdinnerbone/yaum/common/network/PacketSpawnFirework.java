@@ -22,7 +22,9 @@ public class PacketSpawnFirework implements ISimplePacket<PacketSpawnFirework> {
     private FireworkBase fireworkBase;
 
 
-    public PacketSpawnFirework() {  }
+    public PacketSpawnFirework() {
+
+    }
 
 
     public PacketSpawnFirework(BlockPos blockPos, FireworkBase simpleFirework, EnumFacing facing) {

@@ -17,9 +17,6 @@ public class Supporter {
     private String elytra;
     private String cape;
 
-    public Supporter(UUID playerUUID) {
-        this.playerUUID = playerUUID;
-    }
 
     public UUID getPlayerUUID() {
         return this.playerUUID;

@@ -1,8 +1,10 @@
 package com.unrealdinnerbone.yaum.api.event;
 
+import com.unrealdinnerbone.yaum.Yaum;
+import com.unrealdinnerbone.yaum.api.network.ISimplePacket;
+import com.unrealdinnerbone.yaum.libs.utils.ReflectionUtils;
+import com.unrealdinnerbone.yaum.libs.utils.StringUtil;
 import net.minecraftforge.fml.common.eventhandler.Event;
-import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
-import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import net.minecraftforge.fml.relauncher.Side;
 
@@ -16,9 +18,15 @@ public class PacketRegisterEvent extends Event
         id = 0;
     }
 
-    public <REQ extends IMessage, REPLY extends IMessage> void registerMessage(Class<? extends IMessageHandler<REQ, REPLY>> messageHandler, Class<REQ> requestMessageType, Side side) {
-        simpleNetworkWrapper.registerMessage(messageHandler, requestMessageType, id++, side);
+
+    public <T extends ISimplePacket<T>> void registerMessage(Class<T> packetClass, Side side) {
+        if (ReflectionUtils.hasEmptyConstructor(packetClass)) {
+            simpleNetworkWrapper.registerMessage(packetClass, packetClass, id++, side);
+        } else {
+            Yaum.getInstance().getLogHelper().error(StringUtil.format("The packet class {0} does not have and empty constructor, it will NOT be registered", packetClass.getName()));
+        }
     }
+
 
     public int getId() {
         return id;

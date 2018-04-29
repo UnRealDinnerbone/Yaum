@@ -3,7 +3,6 @@ package com.unrealdinnerbone.yaum.common.network;
 import com.unrealdinnerbone.yaum.api.network.ISimplePacket;
 import com.unrealdinnerbone.yaum.libs.helpers.ParticleHelper;
 import io.netty.buffer.ByteBuf;
-import net.minecraft.util.EnumParticleTypes;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 import net.minecraftforge.fml.relauncher.Side;
@@ -20,8 +19,13 @@ public class PacketSpawnParticle implements ISimplePacket<PacketSpawnParticle> {
     private float yOffset;
     private float zOffset;
     private boolean longDistance;
+    private int dimId;
 
-    public PacketSpawnParticle(int particleID, boolean longDistanceIn, float xIn, float yIn, float zIn, float xOffsetIn, float yOffsetIn, float zOffsetIn) {
+    public PacketSpawnParticle() {
+
+    }
+
+    public PacketSpawnParticle(int particleID, boolean longDistanceIn, float xIn, float yIn, float zIn, float xOffsetIn, float yOffsetIn, float zOffsetIn, int dimID) {
         this.particleID = particleID;
         this.longDistance = longDistanceIn;
         this.xCoord = xIn;
@@ -30,6 +34,7 @@ public class PacketSpawnParticle implements ISimplePacket<PacketSpawnParticle> {
         this.xOffset = xOffsetIn;
         this.yOffset = yOffsetIn;
         this.zOffset = zOffsetIn;
+        this.dimId = dimID;
     }
 
     public int getParticleID() {
@@ -64,6 +69,9 @@ public class PacketSpawnParticle implements ISimplePacket<PacketSpawnParticle> {
         return this.zOffset;
     }
 
+    public int getDimId() {
+        return dimId;
+    }
 
     @Override
     public void fromBytes(ByteBuf buf) {
@@ -75,6 +83,7 @@ public class PacketSpawnParticle implements ISimplePacket<PacketSpawnParticle> {
         this.xOffset = buf.readFloat();
         this.yOffset = buf.readFloat();
         this.zOffset = buf.readFloat();
+        this.dimId = buf.readInt();
 
     }
 
@@ -88,11 +97,12 @@ public class PacketSpawnParticle implements ISimplePacket<PacketSpawnParticle> {
         buf.writeFloat(this.xOffset);
         buf.writeFloat(this.yOffset);
         buf.writeFloat(this.zOffset);
+        buf.writeInt(this.dimId);
     }
 
     @Override
     public IMessage onMessage(PacketSpawnParticle message, MessageContext ctx) {
-        ParticleHelper.spawnParticle(message.getParticleID(), message.isLongDistance(), message.getXCoordinate(), message.getYCoordinate(), message.getZCoordinate(), message.getXOffset(), message.getYOffset(), message.getZOffset(), null);
+        ParticleHelper.spawnParticle(message.getParticleID(), message.isLongDistance(), message.getXCoordinate(), message.getYCoordinate(), message.getZCoordinate(), message.getXOffset(), message.getYOffset(), message.getZOffset(), message.getDimId());
         return null;
     }
 }

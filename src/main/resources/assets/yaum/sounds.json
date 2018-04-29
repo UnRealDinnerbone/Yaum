@@ -1,0 +1,11 @@
+{
+  "music.stillalive": {
+    "category": "record",
+    "sounds": [
+      {
+        "name": "yaum:music/stillalive",
+        "stream": true
+      }
+    ]
+  }
+}

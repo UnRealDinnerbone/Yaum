@@ -14,9 +14,13 @@ public interface IYaumObject<T extends IForgeRegistryEntry<T>> extends IConfigRe
 
     String getName();
 
-    default void register(RegistryEvent.Register<T> registryEvent, IYaumMod mod) {
+    default void handleEventRegister(RegistryEvent.Register<T> registryEvent, IYaumMod mod) {
         get().setRegistryName(new ResourceLocation(mod.getModName(), getName()));
         registryEvent.getRegistry().register(get());
+    }
+
+    default void onRegister(IYaumMod mod) {
+
     }
 
 

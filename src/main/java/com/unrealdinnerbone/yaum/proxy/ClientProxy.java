@@ -3,19 +3,16 @@ package com.unrealdinnerbone.yaum.proxy;
 import com.unrealdinnerbone.yaum.api.texture.TextureRegister;
 import com.unrealdinnerbone.yaum.api.texture.TextureWrapper;
 import com.unrealdinnerbone.yaum.client.render.PlayerRenderLayer;
-import com.unrealdinnerbone.yaum.libs.Reference;
 import com.unrealdinnerbone.yaum.client.texture.TextureLoader;
+import com.unrealdinnerbone.yaum.libs.Reference;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.renderer.entity.RenderPlayer;
-import net.minecraft.world.World;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-
-import javax.annotation.Nullable;
 
 @SideOnly(Side.CLIENT)
 public class ClientProxy extends CommonProxy {
@@ -52,7 +49,7 @@ public class ClientProxy extends CommonProxy {
     }
 
     @Override
-    public void spawnParticle(int id, boolean shouldIgnoreRange, float x, float y, float z, float xSpeed, float ySpeed, float zSpeed, @Nullable World world) {
+    public void spawnParticle(int id, boolean shouldIgnoreRange, float x, float y, float z, float xSpeed, float ySpeed, float zSpeed, int dimID) {
         Minecraft.getMinecraft().effectRenderer.spawnEffectParticle(id, x, y, z, xSpeed, ySpeed, zSpeed);
     }
 }

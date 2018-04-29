@@ -1,5 +1,8 @@
 package com.unrealdinnerbone.yaum.api.firework;
 
+import javax.annotation.Nullable;
+import java.util.Arrays;
+
 public enum EnumFireworkEffect
 {
     FLICKER("Flicker", 0),
@@ -17,16 +20,12 @@ public enum EnumFireworkEffect
         return effectName;
     }
 
-    public static EnumFireworkEffect getEffectFormID(int id) {
-        for(EnumFireworkEffect enumExplodeEffect: values()) {
-            if(enumExplodeEffect.explodeID == id) {
-                return enumExplodeEffect;
-            }
-        }
-        return null;
-    }
-
     public int getExplodeID() {
         return explodeID;
+    }
+
+    @Nullable
+    public static EnumFireworkEffect getEffectFormID(int id) {
+        return Arrays.stream(values()).filter(enumExplodeEffect -> enumExplodeEffect.explodeID == id).findFirst().orElse(null);
     }
 }

@@ -1,8 +1,8 @@
 package com.unrealdinnerbone.yaum.common.event;
 
 import com.unrealdinnerbone.yaum.api.IYaumMod;
-import com.unrealdinnerbone.yaum.api.register.Register;
 import com.unrealdinnerbone.yaum.api.register.IYaumObject;
+import com.unrealdinnerbone.yaum.api.register.Register;
 import com.unrealdinnerbone.yaum.libs.Reference;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Loader;
@@ -25,7 +25,7 @@ public class YaumEventRegister {
                 if(entry.getValue().get().getRegistryType().toString().equalsIgnoreCase(event.getRegistry().getRegistrySuperType().toString())) {
                     ModContainer pre = Loader.instance().activeModContainer();
                     Loader.instance().setActiveModContainer(entry.getKey().getModContainer());
-                    entry.getValue().register(event, entry.getKey());
+                    entry.getValue().handleEventRegister(event, entry.getKey());
                     Loader.instance().setActiveModContainer(pre);
                 }
             }

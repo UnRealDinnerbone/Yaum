@@ -3,6 +3,7 @@ package com.unrealdinnerbone.yaum.client.render;
 import com.unrealdinnerbone.yaum.api.render.IYaumRenderLayer;
 import com.unrealdinnerbone.yaum.common.perks.StatsGetter;
 import com.unrealdinnerbone.yaum.common.perks.Supporter;
+import com.unrealdinnerbone.yaum.libs.utils.RegistryUtils;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
@@ -10,7 +11,8 @@ import net.minecraft.client.renderer.block.model.ItemCameraTransforms;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
-import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -22,12 +24,13 @@ public class PlayerRenderLayer implements IYaumRenderLayer<EntityPlayer> {
     private static ItemStack itemStack2;
 
 
-    @GameRegistry.ObjectHolder("cutepuppymod:herobrinecoreblock")
-    private static final Block block = null;
-
     static {
         itemStack = new ItemStack(Blocks.BEACON);
-        itemStack2 = new ItemStack(Blocks.PLANKS);
+        Block block = RegistryUtils.getRegistryObjectFormName(ForgeRegistries.BLOCKS, new ResourceLocation("cutepuppymod", "herobrinecoreblock"));
+        if (block == null) {
+            block = Blocks.EMERALD_BLOCK;
+        }
+        itemStack2 = new ItemStack(block);
     }
 
     @Override
@@ -35,11 +38,7 @@ public class PlayerRenderLayer implements IYaumRenderLayer<EntityPlayer> {
         if (StatsGetter.isSupporter(player)) {
             Supporter supporter = StatsGetter.getSupporter(player);
             if (supporter.getType().equalsIgnoreCase("Dev")) {
-                if (block == null) {
-                    render(player, limbSwing, limbSwingAmount, partialTicks, ageInTicks, netHeadYaw, headPitch, scale, itemStack);
-                } else {
-                    render(player, limbSwing, limbSwing, partialTicks, ageInTicks, netHeadYaw, headPitch, scale, new ItemStack(block));
-                }
+                render(player, limbSwing, limbSwingAmount, partialTicks, ageInTicks, netHeadYaw, headPitch, scale, itemStack);
             } else if (supporter.getType().equalsIgnoreCase("Friend")) {
                 render(player, limbSwing, limbSwingAmount, partialTicks, ageInTicks, netHeadYaw, headPitch, scale, itemStack2);
             }

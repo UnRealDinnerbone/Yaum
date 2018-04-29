@@ -1,5 +1,8 @@
 package com.unrealdinnerbone.yaum.api.firework;
 
+import javax.annotation.Nullable;
+import java.util.Arrays;
+
 public enum EnumExplodeEffect
 {
     SMALL_BALL(0),
@@ -19,12 +22,8 @@ public enum EnumExplodeEffect
     }
 
 
+    @Nullable
     public static EnumExplodeEffect getEffectFormID(int id) {
-        for(EnumExplodeEffect enumExplodeEffect: values()) {
-            if(enumExplodeEffect.explodeID == id) {
-                return enumExplodeEffect;
-            }
-        }
-        return null;
+        return Arrays.stream(values()).filter(enumExplodeEffect -> enumExplodeEffect.explodeID == id).findFirst().orElse(null);
     }
 }

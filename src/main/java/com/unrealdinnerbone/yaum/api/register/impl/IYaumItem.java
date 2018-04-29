@@ -14,9 +14,9 @@ public interface IYaumItem extends IYaumObject<Item> {
 
 
     @Override
-    default void register(RegistryEvent.Register<Item> registryEvent, IYaumMod mod) {
+    default void handleEventRegister(RegistryEvent.Register<Item> registryEvent, IYaumMod mod) {
         get().setUnlocalizedName(getName().toLowerCase());
-        IYaumObject.super.register(registryEvent, mod);
+        IYaumObject.super.handleEventRegister(registryEvent, mod);
     }
 
     @SideOnly(Side.CLIENT)
