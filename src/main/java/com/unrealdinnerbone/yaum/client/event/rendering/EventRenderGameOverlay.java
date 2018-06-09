@@ -15,7 +15,7 @@ public class EventRenderGameOverlay
 
     @SubscribeEvent
     public static void onGuiOpenEvent(GuiScreenEvent.InitGuiEvent event) {
-        if (YaumConfiguration.ClientConfig.Tweaks.disableRecipeBook && event.getButtonList() != null && !event.getButtonList().isEmpty())  {
+        if (YaumConfiguration.clientConfig.tweaks.disableRecipeBook && event.getButtonList() != null && !event.getButtonList().isEmpty())  {
             event.getButtonList().stream().filter(button -> button.id == 10).forEach(button -> {
                 button.enabled = false;
                 button.visible = false;

@@ -24,10 +24,10 @@ public class EventEntityJoinWorld
             final AbstractClientPlayer player = (AbstractClientPlayer) event.getEntity();
             if (StatsGetter.isSupporter(player.getUniqueID())) {
                 final Supporter supporter = StatsGetter.getSupporter(player);
-                if (supporter.getCapeTexture() != null && YaumConfiguration.ClientConfig.Supports.capesEnabled) {
+                if (supporter.getCapeTexture() != null && YaumConfiguration.clientConfig.supports.capesEnabled) {
                     PlayerUtil.makePlayerFancy(MinecraftProfileTexture.Type.CAPE, player, supporter.getCapeTexture());
                 }
-                if (supporter.getElytraTexture() != null && YaumConfiguration.ClientConfig.Supports.elytraEnabled) {
+                if (supporter.getElytraTexture() != null && YaumConfiguration.clientConfig.supports.elytraEnabled) {
                     PlayerUtil.makePlayerFancy(MinecraftProfileTexture.Type.ELYTRA, player, supporter.getElytraTexture());
                 }
             }

@@ -6,22 +6,15 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 
-public class YaumCreativeTab extends CreativeTabs {
+public abstract class YaumCreativeTab extends CreativeTabs {
 
     public YaumCreativeTab(IYaumMod yaumMod) {
         super(yaumMod.getLangHelper().translateMessage(LangHelper.Type.TAB, yaumMod.getModName()));
     }
 
-//    public YaumCreativeTab()
-
-    @Override
-    public ItemStack getTabIconItem() {
-        return new ItemStack(Items.BEETROOT);
-    }
-
     @Override
     public boolean hasSearchBar() {
-        return true;
+        return false;
     }
 
 }

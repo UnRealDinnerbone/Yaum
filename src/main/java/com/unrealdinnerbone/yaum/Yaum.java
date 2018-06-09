@@ -41,7 +41,6 @@ public class Yaum implements IYaumMod {
     }
 
     @Mod.EventHandler
-    @SideOnly(Side.CLIENT)
     public void onInt(FMLInitializationEvent event) {
         proxy.onInt(event);
     }

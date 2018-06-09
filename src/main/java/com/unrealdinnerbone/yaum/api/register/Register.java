@@ -33,7 +33,7 @@ public class Register {
         return registeredObject;
     }
 
-    private static class DummyMod implements IYaumMod {
+    private static final class DummyMod implements IYaumMod {
 
         private final String MOD_NAME;
 

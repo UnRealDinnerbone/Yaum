@@ -8,21 +8,27 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 @Mod.EventBusSubscriber(modid = Reference.MOD_ID)
+@Config(modid = Reference.MOD_ID)
 public class YaumConfiguration {
 
-    @Config(modid = Reference.MOD_ID, name = Reference.MOD_ID + "/general")
+   public static ClientConfig clientConfig = new ClientConfig();
+   public static GeneralConfig generalConfig = new GeneralConfig();
+
     public static class ClientConfig {
+
+        public Supports supports = new Supports();
+        public Tweaks tweaks = new Tweaks();
 
         public static class Supports {
 
             @Config.RequiresWorldRestart
             @Config.Comment("Do supports capes get rendered?")
-            public static boolean capesEnabled = true;
+            public boolean capesEnabled = true;
 
 
             @Config.RequiresWorldRestart
             @Config.Comment("Do supports elytra get changed?")
-            public static boolean elytraEnabled = true;
+            public boolean elytraEnabled = true;
 
 
         }
@@ -30,24 +36,24 @@ public class YaumConfiguration {
         public static class Tweaks {
 
             @Config.Comment("Remove the recipe book")
-            public static boolean disableRecipeBook = true;
+            public boolean disableRecipeBook = true;
 
             @Config.RequiresMcRestart
             @Config.Comment("Change the texture of iron nugget")
-            public static boolean changeIronNuggetTexture = true;
+            public boolean changeIronNuggetTexture = true;
 
         }
 
     }
-
-    @Config(modid = Reference.MOD_ID, name = Reference.MOD_ID + "/general", category = "registering")
+    @Config(modid = Reference.MOD_ID + "/general", name = Reference.MOD_ID + ".registering")
     public static class GeneralConfig {
 
+        public General general = new General();
 
         public static class General {
 
             @Config.Comment("Can Supporters use colors in their chat messages")
-            public static boolean supporterChat = true;
+            public boolean supporterChat = true;
         }
 
     }

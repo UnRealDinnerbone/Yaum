@@ -9,21 +9,21 @@ import java.util.List;
 public class YaumCommandBase extends CommandTreeBase {
 
 
-    private final String ModId;
+    private final String MOD_ID;
 
     public YaumCommandBase(String ModId, List<YaumSubCommand> subCommands) {
-        this.ModId = ModId;
+        this.MOD_ID = ModId;
         subCommands.forEach(this::addSubcommand);
     }
 
     @Override
     public String getName() {
-        return this.ModId;
+        return this.MOD_ID;
     }
 
     @Override
     public String getUsage(ICommandSender sender) {
-        return this.ModId;
+        return this.MOD_ID;
     }
 
     @Override

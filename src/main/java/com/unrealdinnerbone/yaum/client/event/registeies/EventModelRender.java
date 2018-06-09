@@ -31,7 +31,7 @@ public class EventModelRender
             }
         }
 
-        if(YaumConfiguration.ClientConfig.Tweaks.changeIronNuggetTexture) {
+        if(YaumConfiguration.clientConfig.tweaks.changeIronNuggetTexture) {
             TextureHelper.registerItemTexture(Items.IRON_NUGGET, new ResourceLocation(Reference.MOD_ID, "iron_nugget"));
         }
 

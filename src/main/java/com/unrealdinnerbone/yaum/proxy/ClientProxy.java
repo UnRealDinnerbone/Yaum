@@ -41,7 +41,7 @@ public class ClientProxy extends CommonProxy {
 
     @Override
     public void displayGUIScreen(GuiScreen guiScreen) {
-        Minecraft.getMinecraft().displayGuiScreen(guiScreen);
+        Minecraft.getMinecraft().addScheduledTask(() -> Minecraft.getMinecraft().displayGuiScreen(guiScreen));
     }
 
     public static TextureWrapper getTextureWrapper() {

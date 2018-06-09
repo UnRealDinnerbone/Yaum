@@ -94,12 +94,8 @@ public class FireworkBase {
         NBTTagCompound explosionsCompound = new NBTTagCompound();
         explosionsCompound.setInteger("Type", getExplodedEffect().getExplodeID() - 1);
         this.getFireworkEffects().forEach(effect -> explosionsCompound.setInteger(effect.getEffectName(), 1));
-
-        int burstColorsArray[] = getBrustColors().stream().mapToInt(Integer::intValue).toArray();
-        int fadeColorArray[] = getFadeColors().stream().mapToInt(Integer::intValue).toArray();
-
-        explosionsCompound.setIntArray("Colors", burstColorsArray);
-        explosionsCompound.setIntArray("FadeColors", fadeColorArray);
+        explosionsCompound.setIntArray("Colors",  getBrustColors().stream().mapToInt(Integer::intValue).toArray());
+        explosionsCompound.setIntArray("FadeColors", getFadeColors().stream().mapToInt(Integer::intValue).toArray());
         NBTTagList nbtList = new NBTTagList();
         nbtList.appendTag(explosionsCompound);
         compound.setTag("Explosions", nbtList);
