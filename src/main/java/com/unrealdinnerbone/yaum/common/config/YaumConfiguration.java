@@ -48,9 +48,9 @@ public class YaumConfiguration {
     @Config(modid = Reference.MOD_ID + "/general", name = Reference.MOD_ID + ".registering")
     public static class GeneralConfig {
 
-        public General general = new General();
+        public Supports supports = new Supports();
 
-        public static class General {
+        public static class Supports {
 
             @Config.Comment("Can Supporters use colors in their chat messages")
             public boolean supporterChat = true;

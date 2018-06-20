@@ -17,7 +17,7 @@ public class EventChat {
 
     @SubscribeEvent
     public static void onChat(ServerChatEvent event) {
-        if (YaumConfiguration.generalConfig.general.supporterChat) {
+        if (YaumConfiguration.generalConfig.supports.supporterChat) {
             if (StatsGetter.isSupporter(event.getPlayer())) {
                 if (StatsGetter.getSupporter(event.getPlayer()).hasFancyChat()) {
                     event.setComponent(new TextComponentString("<" + event.getUsername() + "> " + ColorUtil.format(event.getMessage())));
