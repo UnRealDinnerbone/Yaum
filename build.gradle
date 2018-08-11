@@ -21,14 +21,14 @@ apply plugin: 'net.minecraftforge.gradle.forge'
 def buildVersion = "${mod_verison}"
 
 
-def ENV = System.getenv()
-if (ENV.BUILD_NUMBER) {
-    buildVersion = buildVersion + "." + "${System.getenv().BUILD_NUMBER}"
-}else {
-    buildVersion = buildVersion + ".0-localbeta"
-}
+//def ENV = System.getenv()
+//if (ENV.BUILD_NUMBER) {
+//    buildVersion = buildVersion + "." + "${System.getenv().BUILD_NUMBER}"
+//}else {
+//    buildVersion = buildVersion + "5.0.27"
+//}
 
-version = "${minecraft_version}-" + buildVersion + "-universal"
+version = "${minecraft_version}-" + "5.0.27" + "-universal"
 
 group= "com.unrealdinnerbone.${mod_name}"
 archivesBaseName = "${mod_name}"
