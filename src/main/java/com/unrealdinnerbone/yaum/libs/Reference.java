@@ -1,7 +1,5 @@
 package com.unrealdinnerbone.yaum.libs;
 
-import net.minecraft.util.ResourceLocation;
-
 public class Reference {
 
     public static final String MOD_ID = "yaum";
@@ -16,7 +14,4 @@ public class Reference {
     public static final String SUPPORTER_DATA_JSON = DATA_REPO_LOCATION + "Mods/Yaum/Supporters.json";
     public static final String SUPPORTER_TEXTURE_JSON = DATA_REPO_LOCATION + "Mods/Yaum/Textures.json";
 
-    public static final ResourceLocation MISSING_CAPE = new ResourceLocation(MOD_ID, "textures/entity/player/cape_error.png");
-    public static final ResourceLocation MISSING_ELYTRA = new ResourceLocation(MOD_ID, "textures/entity/player/elytra_error.png");
-    public static final ResourceLocation TEXTURE_404 = new ResourceLocation(MOD_ID, "textures/404.png");
 }

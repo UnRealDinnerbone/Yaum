@@ -29,7 +29,7 @@ public class Register {
         register(mod, yaumObject);
     }
 
-    public static HashMap<Class<?>, List<Map.Entry<IYaumMod, IYaumObject>>> getRegisteredObject() {
+    public static HashMap<Class<?>, List<Map.Entry<IYaumMod, IYaumObject>>> getRegisteredObjects() {
         return registeredObject;
     }
 

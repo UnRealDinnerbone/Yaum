@@ -18,7 +18,7 @@ public class GUIButtonToggleThoughList extends GuiButton {
     }
 
     public void goNext() {
-        String nextString = StringUtil.getNextObjectForList(options, displayString);
+        String nextString = StringUtil.getNextObjectFormList(options, displayString);
         this.setDisplayString(nextString);
     }
 
@@ -36,7 +36,7 @@ public class GUIButtonToggleThoughList extends GuiButton {
 
     public void goBack() {
         List<String> reversedOptions = Lists.reverse(new ArrayList<>(options));
-        String nextString = StringUtil.getNextObjectForList(reversedOptions, displayString);
+        String nextString = StringUtil.getNextObjectFormList(reversedOptions, displayString);
         this.setDisplayString(nextString);
     }
 

@@ -25,7 +25,7 @@ public class EventModelRender
     @SideOnly(Side.CLIENT)
     @SubscribeEvent
     public static void renderModels(ModelRegistryEvent event) {
-        for (List<Map.Entry<IYaumMod, IYaumObject>> entryList : Register.getRegisteredObject().values()) {
+        for (List<Map.Entry<IYaumMod, IYaumObject>> entryList : Register.getRegisteredObjects().values()) {
             for (Map.Entry<IYaumMod, IYaumObject> iYaumModIYaumObjectEntry : entryList) {
                 iYaumModIYaumObjectEntry.getValue().render(event, iYaumModIYaumObjectEntry.getKey());
             }

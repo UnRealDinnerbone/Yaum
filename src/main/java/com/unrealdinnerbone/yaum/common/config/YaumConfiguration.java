@@ -19,6 +19,7 @@ public class YaumConfiguration {
         public Supports supports = new Supports();
         public Tweaks tweaks = new Tweaks();
 
+
         public static class Supports {
 
             @Config.RequiresWorldRestart
@@ -65,5 +66,6 @@ public class YaumConfiguration {
             ConfigManager.sync(Reference.MOD_ID, Config.Type.INSTANCE);
         }
     }
+
 
 }

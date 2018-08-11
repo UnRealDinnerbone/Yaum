@@ -9,7 +9,6 @@ import com.unrealdinnerbone.yaum.libs.utils.DateUtils;
 import net.minecraftforge.common.config.Config;
 import net.minecraftforge.common.config.ConfigManager;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 
 public class CommonProxy implements IProxy
 {
@@ -21,10 +20,5 @@ public class CommonProxy implements IProxy
         DateUtils.checkDates();
         StatsGetter.reload();
         PacketHandler.registerMessages();
-    }
-
-    @Override
-    public void onServerStart(FMLServerStartingEvent event) {
-
     }
 }

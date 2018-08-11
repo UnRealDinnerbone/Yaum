@@ -10,27 +10,27 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import java.util.Set;
 
 
-public class ModConfigGUI implements IModGuiFactory
-{
-  @Override
-  public void initialize(Minecraft minecraftInstance) {
+public class ModConfigGUI implements IModGuiFactory {
 
-  }
+    @Override
+    public void initialize(Minecraft minecraftInstance) {
 
-  @Override
-  public boolean hasConfigGui() {
-    return true;
-  }
+    }
 
-  @SideOnly(Side.CLIENT)
-  @Override
-  public GuiScreen createConfigGui(GuiScreen guiScreen) {
-    return new ModGuiConfig(guiScreen, Yaum.getInstance());
-  }
+    @Override
+    public boolean hasConfigGui() {
+        return true;
+    }
 
-  @Override
-  public Set<RuntimeOptionCategoryElement> runtimeGuiCategories() {
-    return null;
-  }
+    @SideOnly(Side.CLIENT)
+    @Override
+    public GuiScreen createConfigGui(GuiScreen guiScreen) {
+        return new ModGuiConfig(guiScreen, Yaum.getInstance());
+    }
+
+    @Override
+    public Set<RuntimeOptionCategoryElement> runtimeGuiCategories() {
+        return null;
+    }
 
 }

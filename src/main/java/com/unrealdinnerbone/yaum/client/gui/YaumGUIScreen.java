@@ -8,8 +8,8 @@ import net.minecraftforge.common.MinecraftForge;
 
 import java.io.IOException;
 
-public class YaumGUIScreen extends GuiScreen
-{
+public class YaumGUIScreen extends GuiScreen {
+
     @Override
     protected void mouseClicked(int mouseX, int mouseY, int mouseButton) throws IOException {
         for (int i = 0; i < this.buttonList.size(); ++i) {
@@ -33,9 +33,9 @@ public class YaumGUIScreen extends GuiScreen
     protected void actionPerformed(GuiButton button, int mouseButton) throws IOException {
         super.actionPerformed(button);
         if (button instanceof GUIButtonToggleThoughList) {
-            if(mouseButton == 0) {
+            if (mouseButton == 0) {
                 ((GUIButtonToggleThoughList) button).goNext();
-            }else {
+            } else {
                 ((GUIButtonToggleThoughList) button).goBack();
             }
         }

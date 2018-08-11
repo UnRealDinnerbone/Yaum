@@ -87,13 +87,12 @@ public class FireworkBase {
         return fadeColors;
     }
 
+
     public NBTTagCompound getExplodeCompound()  {
         NBTTagCompound compound = new NBTTagCompound();
-        //Todo do i need this?
-//        compound.setInteger("Flight", 1);
         NBTTagCompound explosionsCompound = new NBTTagCompound();
         explosionsCompound.setInteger("Type", getExplodedEffect().getExplodeID() - 1);
-        this.getFireworkEffects().forEach(effect -> explosionsCompound.setInteger(effect.getEffectName(), 1));
+        fireworkEffects.forEach(effect -> explosionsCompound.setInteger(effect.getEffectName(), 1));
         explosionsCompound.setIntArray("Colors",  getBrustColors().stream().mapToInt(Integer::intValue).toArray());
         explosionsCompound.setIntArray("FadeColors", getFadeColors().stream().mapToInt(Integer::intValue).toArray());
         NBTTagList nbtList = new NBTTagList();

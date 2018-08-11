@@ -10,6 +10,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.ModContainer;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
@@ -20,14 +21,14 @@ public class YaumEventRegister {
 
     @SubscribeEvent
     public static void register(RegistryEvent.Register event) {
-        for(List<Map.Entry<IYaumMod, IYaumObject>> entryList: Register.getRegisteredObject().values()) {
-            for(Map.Entry<IYaumMod, IYaumObject> entry: entryList) {
-                if(entry.getValue().get().getRegistryType().toString().equalsIgnoreCase(event.getRegistry().getRegistrySuperType().toString())) {
-                    ModContainer pre = Loader.instance().activeModContainer();
-                    Loader.instance().setActiveModContainer(entry.getKey().getModContainer());
+        for (List<Map.Entry<IYaumMod, IYaumObject>> entries : Register.getRegisteredObjects().values()) {
+            for (Map.Entry<IYaumMod, IYaumObject> entry : entries) {
+                ModContainer pre = Loader.instance().activeModContainer();
+                Loader.instance().setActiveModContainer(entry.getKey().getModContainer());
+                if (entry.getValue().get().getRegistryType().toString().equalsIgnoreCase(event.getRegistry().getRegistrySuperType().toString())) {
                     entry.getValue().handleEventRegister(event, entry.getKey());
-                    Loader.instance().setActiveModContainer(pre);
                 }
+                Loader.instance().setActiveModContainer(pre);
             }
         }
     }

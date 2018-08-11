@@ -1,10 +1,11 @@
 package com.unrealdinnerbone.yaum.libs.utils;
 
+import java.text.MessageFormat;
 import java.util.List;
 
 public class StringUtil
 {
-    public static <T> T getNextObjectForList(List<T> list, T currentString) {
+    public static <T> T getNextObjectFormList(List<T> list, T currentString) {
         boolean isNext = false;
         for (T entry : list) {
             if (isNext) {
@@ -18,12 +19,7 @@ public class StringUtil
     }
 
     public static String format(String msg, Object... replacements) {
-        if (replacements.length > 0) {
-            for (int i = 0; i < replacements.length; i++) {
-                msg = msg.contains("{" + i + "}") ? msg.replace("{" + i + "}", replacements[i].toString()) : msg.replace("{" + i + "}", "");
-            }
-        }
-        return msg;
+        return MessageFormat.format(msg, replacements);
     }
 
 }

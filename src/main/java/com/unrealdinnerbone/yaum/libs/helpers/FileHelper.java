@@ -1,7 +1,6 @@
 package com.unrealdinnerbone.yaum.libs.helpers;
 
 import com.unrealdinnerbone.yaum.Yaum;
-import io.netty.util.internal.StringUtil;
 import net.minecraft.world.storage.ThreadedFileIOBase;
 import org.apache.commons.io.FileUtils;
 
@@ -26,4 +25,5 @@ public class FileHelper
             Yaum.getInstance().getLogHelper().error("There was and error while writing string to file " + file.getName());
         }
     }
+
 }

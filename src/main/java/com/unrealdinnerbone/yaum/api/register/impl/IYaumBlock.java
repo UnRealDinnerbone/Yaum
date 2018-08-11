@@ -22,4 +22,5 @@ public interface IYaumBlock extends IYaumObject<Block> {
     default void onRegister(IYaumMod mod) {
         Register.register(mod, createItemBlock());
     }
+
 }

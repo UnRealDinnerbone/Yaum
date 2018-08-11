@@ -13,8 +13,8 @@ public enum EnumExplodeEffect
 
     private int explodeID;
 
-    EnumExplodeEffect(int i) {
-        this.explodeID = i;
+    EnumExplodeEffect(int explodeID) {
+        this.explodeID = explodeID;
     }
 
     public int getExplodeID() {

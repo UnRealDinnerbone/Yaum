@@ -1,4 +1,4 @@
-package com.unrealdinnerbone.yaum.common.item;
+package com.unrealdinnerbone.yaum.common.impl.item;
 
 import com.unrealdinnerbone.yaum.api.register.impl.IYaumItem;
 import net.minecraft.item.Item;

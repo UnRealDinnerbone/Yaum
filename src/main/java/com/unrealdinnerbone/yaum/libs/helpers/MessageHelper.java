@@ -15,7 +15,7 @@ public class MessageHelper {
     }
 
     public static void sendChatMessageServerWide(TextComponentString message) {
-        ServerUtil.getServer().getPlayerList().getPlayers().forEach(player -> sendChatMessage(message, player));
+        ServerUtil.getOnlinePlayers().forEach(player -> sendChatMessage(message, player));
     }
 
     @SideOnly(Side.CLIENT)

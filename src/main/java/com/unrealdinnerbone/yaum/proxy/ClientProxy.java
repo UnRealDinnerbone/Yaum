@@ -3,7 +3,6 @@ package com.unrealdinnerbone.yaum.proxy;
 import com.unrealdinnerbone.yaum.api.texture.TextureRegister;
 import com.unrealdinnerbone.yaum.api.texture.TextureWrapper;
 import com.unrealdinnerbone.yaum.client.render.PlayerRenderLayer;
-import com.unrealdinnerbone.yaum.client.texture.TextureLoader;
 import com.unrealdinnerbone.yaum.libs.Reference;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreen;
@@ -33,10 +32,8 @@ public class ClientProxy extends CommonProxy {
     public void onPostInt(FMLPostInitializationEvent event) {
         super.onPostInt(event);
         PlayerRenderLayer layer = new PlayerRenderLayer();
-        for (RenderPlayer playerRender : Minecraft.getMinecraft().getRenderManager().getSkinMap().values()) {
-            playerRender.addLayer(layer);
-        }
-        TextureLoader.reload();
+        Minecraft.getMinecraft().getRenderManager().getSkinMap().values().forEach(playerRender -> playerRender.addLayer(layer));
+//        TextureLoader.reload();
     }
 
     @Override
@@ -44,9 +41,6 @@ public class ClientProxy extends CommonProxy {
         Minecraft.getMinecraft().addScheduledTask(() -> Minecraft.getMinecraft().displayGuiScreen(guiScreen));
     }
 
-    public static TextureWrapper getTextureWrapper() {
-        return TextureLoader.getTextureWrappers().get(Reference.MOD_ID);
-    }
 
     @Override
     public void spawnParticle(int id, boolean shouldIgnoreRange, float x, float y, float z, float xSpeed, float ySpeed, float zSpeed, int dimID) {
