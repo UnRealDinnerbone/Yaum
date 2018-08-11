@@ -28,7 +28,7 @@ def buildVersion = "${mod_verison}"
 //    buildVersion = buildVersion + "5.0.27"
 //}
 
-version = "${minecraft_version}-" + "5.0.27" + "-universal"
+version = "${minecraft_version}-" + "5.0.28" + "-universal"
 
 group= "com.unrealdinnerbone.${mod_name}"
 archivesBaseName = "${mod_name}"
@@ -42,9 +42,9 @@ minecraft {
     mappings = "${forge_mappings}"
     useDepAts = true
 
-	replace "@VERSION@", buildVersion
+	replace "@VERSION@", "5.0.28"
 	replaceIn "Reference.java"
-    replace "@VERSION@", buildVersion
+    replace "@VERSION@", "5.0.28"
     replaceIn "mcmod.info"
 }
 
