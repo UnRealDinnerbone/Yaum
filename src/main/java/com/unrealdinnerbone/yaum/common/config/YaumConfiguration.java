@@ -16,23 +16,7 @@ public class YaumConfiguration {
 
     public static class ClientConfig {
 
-        public Supports supports = new Supports();
         public Tweaks tweaks = new Tweaks();
-
-
-        public static class Supports {
-
-            @Config.RequiresWorldRestart
-            @Config.Comment("Do supports capes get rendered?")
-            public boolean capesEnabled = true;
-
-
-            @Config.RequiresWorldRestart
-            @Config.Comment("Do supports elytra get changed?")
-            public boolean elytraEnabled = true;
-
-
-        }
 
         public static class Tweaks {
 

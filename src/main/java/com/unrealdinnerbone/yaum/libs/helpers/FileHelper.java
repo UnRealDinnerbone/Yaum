@@ -11,7 +11,6 @@ import java.nio.charset.StandardCharsets;
 
 public class FileHelper
 {
-
     public static void writeStringToFile(String info, @Nonnull File file, boolean useThread) {
         if(useThread) {
             ThreadedFileIOBase.getThreadedIOInstance().queueIO(() -> {
